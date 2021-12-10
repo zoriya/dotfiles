@@ -19,6 +19,7 @@ warn()
 	printf "\r[ \033[00;31m!!\033[0m ] $*\n"
 }
 
+# TODO pacman/zsh.hook location.
 for file in $(find */ -type f -not -name '*.zsh'); do
 	dest=~/.$(basename $file)
 	if [[ $(readlink -f $dest) == $file ]]; then
