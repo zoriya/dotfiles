@@ -36,14 +36,27 @@ done
 clone()
 {
 	if [[ ! -d "$1" ]]; then
+		info "Clonning $(basename $1) ..."
 		git clone "$2" "$1"
 	fi
 }
 
 if [[ "$1" == "-i" ]]; then
+	info "Installing dependencies..."
+
 	local ZSH_CUSTOM=~/.oh-my-zsh/custom
 
 	clone ~/.oh-my-zsh                                git@github.com:ohmyzsh/ohmyzsh.git
 	clone $ZSH_CUSTOM/themes/powerlevel10k            git@github.com:romkatv/powerlevel10k.git
+	clone $ZSH_CUSTOM/plugins/zsh-completions         git@github.com:zsh-users/zsh-completions 
 	clone $ZSH_CUSTOM/plugins/zsh-syntax-highlighting git@github.com:zsh-users/zsh-syntax-highlighting.git
+
+	if [[ ! -e ~/.localrc ]]; then
+		cat > ~/.localrc <<- eof
+		export OMZ="$HOME/.oh-my-zsh"
+		export ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
+		eof
+	fi
 fi
+
+info "DONE."
