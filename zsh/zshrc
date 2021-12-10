@@ -13,9 +13,6 @@ warn()
 	printf "\r\033[00;31m$*\033[0m\n"
 }
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(zsh-syntax-highlighting sudo)
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -26,6 +23,19 @@ fi
 for file in $DOTFILES/**/*.zsh; do
 	source $file
 done
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+plugins=(
+	sudo
+	copydir
+	copyfile
+	jsontools
+	zsh-completions
+	docker-compose
+	zsh-syntax-highlighting
+)
+ENABLE_CORRECTION="true"
+CORRECT_IGNORE_FILE='.*'
 
 # Autocompletion selection (tab highlight + arrow move)
 autoload -Uz compinit
@@ -39,6 +49,7 @@ background()
 }
 zle -N background
 bindkey ^Z background
+
 
 if [[ -n $OMZ ]]; then
 	if [[ -z $PL10K ]]; then

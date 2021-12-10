@@ -1,6 +1,12 @@
 #!/usr/bin/env zsh
 set -e
 
+if [[ "$1" == "-h" ]]; then
+	echo "Usage: $0 [-i]"
+	echo "\t-i: Clone dependencies (oh-my-zsh, powerlevel10k...)"
+	exit 0
+fi
+
 cd $(dirname $0)
 
 info()
@@ -26,3 +32,18 @@ for file in $(find */ -type f -not -name '*.zsh'); do
 	fi
 	ln -s $(realpath $file) "$dest" -f
 done
+
+clone()
+{
+	if [[ ! -d "$1" ]]; then
+		git clone "$2" "$1"
+	fi
+}
+
+if [[ "$1" == "-i" ]]; then
+	local ZSH_CUSTOM=~/.oh-my-zsh/custom
+
+	clone ~/.oh-my-zsh                                git@github.com:ohmyzsh/ohmyzsh.git
+	clone $ZSH_CUSTOM/themes/powerlevel10k            git@github.com:romkatv/powerlevel10k.git
+	clone $ZSH_CUSTOM/plugins/zsh-syntax-highlighting git@github.com:zsh-users/zsh-syntax-highlighting.git
+fi
