@@ -63,17 +63,17 @@ static const char *termcmd[]  = { "st", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ ControlMask,                  XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_u,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -81,18 +81,20 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_agrave, view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_agrave, tag,            {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_Left,   focusmon,       {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_Right,  focusmon,       {.i = +1 } },
 	{ MODKEY,                       XK_Left,   tagmon,         {.i = -1 } },
 	{ MODKEY,                       XK_Right,  tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_ampersand,              0)
 	TAGKEYS(                        XK_eacute,                 1)
 	TAGKEYS(                        XK_quotedbl,               2)
-	TAGKEYS(                        XK_apostrophe,             3)
-	TAGKEYS(                        XK_parenleft,              4)
-	TAGKEYS(                        XK_minus,                  5)
-	TAGKEYS(                        XK_egrave,                 6)
-	TAGKEYS(                        XK_underscore,             7)
-	TAGKEYS(                        XK_ccedilla,               8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	TAGKEYS(                        XK_a,                      3)
+	TAGKEYS(                        XK_z,                      4)
+	TAGKEYS(                        XK_e,                      5)
+	TAGKEYS(                        XK_q,                      6)
+	TAGKEYS(                        XK_s,                      7)
+	TAGKEYS(                        XK_d,                      8)
+	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
 };
 
 /* button definitions */
