@@ -7,9 +7,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { 
 	"JetBrains Mono Nerd Font:size=11:antialias=true:autohint=true",
-	"Material Design Icons-Regular:size=10",
-	"Siji:pixelsize=12",
-	"Noto Color Emoji:pixelsize=12",
+	"JoyPixels:size=10:antialias=true:autohint=true",
+	"Noto Fonts Emoji=10:antialias=true:autohint=true",
 };
 static const char dmenufont[]       = "JetBrains Mono Nerd Font:size=12";
 static const char col_gray1[]       = "#222222";
