@@ -956,6 +956,11 @@ applysizehints(Client *c, int *x, int *y, int *w, int *h, int interact)
 	int baseismin;
 	Monitor *m = c->mon;
 
+	#ifndef DISABLE_CUSTOM_PATCH
+	if (&monocle == c->mon->lt[c->mon->sellt]->arrange)
+		return 1;
+	#endif
+
 	/* set minimum possible */
 	*w = MAX(1, *w);
 	*h = MAX(1, *h);
@@ -2845,6 +2850,13 @@ resizeclient(Client *c, int x, int y, int w, int h)
 		wc.border_width = 0;
 	}
 	#endif // NOBORDER_PATCH
+	#ifndef DISABLE_CUSTOM_PATCH
+	if (c->mon->lt[c->mon->sellt]->arrange == &monocle && !c->isfloating) {
+		wc.border_width = 0;
+		c->w = wc.width += c->bw * 2;
+		c->h = wc.height += c->bw * 2;
+	}
+	#endif // DISABLE_CUSTOM_PATCH
 	XConfigureWindow(dpy, c->win, CWX|CWY|CWWidth|CWHeight|CWBorderWidth, &wc);
 	configure(c);
 	XSync(dpy, False);
