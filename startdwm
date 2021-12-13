@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# TODO move this out of here, this should not be defined like that nor pushed
+xrandr --output HDMI-0 --primary --auto --output DVI-D-0 --auto --right-of HDMI-0 --output DP-0 --auto --left-of HDMI-0
+setxkbmap fr
+
+dwmblocks &
+
+while true; do
+	dwm
+done

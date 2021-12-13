@@ -36,6 +36,8 @@ warn()
 
 ln -s "$(realpath zsh/zshrc)" ~/.zshrc -f
 ln -s "$(realpath X11/xinitrc)" ~/.xinitrc -f
+sudo ln -s "$(realpath startdwm)" /usr/bin/startdwm -f
+sudo ln -s "$(realpath dwm.desktop)" /usr/share/xsessions/dwm.desktop -f
 
 clone()
 {
