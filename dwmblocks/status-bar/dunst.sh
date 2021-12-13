@@ -1,0 +1,13 @@
+#!/bin/sh
+
+stats=$(dunstctl is-paused)
+
+if [ "$stats" = "true" ]; then
+  echo "^c#88c0d0^ ^d^"
+else
+  echo "^c#88c0d0^ ^d^"
+fi
+
+case $BLOCK_BUTTON in
+          1) ~/.local/bin/dunst_toggle.sh -t;;
+esac

@@ -127,9 +127,14 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "monospace:size=10" };
+static const char *fonts[]               = {
+	"CaskaydiaCove Nerd Font:size=10"
+	// "JetBrains Mono Nerd Font:size=11:antialias=true:autohint=true",
+	// "JoyPixels:size=10:antialias=true:autohint=true",
+	// "Noto Fonts Emoji=10:antialias=true:autohint=true",
+};
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[]            = "monospace:size=10";
+static const char dmenufont[]            = "JetBrains Mono Nerd Font:size=10";
 
 static char c000000[]                    = "#000000"; // placeholder value
 

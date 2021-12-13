@@ -1,0 +1,32 @@
+#!/bin/bash
+
+get_ssid() {
+	networks=$(connmanctl services |
+		awk -F ' +' '{ service_id=$NF; $NF=""; $1=""; name=substr($0, 2, length-2); gsub(/[^a-zA-Z0-9-]/, "_", name) } name { print name, service_id }')
+	while read -r name service_id; do
+		if [ $(connmanctl services "$service_id" | awk '$1 == "State" { print $3 }') = "online" ]; then
+			echo "$name"
+			break
+		fi
+	done <<<"$networks"
+}
+
+is_eth_used=$(cat /sys/class/net/e*/carrier 2>/dev/null || echo 0)
+is_wlan_used=$(cat /sys/class/net/w*/carrier 2>/dev/null || echo 0)
+
+echo -n "^c#88c0d0^"
+
+if [ "$is_eth_used" -eq 1 ]; then    # wired network is carrying
+	icon=" ^d^ "                       #uF6FF
+elif [ "$is_wlan_used" -eq 1 ]; then # wireless network is carrying
+	ssid=$(get_ssid)
+	icon=" ^d^" #uF1EB
+else
+	icon=" ^d^" #uf128 # no network
+fi
+
+echo -n $icon
+
+case $BLOCK_BUTTON in
+	1) ~/.local/bin/connman_dmenu ;;
+esac
