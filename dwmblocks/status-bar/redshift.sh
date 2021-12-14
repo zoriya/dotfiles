@@ -2,7 +2,7 @@
 
 pid=$(pidof redshift)
 
-case $BLOCK_BUTTON in
+case $BUTTON in
   1)
     redshift -x
     if [ ! "$pid" = "" ]; then

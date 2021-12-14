@@ -13,6 +13,6 @@ else
 	echo "^c#a3be8c^墳 ^d^ $NOW%"
 fi
 
-case $BLOCK_BUTTON in
-	1) setsid -f st -c stpulse -n stpulse -e pamix ;;
+case $BUTTON in
+	1) setsid -f st -c pamix -n pamix -e pamix ;;
 esac
