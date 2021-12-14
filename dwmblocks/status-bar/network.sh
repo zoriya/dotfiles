@@ -1,31 +1,24 @@
 #!/bin/bash
 
-get_ssid() {
-	networks=$(connmanctl services |
-		awk -F ' +' '{ service_id=$NF; $NF=""; $1=""; name=substr($0, 2, length-2); gsub(/[^a-zA-Z0-9-]/, "_", name) } name { print name, service_id }')
-	while read -r name service_id; do
-		if [ $(connmanctl services "$service_id" | awk '$1 == "State" { print $3 }') = "online" ]; then
-			echo "$name"
-			break
-		fi
-	done <<<"$networks"
+get_field()
+{
+	echo "$1" | awk -v field=$2 -F '[\t ]{2,}' '{print $field}'
 }
 
-is_eth_used=$(cat /sys/class/net/e*/carrier 2>/dev/null || echo 0)
-is_wlan_used=$(cat /sys/class/net/w*/carrier 2>/dev/null || echo 0)
+out=$(nmcli device status | grep -v bridge | head -n2 | tail -n1)
+type=$(get_field "$out" 2)
+status=$(get_field "$out" 3)
+ssid=$(get_field "$out" 4) || "no network"
 
-echo -n "^c#88c0d0^"
-
-if [ "$is_eth_used" -eq 1 ]; then    # wired network is carrying
-	icon=" ^d^ "                       #uF6FF
-elif [ "$is_wlan_used" -eq 1 ]; then # wireless network is carrying
-	ssid=$(get_ssid)
-	icon=" ^d^" #uF1EB
+if [ "$type" == "ethernet" ]; then
+	icon=$([[ "$status" == "connected" ]] && echo -n " ^d^" || echo -n " ^d^")
+elif [ "$type" == "wifi" ]; then
+	icon=$([[ "$status" == "connected" ]] && echo -n "直 ^d^" || echo -n "睊 ^d^")
 else
-	icon=" ^d^" #uf128 # no network
+	icon=" ^d^"
 fi
 
-echo -n $icon
+echo -n $icon$ssid
 
 case $BLOCK_BUTTON in
 	1) ~/.local/bin/connman_dmenu ;;

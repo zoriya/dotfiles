@@ -394,7 +394,7 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration patches.
  */
 static char *tagicons[][NUMTAGS] = {
-	[DEFAULT_TAGS]        = { " ", " ", " ", " ", "5", "6", "7", "8", "9" },
+	[DEFAULT_TAGS]        = { " ", " ", " ", " ", "\ufb6e ", "6", "7", "8", "9" },
 	[ALTERNATIVE_TAGS]    = { "1", "2", "3", "A", "E", "Q", "S", "D", "0" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
@@ -441,9 +441,9 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "DIALOG",  .isfloating = 1)
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
-	RULE(.wintype = WTYPE "SPLASH",  .isfloating = 1)
+	RULE(.wintype = WTYPE "SPLASH",  .isfloating = 1,)
 	RULE(.class = "feh",           .tags = 0)
-	RULE(.class = "st",            .tags = 1 << 2)
+	RULE(.class = "st",            .tags = 1 << 2, .isterminal = 1)
 	RULE(.class = "code",          .tags = 1 << 2)
 	RULE(.class = "google-chrome", .tags = 1 << 3)
 	RULE(.class = "firefox",       .tags = 1 << 3)
