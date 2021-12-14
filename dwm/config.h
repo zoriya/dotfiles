@@ -849,6 +849,19 @@ static Key on_empty_keys[] = {
 
 static Key keys[] = {
 	/* modifier                     key              function        argument         */
+	{ MODKEY,                       XK_t,            setlayout,      {.v = &layouts[0]} }, // tile      []=
+	{ MODKEY,                       XK_f,            setlayout,      {.v = &layouts[1]} }, // floating  ><>
+	{ MODKEY,                       XK_m,            setlayout,      {.v = &layouts[2]} }, // monocle   [M]
+	{ MODKEY,                       XK_v,            setlayout,      {.v = &layouts[3]} }, // bstack    TTT
+	{ MODKEY,                       XK_o,            setlayout,      {.v = &layouts[4]} }, // bstackhor ===
+	{ MODKEY,                       XK_ugrave,       setlayout,      {.v = &layouts[5]} }, // cmaster   |M|
+	{ MODKEY,                       XK_d,            setlayout,      {.v = &layouts[6]} }, // deck      [D]
+	{ MODKEY,                       XK_a,            setlayout,      {.v = &layouts[7]} }, // spiral    (@)
+	{ MODKEY,                       XK_g,            setlayout,      {.v = &layouts[8]} }, // gaplessg  :::
+	{ MODKEY,                       XK_n,            setlayout,      {.v = &layouts[9]} }, // nrowgrid  ###
+	{ MODKEY,                       XK_space,        setlayout,      {0} },
+	{ MODKEY|ShiftMask,             XK_space,        togglefloating, {0} },
+
 	{ MODKEY,                       XK_p,            spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,       spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,            togglebar,      {0} },
@@ -866,13 +879,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_u,            incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_i,            incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_Tab,          zoom,           {0} },
-	{ MODKEY|ShiftMask,             XK_Tab,          view,           {0} },
+	{ MODKEY|ControlMask,           XK_Tab,          view,           {0} },
 	{ MODKEY,                       XK_c,            killclient,     {0} },
-	{ MODKEY,                       XK_t,            setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,            setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,            setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,        setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,        togglefloating, {0} },
 	{ MODKEY,                       XK_agrave,       view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_agrave,       tag,            {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_Left,         focusmon,       {.i = -1 } },
@@ -880,15 +888,15 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Left,         tagmon,         {.i = -1 } },
 	{ MODKEY,                       XK_Right,        tagmon,         {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_r,            quit,           {0} },
-	TAGKEYS(                        XK_ampersand,              0)
-	TAGKEYS(                        XK_eacute,                 1)
-	TAGKEYS(                        XK_quotedbl,               2)
-	TAGKEYS(                        XK_a,                      3)
-	TAGKEYS(                        XK_z,                      4)
-	TAGKEYS(                        XK_e,                      5)
-	TAGKEYS(                        XK_q,                      6)
-	TAGKEYS(                        XK_s,                      7)
-	TAGKEYS(                        XK_d,                      8)
+	TAGKEYS(                        XK_ampersand,                    0)
+	TAGKEYS(                        XK_eacute,                       1)
+	TAGKEYS(                        XK_quotedbl,                     2)
+	TAGKEYS(                        XK_apostrophe,                   3)
+	TAGKEYS(                        XK_parenleft,                    4)
+	TAGKEYS(                        XK_minus,                        5)
+	TAGKEYS(                        XK_egrave,                       6)
+	TAGKEYS(                        XK_underscore,                   7)
+	TAGKEYS(                        XK_ccedilla,                     8)
 	{ MODKEY,                       XK_KP_Home,      floatpos,       {.v = "-26a -26a" } }, // ↖
 	{ MODKEY,                       XK_KP_Up,        floatpos,       {.v = "  0a -26a" } }, // ↑
 	{ MODKEY,                       XK_KP_Page_Up,   floatpos,       {.v = " 26a -26a" } }, // ↗
