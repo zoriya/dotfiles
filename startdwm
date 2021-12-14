@@ -4,7 +4,7 @@
 xrandr --output HDMI-0 --primary --auto --output DVI-D-0 --auto --right-of HDMI-0 --output DP-0 --auto --left-of HDMI-0
 setxkbmap fr
 
-eval $(dbus-launch --sh-syntax)
+export $(dbus-launch)
 feh --bg-center ~/.wallpapers/blue-period.jpg
 dwmblocks &
 

@@ -15,6 +15,6 @@ else
 
 fi
 
-case $BLOCK_BUTTON in
-	1) ~/.local/bin/dmenu-bluetooth ;;
+case $BUTTON in
+	1) bluedevil-wizard ;;
 esac

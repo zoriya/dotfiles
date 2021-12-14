@@ -20,6 +20,6 @@ fi
 
 echo -n $icon$ssid
 
-case $BLOCK_BUTTON in
-	1) ~/.local/bin/connman_dmenu ;;
+case $BUTTON in
+	1) setsid -f st -c nmtui -n nmtui -e nmtui;;
 esac

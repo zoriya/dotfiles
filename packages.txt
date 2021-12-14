@@ -2,3 +2,5 @@ acpi
 playerctl
 pamix
 pulseaudio-ctl
+networkmanager
+bluedevil
