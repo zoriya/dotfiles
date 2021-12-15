@@ -16,5 +16,5 @@ else
 fi
 
 case $BUTTON in
-	1) bluedevil-wizard ;;
+	1) blueberry ;;
 esac

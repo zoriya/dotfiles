@@ -39,6 +39,8 @@ ln -s "$(realpath X11/xinitrc)" ~/.xinitrc -f
 ln -s "$(realpath wallpapers)" ~/.wallpapers -f
 sudo ln -s "$(realpath startdwm)" /usr/bin/startdwm -f
 sudo ln -s "$(realpath dwm.desktop)" /usr/share/xsessions/dwm.desktop -f
+sudo ln -s "$(realpath fonts)" /usr/local/share/fonts -f
+sudo ln -s /etc/fonts/conf.avail/10-scale-bitmap-fonts.conf /etc/fonts/conf.d/
 
 clone()
 {

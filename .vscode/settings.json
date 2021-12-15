@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"*.s": "assembly",
+		"*.asm": "asm",
+		"*.tcc": "c",
+		"typeinfo": "c"
+	}
+}

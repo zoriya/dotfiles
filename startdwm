@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
+set -e
 
 # TODO move this out of here, this should not be defined like that nor pushed
 xrandr --output HDMI-0 --primary --auto --output DVI-D-0 --auto --right-of HDMI-0 --output DP-0 --auto --left-of HDMI-0
 setxkbmap fr
 
+xset +fp /usr/local/share/fonts
+xset fp rehash
+
+/usr/lib/polkit-kde-authentication-agent-1 &
+
 export $(dbus-launch)
+
 feh --bg-center ~/.wallpapers/blue-period.jpg
 dwmblocks &
 

@@ -3,4 +3,4 @@ playerctl
 pamix
 pulseaudio-ctl
 networkmanager
-bluedevil
+blueberry
