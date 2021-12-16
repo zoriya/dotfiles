@@ -2,10 +2,11 @@
 
 void drawroundedcorners(Client *c)
 {
-	#ifndef DISABLE_CUSTOM_PATCH
+	#if DISABLE_ROUNDCORNER_MONOCLE
+	return;
 	if (c->mon->lt[c->mon->sellt]->arrange == &monocle)
 		return;
-	#endif
+	#endif // DISABLE_ROUNDCORNER_MONOCLE
 	
 	if (corner_radius <= 0 || !c || c->isfullscreen)
 		return;
