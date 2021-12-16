@@ -48,6 +48,7 @@ draw_tags(Bar *bar, BarArg *a)
 		icon = tagicon(bar->mon, i);
 		invert = 0;
 		w = TEXTW(icon);
+		// TODO change the scheme to something unique for this tag.
 		drw_setscheme(drw, scheme[
 			m->tagset[m->seltags] & 1 << i
 			? SchemeTagsSel

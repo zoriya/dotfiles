@@ -104,6 +104,7 @@ static const int ulineall = 0;                  /* 1 to show underline on all ta
 #endif // BAR_UNDERLINETAGS_PATCH
 
 /* Indicators: see patch/bar_indicators.h for options */
+// TODO change this to INDICATOR_NONE when adding colors to tags.
 static int tagindicatortype              = INDICATOR_TOP_LEFT_SQUARE;
 static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_TOP_LEFT_SQUARE;
