@@ -71,7 +71,7 @@
 #define Button7                 7
 #define Button8                 8
 #define Button9                 9
-#define NUMTAGS                 9
+#define NUMTAGS                 5
 #define BARRULES                20
 #if TAB_PATCH
 #define MAXTABS                 50
@@ -529,6 +529,9 @@ typedef struct {
 	#if XKB_PATCH
 	int xkb_layout;
 	#endif // XKB_PATCH
+	#if MATCHONE_PERCLIENT_PATCH
+	int matchonce;
+	#endif //MATCHONE_PERCLIENT_PATCH
 } Rule;
 
 #if XKB_PATCH
@@ -921,6 +924,10 @@ applyrules(Client *c)
 			if (r->xkb_layout > -1)
 				c->xkb->group = r->xkb_layout;
 			#endif // XKB_PATCH
+			#if MATCHONE_PERCLIENT_PATCH
+			if (r->matchonce)
+				break;
+			#endif // MATCHONE_PERCLIENT_PATCH
 			#if ONLY_ONE_RULE_MATCH_PATCH
 			break;
 			#endif // ONLY_ONE_RULE_MATCH_PATCH

@@ -17,6 +17,10 @@
  */
 #define DISABLE_ROUNDCORNER_MONOCLE 0
 
+/* Allow certains clients to match only one rule.
+ */
+#define MATCHONE_PERCLIENT_PATCH 1
+
 /**
  * Bar modules
  */
