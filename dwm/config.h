@@ -129,7 +129,8 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 static const char font[]                 = "monospace 10";
 #else
 static const char *fonts[]               = {
-	"CaskaydiaCove Nerd Font:size=10"
+	"JetBrains Mono Nerd Font:size=10"
+	//"CaskaydiaCove Nerd Font:size=10"
 	// "JetBrains Mono Nerd Font:size=11:antialias=true:autohint=true",
 	// "JoyPixels:size=10:antialias=true:autohint=true",
 	// "Noto Fonts Emoji=10:antialias=true:autohint=true",
