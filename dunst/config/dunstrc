@@ -37,11 +37,6 @@ mouse_left_click = do_action
 mouse_middle_click = close_current
 mouse_right_click = close_all
 
-[shortcuts]
-close_all = ctrl+mod1+space
-history = shift+mod4+h
-context = ctrl+shift+period
-
 [urgency_low]
 background = "#0F111A"
 foreground = "#E5E9F0"

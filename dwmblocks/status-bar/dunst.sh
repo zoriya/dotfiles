@@ -1,13 +1,11 @@
 #!/bin/sh
 
-stats=$(dunstctl is-paused)
+case $BUTTON in
+	1) dunstctl set-paused $([[ $(dunstctl is-paused) == "true" ]] && echo "false" || echo "true") ;;
+esac
 
-if [ "$stats" = "true" ]; then
+if [ $(dunstctl is-paused) = "true" ]; then
 	echo "^c#88c0d0^ ^d^"
 else
 	echo "^c#88c0d0^ ^d^"
 fi
-
-case $BLOCK_BUTTON in
-1) ~/.local/bin/dunst_toggle.sh -t ;;
-esac

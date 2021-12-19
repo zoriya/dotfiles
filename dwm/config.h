@@ -5,7 +5,7 @@
 static const unsigned int borderpx       = 0;   /* border pixel of windows */
 static const int corner_radius           = 10;
 #else
-static const unsigned int borderpx       = 1;   /* border pixel of windows */
+static const unsigned int borderpx       = 2;   /* border pixel of windows */
 #endif // ROUNDED_CORNERS_PATCH
 static const unsigned int snap           = 32;  /* snap pixel */
 #if SWALLOW_PATCH
@@ -454,7 +454,7 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration patches.
  */
 static char *tagicons[][NUMTAGS] = {
-	[DEFAULT_TAGS]        = { " ", " ", " ", " ", "\ufb6e " },
+	[DEFAULT_TAGS]        = { "", "", "", "", "\ufb6e" },
 	[ALTERNATIVE_TAGS]    = { "1", "2", "3", "4", "5" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>" },
 };
@@ -498,6 +498,9 @@ static const Rule rules[] = {
 	 *	WM_WINDOW_ROLE(STRING) = role
 	 *	_NET_WM_WINDOW_TYPE(ATOM) = wintype
 	 */
+	#if SCRATCHPADS_PATCH
+	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1, .matchonce = 1)
+	#endif // SCRATCHPADS_PATCH
 	RULE(.wintype = WTYPE "DIALOG",  .isfloating = 1)
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
@@ -510,9 +513,6 @@ static const Rule rules[] = {
 	RULE(.title = "Discord Updater", .tags = 1 << 4, .isfloating = 1, .matchonce = 1, .floatpos = "50% 50%")
 	RULE(.class = "discord",         .tags = 1 << 4)
 	RULE(.class = "lutris",          .isfloating = 1)
-	#if SCRATCHPADS_PATCH
-	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
-	#endif // SCRATCHPADS_PATCH
 };
 
 #if MONITOR_RULES_PATCH
