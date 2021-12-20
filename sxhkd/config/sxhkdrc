@@ -1,0 +1,8 @@
+super + e
+	kitty
+
+super + p
+	rofi -show run
+
+super + r
+	~/.config/rofi/powermenu/powermenu.sh

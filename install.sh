@@ -34,10 +34,14 @@ warn()
 # 	ln -s $(realpath $file) "$dest" -f
 # done
 
+# TODO clean up this huge chunk
 ln -s "$(realpath zsh/zshrc)" ~/.zshrc -f
 ln -s "$(realpath X11/xinitrc)" ~/.xinitrc -f
+ln -s "$(realpath X11/Xresources)" ~/.Xresources -f
 ln -s "$(realpath wallpapers)" ~/.wallpapers -f
 ln -s "$(realpath dunst/config)" ~/.config/dunst -f
+ln -s "$(realpath sxhkd/config)" ~/.config/sxhkd -f
+ln -s "$(realpath rofi/config)" ~/.config/rofi -f
 sudo ln -s "$(realpath startdwm)" /usr/bin/startdwm -f
 sudo ln -s "$(realpath dwm.desktop)" /usr/share/xsessions/dwm.desktop -f
 sudo ln -s "$(realpath fonts)" /usr/local/share/fonts -f

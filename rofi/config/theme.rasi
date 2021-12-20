@@ -1,0 +1,10 @@
+* {
+	accent:           #FF4151;
+	background:       #0f111a;
+	secondary:        #00010A;
+	foreground:       #E5E9F0;
+}
+
+configuration {
+	font: "JetBrains Mono Nerd Font 10";
+}

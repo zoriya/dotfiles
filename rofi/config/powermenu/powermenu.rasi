@@ -1,0 +1,60 @@
+@import "../theme.rasi"
+
+configuration {
+	show-icons: false;
+	disable-history: true;
+	sidebar-mode: false;
+	font: "JetBrains Mono Nerd Font 18";
+}
+
+* {
+	background-color: @secondary;
+	text-color: @foreground;
+}
+
+window {
+	transparency: "real";
+	border-radius: 12px;
+	width: 100px;
+	location: east;
+	x-offset: -15px;
+	y-offset: 0px;
+}
+
+listview {
+	lines: 5;
+	margin: 8px;
+	spacing: 8px;
+	cycle: true;
+	dynamic: true;
+	layout: vertical;
+}
+
+mainbox {
+	background-color: @secondary;
+	children: [listview];
+}
+
+element {
+	background-color: @background;
+	text-color: @foreground;
+	orientation: vertical;
+	border-radius: 12px;
+}
+
+element-text {
+	background-color: inherit;
+	text-color: inherit;
+	expand: true;
+	horizontal-align: 0.5;
+	vertical-align: 0.5;
+	margin: 26px 26px 26px 26px;
+}
+
+element selected {
+	background-color: @accent;
+	text-color: @background;
+	border: 0px;
+	border-radius: 10px;
+	border-color: @border;
+}

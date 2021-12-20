@@ -313,85 +313,6 @@ static char *colors[][ColCount] = {
 	[SchemeUrg]          = { accent,           accent,           accent,               accent        },
 };
 
-
-// static char col_bg[]               = "#1a1b26";
-// static char col_dark[]             = "#16161E";
-// static char col_dark_1[]           = "#232433";
-// static char col_dark_2[]           = "#2a2b3d";
-// static char col_dark_3[]           = "#3b3d57";
-// static char col_fg[]               = "#a9b1d6";
-// static char col_black[]            = "#32344a";
-// static char col_br_black[]         = "#444b6a";
-// static char col_white[]            = "#787c99";
-// static char col_br_white[]         = "#acb0d0";
-// static char col_red[]              = "#f7768e";
-// static char col_br_red[]           = "#ff7a93";
-// static char col_green[]            = "#9ece6a";
-// static char col_br_green[]         = "#b9f27c";
-// static char col_yellow[]           = "#e0af68";
-// static char col_br_yellow[]        = "#ff9e64";
-// static char col_blue[]             = "#7aa2f7";
-// static char col_br_blue[]          = "#7da6ff";
-// static char col_magenta[]          = "#ad8ee6";
-// static char col_br_magenta[]       = "#bb9af7";
-// static char col_cyan[]             = "#449dab";
-// static char col_br_cyan[]          = "#0db9d7";
-
-// static char *colors[][ColCount] = {
-// 	/*                       fg                bg                border                float boarder */
-// 	[SchemeNorm]         = { col_fg,           col_bg,           col_bg,               normfloatcolor },
-// 	[SchemeSel]          = { col_blue,         col_dark,         col_dark_1,           selfloatcolor },
-// 	[SchemeTitleNorm]    = { col_fg,           col_bg,           col_black,            titlenormfloatcolor },
-// 	[SchemeTitleSel]     = { col_blue,         col_dark,         col_dark_1,           titleselfloatcolor },
-// 	[SchemeTagsNorm]     = { col_br_black,     col_bg,           col_black,            tagsnormfloatcolor },
-// 	[SchemeTagsSel]      = { col_fg,           col_dark,         col_black,            tagsselfloatcolor },
-// 	[SchemeHidNorm]      = { hidnormfgcolor,   hidnormbgcolor,   c000000,              c000000 },
-// 	[SchemeHidSel]       = { hidselfgcolor,    hidselbgcolor,    c000000,              c000000 },
-// 	[SchemeUrg]          = { urgfgcolor,       urgbgcolor,       urgbordercolor,       urgfloatcolor },
-// 	// [SchemeDarker]     = { col_dark,       col_bg,         col_black },      /* \x0d */
-// 	// [SchemeRed]        = { col_red,        col_bg,         col_black },      /* \x0e */
-// 	// [SchemeGreen]      = { col_green,      col_bg,         col_black },      /* \x0f */
-// 	// [SchemeBlue]       = { col_blue,       col_bg,         col_black },      /* \x10 */
-// 	// [SchemeCyan]       = { col_cyan,       col_bg,         col_black },      /* \x11 */
-// 	// [SchemeMagenta]    = { col_magenta,    col_bg,         col_black },      /* \x12 */
-// 	// [SchemeYellow]     = { col_yellow,     col_bg,         col_black },      /* \x13 */
-// 	// [SchemeBlack]      = { col_black,      col_bg,         col_black },      /* \x14 */
-// 	// [SchemeWhite]      = { col_white,      col_bg,         col_black },      /* \x15 */
-// 	// [SchemeBrRed]      = { col_br_red,     col_bg,         col_black },      /* \x16 */
-// 	// [SchemeBrGreen]    = { col_br_green,   col_bg,         col_black },      /* \x17 */
-// 	// [SchemeBrBlue]     = { col_br_blue,    col_bg,         col_black },      /* \x18 */
-// 	// [SchemeBrCyan]     = { col_br_cyan,    col_bg,         col_black },      /* \x19 */
-// 	// [SchemeBrMagenta]  = { col_br_magenta, col_bg,         col_black },      /* \x1a */
-// 	// [SchemeBrYellow]   = { col_br_yellow,  col_bg,         col_black },      /* \x1b */
-// 	// [SchemeBrBlack]    = { col_br_black,   col_bg,         col_black },      /* \x1c */
-// 	// [SchemeBrWhite]    = { col_br_white,   col_bg,         col_black },      /* \x1d */
-// 	// [SchemeFloat]      = { col_fg,         col_bg,         col_dark_2 },     /* \x1e */
-// 	// [SchemeInactive]   = { col_br_black,   col_bg,         col_black },      /* \x1f */
-// 	// [SchemeBar]        = { col_fg,         col_bg,         col_bg },
-// 	// [SchemeTag]        = { col_br_black,   col_bg,         col_black },
-// 	// [SchemeTag1]       = { col_fg,         col_dark,       col_black },
-// 	// [SchemeTag2]       = { col_red,        col_dark,       col_black },
-// 	// [SchemeTag3]       = { col_br_yellow,  col_dark,       col_black },
-// 	// [SchemeTag4]       = { col_br_blue,    col_dark,       col_black },
-// 	// [SchemeTag5]       = { col_br_magenta, col_dark,       col_black },
-// 	// [SchemeTag6]       = { col_br_cyan,    col_dark,       col_black },
-// 	// [SchemeTag7]       = { col_br_green,   col_dark,       col_black },
-// 	// [SchemeTag8]       = { col_yellow,     col_dark,       col_black },
-// 	// [SchemeTag9]       = { col_br_red,     col_dark,       col_black },
-// 	// [SchemeLayout]     = { col_white,      col_bg,         col_black },
-// 	// [SchemeTitle]      = { col_fg,         col_bg,         col_black },
-// 	// [SchemeTitleFloat] = { col_br_blue,    col_bg,         col_black },
-// 	// [SchemeTitle1]     = { col_fg,         col_bg,         col_black },
-// 	// [SchemeTitle2]     = { col_red,        col_bg,         col_black },
-// 	// [SchemeTitle3]     = { col_br_yellow,  col_bg,         col_black },
-// 	// [SchemeTitle4]     = { col_br_blue,    col_bg,         col_black },
-// 	// [SchemeTitle5]     = { col_br_magenta, col_bg,         col_black },
-// 	// [SchemeTitle6]     = { col_br_cyan,    col_bg,         col_black },
-// 	// [SchemeTitle7]     = { col_br_green,   col_bg,         col_black },
-// 	// [SchemeTitle8]     = { col_yellow,     col_bg,         col_black },
-// 	// [SchemeTitle9]     = { col_br_red,     col_bg,         col_black },
-// };
-
 #if BAR_POWERLINE_STATUS_PATCH
 static char *statuscolors[][ColCount] = {
 	/*                       fg                bg                border                float */
@@ -855,13 +776,13 @@ static const char *xkb_layouts[]  = {
 
 #if STACKER_PATCH
 #define STACKKEYS(MOD,ACTION) \
-	{ MOD, XK_j,     ACTION##stack, {.i = INC(+1) } }, \
-	{ MOD, XK_k,     ACTION##stack, {.i = INC(-1) } }, \
-	{ MOD, XK_s,     ACTION##stack, {.i = PREVSEL } }, \
-	{ MOD, XK_w,     ACTION##stack, {.i = 0 } }, \
-	{ MOD, XK_e,     ACTION##stack, {.i = 1 } }, \
-	{ MOD, XK_a,     ACTION##stack, {.i = 2 } }, \
-	{ MOD, XK_z,     ACTION##stack, {.i = -1 } },
+	{ MOD, XK_j,         ACTION##stack, {.i = INC(+1) } }, \
+	{ MOD, XK_k,         ACTION##stack, {.i = INC(-1) } }, \
+	{ MOD, XK_Tab,       ACTION##stack, {.i = PREVSEL } }, \
+	{ MOD, XK_comma,     ACTION##stack, {.i = 0 } }, \
+	{ MOD, XK_semicolon, ACTION##stack, {.i = 1 } }, \
+	{ MOD, XK_colon,     ACTION##stack, {.i = 2 } }, \
+	{ MOD, XK_exclam,    ACTION##stack, {.i = -1 } },
 #endif // STACKER_PATCH
 
 #if BAR_HOLDBAR_PATCH
@@ -870,27 +791,6 @@ static const char *xkb_layouts[]  = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-
-/* commands */
-#if !NODMENU_PATCH
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-#endif // NODMENU_PATCH
-static const char *dmenucmd[] = {
-	"dmenu_run",
-	#if !NODMENU_PATCH
-	"-m", dmenumon,
-	#endif // NODMENU_PATCH
-	"-fn", dmenufont,
-	"-nb", normbgcolor,
-	"-nf", normfgcolor,
-	"-sb", selbgcolor,
-	"-sf", selfgcolor,
-	#if BAR_DMENUMATCHTOP_PATCH
-	topbar ? NULL : "-b",
-	#endif // BAR_DMENUMATCHTOP_PATCH
-	NULL
-};
-static const char *termcmd[]  = { "st", NULL };
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
@@ -934,14 +834,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_z,            scratchpad_show,   {0} },
 	{ MODKEY|ShiftMask,             XK_z,            scratchpad_hide,   {0} },
 	{ MODKEY|ControlMask,           XK_z,            scratchpad_remove, {0} },
-	{ MODKEY,                       XK_p,            spawn,             {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return,       spawn,             {.v = termcmd } },
 	{ MODKEY,                       XK_b,            togglebar,         {0} },
-	{ MODKEY,                       XK_j,            focusstack,        {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_j,            movestack,         {.i = +1 } },
+	STACKKEYS(MODKEY,                                focus)
+	STACKKEYS(MODKEY|ShiftMask,                      push)
 	{ MODKEY|Mod1Mask,              XK_j,            rotatestack,       {.i = +1 } },
-	{ MODKEY,                       XK_k,            focusstack,        {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_k,            movestack,         {.i = -1 } },
 	{ MODKEY|Mod1Mask,              XK_k,            rotatestack,       {.i = -1 } },
 	{ MODKEY,                       XK_h,            setmfact,          {.f = -0.05} },
 	{ MODKEY,                       XK_l,            setmfact,          {.f = +0.05} },
@@ -950,7 +846,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_o,            setcfact,          {0} },
 	{ MODKEY,                       XK_u,            incnmaster,        {.i = -1 } },
 	{ MODKEY,                       XK_i,            incnmaster,        {.i = +1 } },
-	{ MODKEY,                       XK_Tab,          zoom,              {0} },
+	{ MODKEY,                       XK_Return,       zoom,              {0} },
 	{ MODKEY|ControlMask,           XK_Tab,          view,              {0} },
 	{ MODKEY,                       XK_c,            killclient,        {0} },
 	{ MODKEY,                       XK_agrave,       view,              {.ui = ~SPTAGMASK } },
@@ -1004,8 +900,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
 	#endif // FOCUSMASTER_PATCH
 	#if STACKER_PATCH
-	STACKKEYS(MODKEY,                              focus)
-	STACKKEYS(MODKEY|ShiftMask,                    push)
+	// STACKKEYS(MODKEY,                              focus)
+	// STACKKEYS(MODKEY|ShiftMask,                    push)
 	#else
 	// { MODKEY,                       XK_j,          focusstack,             {.i = +1 } },
 	// { MODKEY,                       XK_k,          focusstack,             {.i = -1 } },
@@ -1064,8 +960,8 @@ static Key keys[] = {
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_Left,       moveresize,             {.v = "0x 0y -25w 0h" } },
 	#endif // MOVERESIZE_PATCH
 	#if MOVESTACK_PATCH
-	// { MODKEY|ShiftMask,             XK_j,          movestack,              {.i = +1 } },
-	// { MODKEY|ShiftMask,             XK_k,          movestack,              {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_j,          movestack,              {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,          movestack,              {.i = -1 } },
 	#endif // MOVESTACK_PATCH
 	#if TRANSFER_PATCH
 	{ MODKEY,                       XK_x,          transfer,               {0} },

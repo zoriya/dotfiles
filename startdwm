@@ -8,12 +8,15 @@ setxkbmap fr
 xset +fp /usr/local/share/fonts
 xset fp rehash
 
+xset -dpms
+
 /usr/lib/polkit-kde-authentication-agent-1 &
 
 export $(dbus-launch)
 
 feh --bg-center ~/.wallpapers/blue-period.jpg
 dwmblocks &
+sxhkd &
 
 while true; do
 	dwm
