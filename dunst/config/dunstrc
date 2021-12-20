@@ -33,19 +33,19 @@ icon_position = left
 max_icon_size=32
 
 dmenu = /usr/local/bin/dmenu -p dmenu:
-mouse_left_click = do_action
+mouse_left_click = do_action,close_current
 mouse_middle_click = close_current
 mouse_right_click = close_all
 
 [urgency_low]
 background = "#0F111A"
 foreground = "#E5E9F0"
-timeout = 10
+timeout = 5
 
 [urgency_normal]
 background	= "#0F111A"
 foreground = "#E5E9F0"
-timeout = 10
+timeout = 5
 
 [urgency_critical]
 background = "#BF616A"

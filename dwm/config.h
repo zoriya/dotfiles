@@ -136,7 +136,6 @@ static const char *fonts[]               = {
 	// "Noto Fonts Emoji=10:antialias=true:autohint=true",
 };
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[]            = "JetBrains Mono Nerd Font:size=10";
 
 static char c000000[]                    = "#000000"; // placeholder value
 
