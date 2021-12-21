@@ -1,12 +1,8 @@
-export LANG=en_US.UTF-8
-
-export EDITOR=vim
-export VISUAL=$EDITOR
 alias edit=$EDITOR
-
 export DOTFILES=$(realpath $(dirname $(realpath ~/.zshrc))/..)
 
 [[ -f ~/.localrc ]] && source ~/.localrc
+[[ -f ~/.profile ]] && source ~/.profile
 
 warn()
 {

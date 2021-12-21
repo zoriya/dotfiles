@@ -36,6 +36,7 @@ warn()
 
 # TODO clean up this huge chunk
 ln -s "$(realpath zsh/zshrc)" ~/.zshrc -f
+ln -s "$(realpath zsh/profile)" ~/.profile -f
 ln -s "$(realpath X11/xinitrc)" ~/.xinitrc -f
 ln -s "$(realpath X11/Xresources)" ~/.Xresources -f
 ln -s "$(realpath wallpapers)" ~/.wallpapers -f

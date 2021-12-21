@@ -1,8 +1,11 @@
-super + e
-	kitty
-
 super + p
-	rofi -show run
+	rofi -modi drun,run -show drun
 
 super + r
 	~/.config/rofi/powermenu/powermenu.sh
+
+super + e
+	$TERMINAL
+
+super + q
+	$BROWSER
