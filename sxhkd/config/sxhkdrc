@@ -1,11 +1,20 @@
 super + p
 	rofi -modi drun,run -show drun
 
-super + r
+super + q
 	~/.config/rofi/powermenu/powermenu.sh
+
+super + r
+	$BROWSER
 
 super + e
 	$TERMINAL
 
-super + q
-	$BROWSER
+super + v
+	CM_LAUNCHER=rofi clipmenu
+
+XF86AudioMute
+	pulseaudio-ctl mute; pkill -RTMIN+16 dwmblocks
+
+{XF86AudioLowerVolume,XF86AudioRaiseVolume}
+	pulseaudio-ctl {down,up}; pkill -RTMIN+16 dwmblocks

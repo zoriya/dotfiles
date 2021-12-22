@@ -4,3 +4,4 @@ pamix
 pulseaudio-ctl
 networkmanager
 blueberry
+clipmenu

@@ -308,7 +308,7 @@ static char *colors[][ColCount] = {
 	[SchemeTagsNorm]     = { fore,             back,             border,               border        },
 	[SchemeTagsSel]      = { back,             accent,           border,               border        },
 	[SchemeHidNorm]      = { col0,             back,             col0,                 col0          },
-	[SchemeHidSel]       = { back,             col0,             col0,                 col0          },
+	[SchemeHidSel]       = { col0,             back,             col0,                 col0          },
 	[SchemeUrg]          = { accent,           accent,           accent,               accent        },
 };
 
@@ -339,7 +339,7 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if SCRATCHPADS_PATCH
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd1[] = {"kitty", "--name", "spterm", "-o", "initial_window_width=80c", "-o", "initial_window_height=25c", NULL };
 static Sp scratchpads[] = {
    /* name          cmd  */
    {"spterm",      spcmd1},
@@ -419,7 +419,7 @@ static const Rule rules[] = {
 	 *	_NET_WM_WINDOW_TYPE(ATOM) = wintype
 	 */
 	#if SCRATCHPADS_PATCH
-	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1, .matchonce = 1)
+	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1, .matchonce = 1, .floatpos = "50% 50% 800W 450H", .isterminal = 1)
 	#endif // SCRATCHPADS_PATCH
 	RULE(.wintype = WTYPE "DIALOG",  .isfloating = 1)
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
@@ -427,6 +427,7 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "SPLASH",  .isfloating = 1)
 	RULE(.class = "feh",             .tags = 0)
 	RULE(.class = "st",              .tags = 1 << 1, .isterminal = 1)
+	RULE(.class = "kitty",           .tags = 1 << 1, .isterminal = 1)
 	RULE(.class = "code",            .tags = 1 << 1)
 	RULE(.class = "google-chrome",   .tags = 1 << 2)
 	RULE(.class = "firefox",         .tags = 1 << 2)
@@ -820,7 +821,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,            setlayout,         {.v = &layouts[0]} }, // tile      []=
 	{ MODKEY,                       XK_f,            setlayout,         {.v = &layouts[1]} }, // floating  ><>
 	{ MODKEY,                       XK_m,            setlayout,         {.v = &layouts[2]} }, // monocle   [M]
-	{ MODKEY,                       XK_v,            setlayout,         {.v = &layouts[3]} }, // bstack    TTT
+	{ MODKEY,                       XK_w,            setlayout,         {.v = &layouts[3]} }, // bstack    TTT
 	{ MODKEY,                       XK_o,            setlayout,         {.v = &layouts[4]} }, // bstackhor ===
 	{ MODKEY,                       XK_ugrave,       setlayout,         {.v = &layouts[5]} }, // cmaster   |M|
 	{ MODKEY,                       XK_d,            setlayout,         {.v = &layouts[6]} }, // deck      [D]
@@ -854,7 +855,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Right,        focusmon,          {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Left,         tagmon,            {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_Right,        tagmon,            {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_r,            quit,              {0} },
+	{ MODKEY|ControlMask,           XK_q,            quit,              {0} },
 	TAGKEYS(                        XK_ampersand,                       0)
 	TAGKEYS(                        XK_eacute,                          1)
 	TAGKEYS(                        XK_quotedbl,                        2)

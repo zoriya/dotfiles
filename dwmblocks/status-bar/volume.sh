@@ -9,7 +9,7 @@ esac
 STATUS=$(pulseaudio-ctl full-status)
 PERCENT=$(echo $STATUS | cut -d' ' -f 1)
 
-if [ "echo $STATUS | cut -d' ' -f 2" == "yes" ]; then
+if [ $(echo $STATUS | cut -d' ' -f 2) == "yes" ]; then
 	echo "^c#a3be8c^婢 ^d^ $PERCENT%"
 else
 	echo "^c#a3be8c^墳 ^d^ $PERCENT%"

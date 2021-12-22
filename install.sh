@@ -43,6 +43,7 @@ ln -s "$(realpath wallpapers)" ~/.wallpapers -f
 ln -s "$(realpath dunst/config)" ~/.config/dunst -f
 ln -s "$(realpath sxhkd/config)" ~/.config/sxhkd -f
 ln -s "$(realpath rofi/config)" ~/.config/rofi -f
+ln -s "$(realpath kitty/config)" ~/.config/kitty -f
 ln -s "$(realpath fontconfig/config)" ~/.config/fontconfig -f
 sudo ln -s "$(realpath startdwm)" /usr/bin/startdwm -f
 sudo ln -s "$(realpath dwm.desktop)" /usr/share/xsessions/dwm.desktop -f
