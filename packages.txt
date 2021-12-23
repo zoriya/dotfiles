@@ -5,3 +5,4 @@ pulseaudio-ctl
 networkmanager
 blueberry
 clipmenu
+flameshot
