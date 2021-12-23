@@ -44,6 +44,7 @@ ln -s "$(realpath dunst/config)" ~/.config/dunst -f
 ln -s "$(realpath sxhkd/config)" ~/.config/sxhkd -f
 ln -s "$(realpath rofi/config)" ~/.config/rofi -f
 ln -s "$(realpath kitty/config)" ~/.config/kitty -f
+ln -s "$(realpath picom/config)" ~/.config/picom -f
 ln -s "$(realpath flameshot/config)" ~/.config/flameshot -f
 ln -s "$(realpath fontconfig/config)" ~/.config/fontconfig -f
 sudo ln -s "$(realpath startdwm)" /usr/bin/startdwm -f
