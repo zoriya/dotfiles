@@ -6,3 +6,4 @@ networkmanager
 blueberry
 clipmenu
 flameshot
+ibhagwan/picom

@@ -16,7 +16,7 @@ xset -dpms
 
 export $(dbus-launch)
 
-picom --experimental-backend --xrender-sync-fence -b
+picom -b
 feh --bg-center ~/.wallpapers/blue-period.jpg
 dwmblocks &
 sxhkd &
