@@ -817,71 +817,73 @@ static Key on_empty_keys[] = {
 #endif // ON_EMPTY_KEYS_PATCH
 
 static Key keys[] = {
-	/* modifier                     key              function           argument         */
-	{ MODKEY,                       XK_t,            setlayout,         {.v = &layouts[0]} }, // tile      []=
-	{ MODKEY,                       XK_f,            setlayout,         {.v = &layouts[1]} }, // floating  ><>
-	{ MODKEY,                       XK_m,            setlayout,         {.v = &layouts[2]} }, // monocle   [M]
-	{ MODKEY,                       XK_w,            setlayout,         {.v = &layouts[3]} }, // bstack    TTT
-	{ MODKEY,                       XK_o,            setlayout,         {.v = &layouts[4]} }, // bstackhor ===
-	{ MODKEY,                       XK_ugrave,       setlayout,         {.v = &layouts[5]} }, // cmaster   |M|
-	{ MODKEY,                       XK_d,            setlayout,         {.v = &layouts[6]} }, // deck      [D]
-	{ MODKEY,                       XK_a,            setlayout,         {.v = &layouts[7]} }, // spiral    (@)
-	{ MODKEY,                       XK_g,            setlayout,         {.v = &layouts[8]} }, // gaplessg  :::
-	{ MODKEY,                       XK_n,            setlayout,         {.v = &layouts[9]} }, // nrowgrid  ###
-	{ MODKEY,                       XK_space,        setlayout,         {0} },
-	{ MODKEY|ShiftMask,             XK_space,        togglefloating,    {0} },
-	{ MODKEY,                       XK_s,            togglescratch,     {.ui = 0 } },
-	{ MODKEY,                       XK_z,            scratchpad_show,   {0} },
-	{ MODKEY|ShiftMask,             XK_z,            scratchpad_hide,   {0} },
-	{ MODKEY|ControlMask,           XK_z,            scratchpad_remove, {0} },
-	{ MODKEY,                       XK_b,            togglebar,         {0} },
+	/* modifier                     key              function              argument         */
+	{ MODKEY,                       XK_t,            setlayout,            {.v = &layouts[0]} }, // tile      []=
+	{ MODKEY,                       XK_less,         setlayout,            {.v = &layouts[1]} }, // floating  ><>
+	{ MODKEY,                       XK_m,            setlayout,            {.v = &layouts[2]} }, // monocle   [M]
+	{ MODKEY,                       XK_w,            setlayout,            {.v = &layouts[3]} }, // bstack    TTT
+	{ MODKEY,                       XK_o,            setlayout,            {.v = &layouts[4]} }, // bstackhor ===
+	{ MODKEY,                       XK_ugrave,       setlayout,            {.v = &layouts[5]} }, // cmaster   |M|
+	{ MODKEY,                       XK_d,            setlayout,            {.v = &layouts[6]} }, // deck      [D]
+	{ MODKEY,                       XK_a,            setlayout,            {.v = &layouts[7]} }, // spiral    (@)
+	{ MODKEY,                       XK_g,            setlayout,            {.v = &layouts[8]} }, // gaplessg  :::
+	{ MODKEY,                       XK_n,            setlayout,            {.v = &layouts[9]} }, // nrowgrid  ###
+	{ MODKEY,                       XK_space,        setlayout,            {0} },
+	{ MODKEY|ShiftMask,             XK_space,        togglefloating,       {0} },
+	{ MODKEY,                       XK_s,            togglescratch,        {.ui = 0 } },
+	{ MODKEY,                       XK_z,            scratchpad_show,      {0} },
+	{ MODKEY|ShiftMask,             XK_z,            scratchpad_hide,      {0} },
+	{ MODKEY|ControlMask,           XK_z,            scratchpad_remove,    {0} },
+	{ MODKEY,                       XK_BackSpace,    showhideclient,       {0} },
+	{ MODKEY,                       XK_b,            togglebar,            {0} },
 	STACKKEYS(MODKEY,                                focus)
 	STACKKEYS(MODKEY|ShiftMask,                      push)
-	{ MODKEY|Mod1Mask,              XK_j,            rotatestack,       {.i = +1 } },
-	{ MODKEY|Mod1Mask,              XK_k,            rotatestack,       {.i = -1 } },
-	{ MODKEY,                       XK_h,            setmfact,          {.f = -0.05} },
-	{ MODKEY,                       XK_l,            setmfact,          {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_h,            setcfact,          {.f = +0.25} },
-	{ MODKEY|ShiftMask,             XK_l,            setcfact,          {.f = -0.25} },
-	{ MODKEY|ShiftMask,             XK_o,            setcfact,          {0} },
-	{ MODKEY,                       XK_u,            incnmaster,        {.i = -1 } },
-	{ MODKEY,                       XK_i,            incnmaster,        {.i = +1 } },
-	{ MODKEY,                       XK_Return,       zoom,              {0} },
-	{ MODKEY|ControlMask,           XK_Tab,          view,              {0} },
-	{ MODKEY,                       XK_c,            killclient,        {0} },
-	{ MODKEY,                       XK_agrave,       view,              {.ui = ~SPTAGMASK } },
-	{ MODKEY|ShiftMask,             XK_agrave,       tag,               {.ui = ~SPTAGMASK } },
-	{ MODKEY,                       XK_Left,         focusmon,          {.i = -1 } },
-	{ MODKEY,                       XK_Right,        focusmon,          {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_Left,         tagmon,            {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_Right,        tagmon,            {.i = +1 } },
-	{ MODKEY|ControlMask,           XK_q,            quit,              {0} },
-	TAGKEYS(                        XK_ampersand,                       0)
-	TAGKEYS(                        XK_eacute,                          1)
-	TAGKEYS(                        XK_quotedbl,                        2)
-	TAGKEYS(                        XK_apostrophe,                      3)
-	TAGKEYS(                        XK_parenleft,                       4)
-	TAGKEYS(                        XK_minus,                           5)
-	TAGKEYS(                        XK_egrave,                          6)
-	TAGKEYS(                        XK_underscore,                      7)
-	TAGKEYS(                        XK_ccedilla,                        8)
-	{ MODKEY,                       XK_KP_Home,      floatpos,          {.v = "-26a -26a" } }, // ↖
-	{ MODKEY,                       XK_KP_Up,        floatpos,          {.v = "  0a -26a" } }, // ↑
-	{ MODKEY,                       XK_KP_Page_Up,   floatpos,          {.v = " 26a -26a" } }, // ↗
-	{ MODKEY,                       XK_KP_Left,      floatpos,          {.v = "-26a   0a" } }, // ←
-	{ MODKEY,                       XK_KP_Right,     floatpos,          {.v = " 26a   0a" } }, // →
-	{ MODKEY,                       XK_KP_End,       floatpos,          {.v = "-26a  26a" } }, // ↙
-	{ MODKEY,                       XK_KP_Down,      floatpos,          {.v = "  0a  26a" } }, // ↓
-	{ MODKEY,                       XK_KP_Page_Down, floatpos,          {.v = " 26a  26a" } }, // ↘
-	{ MODKEY|ShiftMask,             XK_KP_Home,      floatpos,          {.v = "-26w -26h" } }, // ↖
-	{ MODKEY|ShiftMask,             XK_KP_Up,        floatpos,          {.v = "  0w -26h" } }, // ↑
-	{ MODKEY|ShiftMask,             XK_KP_Page_Up,   floatpos,          {.v = " 26w -26h" } }, // ↗
-	{ MODKEY|ShiftMask,             XK_KP_Left,      floatpos,          {.v = "-26w   0h" } }, // ←
-	{ MODKEY|ShiftMask,             XK_KP_Begin,     floatpos,          {.v = "800W 800H" } }, // ·
-	{ MODKEY|ShiftMask,             XK_KP_Right,     floatpos,          {.v = " 26w   0h" } }, // →
-	{ MODKEY|ShiftMask,             XK_KP_End,       floatpos,          {.v = "-26w  26h" } }, // ↙
-	{ MODKEY|ShiftMask,             XK_KP_Down,      floatpos,          {.v = "  0w  26h" } }, // ↓
-	{ MODKEY|ShiftMask,             XK_KP_Page_Down, floatpos,          {.v = " 26w  26h" } }, // ↘
+	{ MODKEY|Mod1Mask,              XK_j,            rotatestack,          {.i = +1 } },
+	{ MODKEY|Mod1Mask,              XK_k,            rotatestack,          {.i = -1 } },
+	{ MODKEY,                       XK_h,            setmfact,             {.f = -0.05} },
+	{ MODKEY,                       XK_l,            setmfact,             {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_h,            setcfact,             {.f = +0.25} },
+	{ MODKEY|ShiftMask,             XK_l,            setcfact,             {.f = -0.25} },
+	{ MODKEY|ShiftMask,             XK_o,            setcfact,             {0} },
+	{ MODKEY,                       XK_u,            incnmaster,           {.i = -1 } },
+	{ MODKEY,                       XK_i,            incnmaster,           {.i = +1 } },
+	{ MODKEY,                       XK_Return,       zoom,                 {0} },
+	{ MODKEY|ControlMask,           XK_Tab,          view,                 {0} },
+	{ MODKEY,                       XK_c,            killclient,           {0} },
+	{ MODKEY,                       XK_agrave,       view,                 {.ui = ~SPTAGMASK } },
+	{ MODKEY|ShiftMask,             XK_agrave,       tag,                  {.ui = ~SPTAGMASK } },
+	{ MODKEY,                       XK_Left,         focusmon,             {.i = -1 } },
+	{ MODKEY,                       XK_Right,        focusmon,             {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Left,         tagmon,               {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_Right,        tagmon,               {.i = +1 } },
+	{ MODKEY,                       XK_f,            togglefullscreen,     {0} },
+	{ MODKEY|ControlMask,           XK_q,            quit,                 {0} },
+	TAGKEYS(                        XK_ampersand,                          0)
+	TAGKEYS(                        XK_eacute,                             1)
+	TAGKEYS(                        XK_quotedbl,                           2)
+	TAGKEYS(                        XK_apostrophe,                         3)
+	TAGKEYS(                        XK_parenleft,                          4)
+	TAGKEYS(                        XK_minus,                              5)
+	TAGKEYS(                        XK_egrave,                             6)
+	TAGKEYS(                        XK_underscore,                         7)
+	TAGKEYS(                        XK_ccedilla,                           8)
+	{ MODKEY,                       XK_KP_Home,      floatpos,             {.v = "-26a -26a" } }, // ↖
+	{ MODKEY,                       XK_KP_Up,        floatpos,             {.v = "  0a -26a" } }, // ↑
+	{ MODKEY,                       XK_KP_Page_Up,   floatpos,             {.v = " 26a -26a" } }, // ↗
+	{ MODKEY,                       XK_KP_Left,      floatpos,             {.v = "-26a   0a" } }, // ←
+	{ MODKEY,                       XK_KP_Right,     floatpos,             {.v = " 26a   0a" } }, // →
+	{ MODKEY,                       XK_KP_End,       floatpos,             {.v = "-26a  26a" } }, // ↙
+	{ MODKEY,                       XK_KP_Down,      floatpos,             {.v = "  0a  26a" } }, // ↓
+	{ MODKEY,                       XK_KP_Page_Down, floatpos,             {.v = " 26a  26a" } }, // ↘
+	{ MODKEY|ShiftMask,             XK_KP_Home,      floatpos,             {.v = "-26w -26h" } }, // ↖
+	{ MODKEY|ShiftMask,             XK_KP_Up,        floatpos,             {.v = "  0w -26h" } }, // ↑
+	{ MODKEY|ShiftMask,             XK_KP_Page_Up,   floatpos,             {.v = " 26w -26h" } }, // ↗
+	{ MODKEY|ShiftMask,             XK_KP_Left,      floatpos,             {.v = "-26w   0h" } }, // ←
+	{ MODKEY|ShiftMask,             XK_KP_Begin,     floatpos,             {.v = "800W 800H" } }, // ·
+	{ MODKEY|ShiftMask,             XK_KP_Right,     floatpos,             {.v = " 26w   0h" } }, // →
+	{ MODKEY|ShiftMask,             XK_KP_End,       floatpos,             {.v = "-26w  26h" } }, // ↙
+	{ MODKEY|ShiftMask,             XK_KP_Down,      floatpos,             {.v = "  0w  26h" } }, // ↓
+	{ MODKEY|ShiftMask,             XK_KP_Page_Down, floatpos,             {.v = " 26w  26h" } }, // ↘
 
 
 	#if KEYMODES_PATCH
@@ -1007,7 +1009,7 @@ static Key keys[] = {
 	{ MODKEY|Mod4Mask,              XK_backslash,  shiftviewclients,       { .i = +1 } },
   	#endif // SHIFTVIEW_CLIENTS_PATCH
 	#if BAR_WINTITLEACTIONS_PATCH
-	{ MODKEY|ControlMask,           XK_z,          showhideclient,         {0} },
+	// { MODKEY|ControlMask,           XK_z,          showhideclient,         {0} },
 	#endif // BAR_WINTITLEACTIONS_PATCH
 	// { MODKEY|ShiftMask,             XK_c,          killclient,             {0} },
 	#if KILLUNSEL_PATCH
@@ -1071,7 +1073,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_t,          unfloatvisible,         {.v = &layouts[0]} },
 	#endif // UNFLOATVISIBLE_PATCH
 	#if TOGGLEFULLSCREEN_PATCH
-	{ MODKEY,                       XK_y,          togglefullscreen,       {0} },
+	// { MODKEY,                       XK_y,          togglefullscreen,       {0} },
 	#endif // TOGGLEFULLSCREEN_PATCH
 	#if !FAKEFULLSCREEN_PATCH && FAKEFULLSCREEN_CLIENT_PATCH
 	{ MODKEY|ShiftMask,             XK_y,          togglefakefullscreen,   {0} },
