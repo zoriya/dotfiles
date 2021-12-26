@@ -419,7 +419,7 @@ static const Rule rules[] = {
 	 *	_NET_WM_WINDOW_TYPE(ATOM) = wintype
 	 */
 	#if SCRATCHPADS_PATCH
-	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1, .matchonce = 1, .floatpos = "50% 50% 800W 450H", .isterminal = 1)
+	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1, .matchonce = 1, .floatpos = "50% 50% 800W 450H") // Not flagged as isterminal since we don't want the sp to swallow.
 	#endif // SCRATCHPADS_PATCH
 	RULE(.wintype = WTYPE "DIALOG",  .isfloating = 1)
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
@@ -850,6 +850,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return,       zoom,                 {0} },
 	{ MODKEY|ControlMask,           XK_Tab,          view,                 {0} },
 	{ MODKEY,                       XK_c,            killclient,           {0} },
+	{ MODKEY|ControlMask,           XK_c,            spawn,                SHCMD("kill -SEGV ""\"$(xprop | grep PID | awk '{print $3}')""\"")},
 	{ MODKEY,                       XK_agrave,       view,                 {.ui = ~SPTAGMASK } },
 	{ MODKEY|ShiftMask,             XK_agrave,       tag,                  {.ui = ~SPTAGMASK } },
 	{ MODKEY,                       XK_Left,         focusmon,             {.i = -1 } },
