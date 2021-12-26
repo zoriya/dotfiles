@@ -21,6 +21,7 @@ feh --bg-center ~/.wallpapers/blue-period.jpg
 dwmblocks &
 sxhkd &
 clipmenud &
+playerctld daemon
 
 while true; do
 	dwm
