@@ -21,6 +21,8 @@
  */
 #define MATCHONE_PERCLIENT_PATCH 1
 
+#define CUSTOM_MAX_AWESOME_WIDTH 1
+
 /**
  * Bar modules
  */

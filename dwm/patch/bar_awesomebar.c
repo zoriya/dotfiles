@@ -1,7 +1,16 @@
 int
 width_awesomebar(Bar *bar, BarArg *a)
 {
+	#if CUSTOM_MAX_AWESOME_WIDTH
+	int n = 0;
+
+	for (Client *c = bar->mon->clients; c; c = c->next)
+		if (ISVISIBLE(c))
+			n++;
+	return a->w / MAX(n, 3) * n;
+	#else
 	return a->w;
+	#endif
 }
 
 int

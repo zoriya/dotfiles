@@ -7,11 +7,11 @@
 
 static Block blocks[] = {
 /*    Icon  Command                      Update Interval  Update Signal */
-	{ "",   PATH("dunst.sh"),            120,             20 },
 //	{ "",   PATH("mail.sh"),             120,             23 },
-	{ "",   PATH("redshift.sh"),         120,             19 },
-//	{ "",   PATH("mpc"),                 240,             29 },
 //	{ "",   PATH("mconnect"),            120,             20 },
+//	{ "",   PATH("media.sh"),            240,             21 },
+	{ "",   PATH("dunst.sh"),            120,             20 },
+	{ "",   PATH("redshift.sh"),         120,             19 },
 	{ "",   PATH("cpu.sh"),              120,             18 },
 	{ "",   PATH("memory.sh"),           120,             17 },
 	{ "",   PATH("volume.sh"),           5,               16 },

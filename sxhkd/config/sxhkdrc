@@ -19,5 +19,14 @@ XF86AudioMute
 {XF86AudioLowerVolume,XF86AudioRaiseVolume}
 	pulseaudio-ctl {down,up}; pkill -RTMIN+16 dwmblocks
 
+XF86AudioPlay
+	playerctl play-pause
+
+XF86AudioStop
+	playerctl stop
+
+{XF86AudioPrev,XF86AudioNext}
+	playerctl {previous,next}
+
 Print
 	flameshot gui
