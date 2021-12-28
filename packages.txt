@@ -7,4 +7,3 @@ blueberry
 clipmenu
 flameshot
 ibhagwan/picom
-xsettingsd
