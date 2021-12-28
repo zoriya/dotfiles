@@ -39,6 +39,7 @@ ln -s "$(realpath zsh/zshrc)" ~/.zshrc -f
 ln -s "$(realpath zsh/profile)" ~/.profile -f
 ln -s "$(realpath X11/xinitrc)" ~/.xinitrc -f
 ln -s "$(realpath X11/Xresources)" ~/.Xresources -f
+ln -s "$(realpath X11/xsettingsd)" ~/.xsettingsd -f
 ln -s "$(realpath wallpapers)" ~/.wallpapers -f
 ln -s "$(realpath dunst/config)" ~/.config/dunst -f
 ln -s "$(realpath sxhkd/config)" ~/.config/sxhkd -f
@@ -47,6 +48,8 @@ ln -s "$(realpath kitty/config)" ~/.config/kitty -f
 ln -s "$(realpath picom/config)" ~/.config/picom -f
 ln -s "$(realpath flameshot/config)" ~/.config/flameshot -f
 ln -s "$(realpath fontconfig/config)" ~/.config/fontconfig -f
+ln -s "$(realpath flavours/config)" ~/.config/flavours -f
+ln -s "$(realpath gtk/themes)" ~/.themes -f
 sudo ln -s "$(realpath startdwm)" /usr/bin/startdwm -f
 sudo ln -s "$(realpath dwm.desktop)" /usr/share/xsessions/dwm.desktop -f
 sudo ln -s "$(realpath fonts)" /usr/local/share/fonts -f

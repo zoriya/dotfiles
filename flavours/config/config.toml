@@ -1,0 +1,13 @@
+[[item]]
+file = "~/.themes/FlatColor/colors3"
+template = "gtk-flatcolor"
+subtemplate = "gtk-3"
+rewrite = true
+# TODO the hook does not actually reload the themes. It should be done using a systemd unit.
+hook = "xsettingsd &"
+
+[[item]]
+file = "~/.themes/FlatColor/colors2"
+template = "gtk-flatcolor"
+subtemplate = "gtk-2"
+rewrite = true
