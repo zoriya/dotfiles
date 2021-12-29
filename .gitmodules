@@ -1,0 +1,3 @@
+[submodule "gtk/themes/MaterialOcean"]
+	path = gtk/themes/MaterialOcean
+	url = git@github.com:material-ocean/Gtk-Theme.git
