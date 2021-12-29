@@ -47,6 +47,9 @@ ln -s "$(realpath kitty/config)" ~/.config/kitty -f
 ln -s "$(realpath picom/config)" ~/.config/picom -f
 ln -s "$(realpath flameshot/config)" ~/.config/flameshot -f
 ln -s "$(realpath fontconfig/config)" ~/.config/fontconfig -f
+ln -s "$(realpath gtk/themes)" ~/.themes -f
+ln -s "$(realpath gtk/config/gtk-3.0/settings.ini)" ~/.config/gtk-3.0/settings.ini -f
+ln -s "$(realpath gtk/gtkrc-2.0)" ~/.gtkrc-2.0 -f
 sudo ln -s "$(realpath startdwm)" /usr/bin/startdwm -f
 sudo ln -s "$(realpath dwm.desktop)" /usr/share/xsessions/dwm.desktop -f
 sudo ln -s "$(realpath fonts)" /usr/local/share/fonts -f
@@ -77,5 +80,4 @@ if [[ "$1" == "-i" ]]; then
 		eof
 	fi
 fi
-
 info "DONE."
