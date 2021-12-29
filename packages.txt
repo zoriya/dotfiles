@@ -8,3 +8,4 @@ clipmenu
 flameshot
 ibhagwan/picom
 qt5ct
+PearDarkCursors
