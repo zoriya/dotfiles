@@ -50,6 +50,9 @@ ln -s "$(realpath fontconfig/config)" ~/.config/fontconfig -f
 ln -s "$(realpath gtk/themes)" ~/.themes -f
 ln -s "$(realpath gtk/config/gtk-3.0/settings.ini)" ~/.config/gtk-3.0/settings.ini -f
 ln -s "$(realpath gtk/gtkrc-2.0)" ~/.gtkrc-2.0 -f
+
+./qt5ct/install.sh
+
 sudo ln -s "$(realpath startdwm)" /usr/bin/startdwm -f
 sudo ln -s "$(realpath dwm.desktop)" /usr/share/xsessions/dwm.desktop -f
 sudo ln -s "$(realpath fonts)" /usr/local/share/fonts -f

@@ -10,7 +10,7 @@ setxkbmap fr
 xset +fp /usr/local/share/fonts
 xset fp rehash
 
-xset -dpms
+xset s off -dpms
 
 /usr/lib/polkit-kde-authentication-agent-1 &
 
