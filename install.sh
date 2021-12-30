@@ -50,9 +50,9 @@ install() {
 	for topic in $(find . -mindepth 1 -maxdepth 1 -type d -not -name '.*'); do
 		if [[ ${topic##*.} == "ln" ]]; then
 			dest=~/.$(basename ${topic%.*})
-			[[ -f $dest ]] \
+			[[ -e $dest ]] \
 				&& warn "$dest already exists." \
-				|| info "Linking $dest" && ln -s $(realpath $topic) $dest
+				|| $(info "Linking $dest" && ln -s $(realpath $topic) $dest)
 		elif [[ -f $topic/Makefile ]]; then
 			info "Running Makefile for $topic (commented for now)"
 			#make -C $topic install
@@ -71,6 +71,7 @@ install() {
 					mkdir -p ~/bak
 					mv $dest ~/bak -f
 				fi
+				mkdir -p $(dirname $dest)
 				ln -s $(realpath $file) "$dest" -f
 			done
 			# TODO support with or without X
