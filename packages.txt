@@ -1,4 +1,7 @@
 zsh
+kitty
+rofi
+dunst
 playerctl
 pamix-git
 pulseaudio-ctl
@@ -12,3 +15,4 @@ feh
 polkit-kde-agent
 dbus
 redshift
+sxhkd

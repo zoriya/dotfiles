@@ -2,5 +2,6 @@
 set -e
 cd $(dirname $0)
 
-info "Linking zsh.hook to /etc/pacman.d/hooks/zsh.hook (requires sudo privilege)"
-sudo ln -s $(realpath zsh.hook) /etc/pacman.d/hooks/zsh.hook -f
+dest=/etc/pacman.d/hooks/zsh.hook
+info "Linking zsh.hook to $dest (requires sudo privilege)"
+[[ ! -e $dest ]] && sudo ln -s $(realpath zsh.hook) $dest -f!

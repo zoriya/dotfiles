@@ -14,37 +14,32 @@ ac_bat=
 ac=ﮣ
 
 if [[ ! $(acpi 2>&1 | grep "No support") ]]; then
-	export bat=$(cat /sys/class/power_supply/BAT0/capacity)
-	export status=$(cat /sys/class/power_supply/BAT0/status)
-	export plugged=$(cat /sys/class/power_supply/AC/online)
+	export bat=$(cat /sys/class/power_supply/BAT*/capacity)
+	export status=$(cat /sys/class/power_supply/BAT*/status)
+	export plugged=$(cat /sys/class/power_supply/A*/online)
 
-	tleft=$(acpi -b | sed -r 's/.* ([0-9]{2}:[0-9]{2}).*/\1/g')
-	if [ ! $(echo "$tleft" | grep "Full")]; then
-		stats="$tleft"
-	else
-		stats="$bat%"
-	fi
 	if [[ $plugged == "1" ]]; then
-		echo "^c#ebcb8b^$ac_bat^d^ $stats"
+		echo -n "^c#ebcb8b^$ac_bat^d^"
 	elif [[ $bat -lt 10 ]]; then
-		echo "^c#ebcb8b^$ramp10^d^ $stats"
+		echo -n "^c#ebcb8b^$ramp10^d^"
 	elif [[ $bat -lt 20 ]]; then
-		echo "^c#ebcb8b^$ramp20^d^ $stats"
+		echo -n "^c#ebcb8b^$ramp20^d^"
 	elif [[ $bat -lt "30" ]]; then
-		echo "^c#ebcb8b^$ramp30^d^ $stats"
+		echo -n "^c#ebcb8b^$ramp30^d^"
 	elif [[ $bat -lt "40" ]]; then
-		echo "^c#ebcb8b^$ramp40^d^ $stats"
+		echo -n "^c#ebcb8b^$ramp40^d^"
 	elif [[ $bat -lt "50" ]]; then
-		echo "^c#ebcb8b^$ramp50^d^ $stats"
+		echo -n "^c#ebcb8b^$ramp50^d^"
 	elif [[ $bat -lt "60" ]]; then
-		echo "^c#ebcb8b^$ramp60^d^ $stats"
+		echo -n "^c#ebcb8b^$ramp60^d^"
 	elif [[ $bat -lt "70" ]]; then
-		echo "^c#ebcb8b^$ramp70^d^ $stats"
+		echo -n "^c#ebcb8b^$ramp70^d^"
 	elif [[ $bat -lt "80" ]]; then
-		echo "^c#ebcb8b^$ramp80^d^ $stats"
+		echo -n "^c#ebcb8b^$ramp80^d^"
 	elif [[ $bat -lt "90" ]]; then
-		echo "^c#ebcb8b^$ramp90^d^ $stats"
+		echo -n "^c#ebcb8b^$ramp90^d^"
 	elif [[ $bat -le "100" ]]; then
-		echo "^c#ebcb8b^$ramp100^d^ $stats"
+		echo -n "^c#ebcb8b^$ramp100^d^"
 	fi
+	echo " $bat%"
 fi

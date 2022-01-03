@@ -46,7 +46,7 @@ dependencies()
 			git clone "$2" "$1"
 		fi
 	}
-	
+
 	info "Installing dependencies..."
 
 	local ZSH_CUSTOM=~/.oh-my-zsh/custom
@@ -77,8 +77,8 @@ install()
 			dest=~/.$(basename ${topic%.*})
 			link $topic $dest
 		elif [[ -f $topic/Makefile ]]; then
-			info "Running Makefile for $topic (commented for now)"
-			#make -C $topic install
+			info "Running Makefile for $topic"
+			sudo make -C $topic install
 		elif [[ -f $topic/install.sh ]]; then
 			info "Running install.sh for $topic"
 			cwd=$(pwd)
@@ -93,6 +93,11 @@ install()
 			# TODO support with or without X
 		fi
 	done
+
+	info "Installing dwm scripts... (requires sudo privilege)"
+	sudo ln -s "$(realpath startdwm)" /usr/bin/startdwm -f
+	sudo cp "$(realpath dwm.desktop)" /usr/share/xsessions/dwm.desktop
+	info "DONE."
 }
 
 while getopts "dix" opt; do
@@ -105,9 +110,3 @@ while getopts "dix" opt; do
 done
 
 install
-
-info "Installing dwm scripts... (requires sudo privilege)"
-sudo ln -s "$(realpath startdwm)" /usr/bin/startdwm -f
-sudo ln -s "$(realpath dwm.desktop)" /usr/share/xsessions/dwm.desktop -f
-
-info "DONE."
