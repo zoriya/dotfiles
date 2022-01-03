@@ -43,7 +43,8 @@ if [[ -n $OMZ ]]; then
 	fi
 	source "$OMZ/oh-my-zsh.sh"
 else
-	warn "A .localrc file should exist on your home and contain the following variables declarations: OMZ"
+	warn "A .localrc file should exist on your home and contain the following variables declarations: OMZ."
+	warn "This can be automatically created using the -d flag of the install script"
 fi
 
 # Using custom configs at the end to override OMZ configs if needed.

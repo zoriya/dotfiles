@@ -12,19 +12,37 @@ warn()
 	printf "\r[ \033[00;31m!!\033[0m ] $*\n"
 }
 
-usage() {
+link()
+{
+	file=$1
+	dest=$2
+	[[ $(readlink -f $dest) == $(realpath $file) ]] && return
+	info "Linking $file to $dest"
+	if [[ -e $dest ]]; then
+		warn "File $dest already exists. Moving it to ~/bak/"
+		mkdir -p ~/bak
+		mv $dest ~/bak -f
+	fi
+	mkdir -p $(dirname $dest)
+	ln -s $(realpath $file) "$dest" -f
+}
+
+usage()
+{
 	echo "Usage: $0 [-i]"
 	echo "\t-d: Clone dependencies (oh-my-zsh, powerlevel10k...)"
-	echo "\t-x: Install things for an X server (fonts, dwm, redshift...)"
+	echo "\t-i: Install needed packages via yay."
+	echo "\t-x: Disable X11 resources (install only things needed for an headless. No fonts, dwm, redshift...)"
 	echo "\t-h: Show this help message."
 	exit 0
 }
 
-dependencies() {
+dependencies()
+{
 	clone()
 	{
 		if [[ ! -d "$1" ]]; then
-			info "Clonning $(basename $1) ..."
+			info "Clonning $(basename $1)..."
 			git clone "$2" "$1"
 		fi
 	}
@@ -46,55 +64,50 @@ dependencies() {
 	fi
 }
 
-install() {
+packages()
+{
+	info "Installing packages via yay... (requires sudo privilege)"
+	yay -S $(cat packages.txt)
+}
+
+install()
+{
 	for topic in $(find . -mindepth 1 -maxdepth 1 -type d -not -name '.*'); do
 		if [[ ${topic##*.} == "ln" ]]; then
 			dest=~/.$(basename ${topic%.*})
-			[[ -e $dest ]] \
-				&& warn "$dest already exists." \
-				|| $(info "Linking $dest" && ln -s $(realpath $topic) $dest)
+			link $topic $dest
 		elif [[ -f $topic/Makefile ]]; then
 			info "Running Makefile for $topic (commented for now)"
 			#make -C $topic install
 		elif [[ -f $topic/install.sh ]]; then
 			info "Running install.sh for $topic"
-			$topic/install.sh
+			cwd=$(pwd)
+			source $topic/install.sh
+			cd $cwd
 		else
 			for file in $(find $topic -type f -not -name '*.zsh' -or -type d -path '*.ln' -prune); do
 				dest=~/.$(realpath --relative-to $topic $file)
 				[[ -d $file ]] && dest=${dest%.*}
-
-				[[ $(readlink -f $dest) == $(realpath $file) ]] && break
-				info "Linking $file"
-				if [[ -e $dest ]]; then
-					warn "File $dest already exists. Moving it to ~/bak/"
-					mkdir -p ~/bak
-					mv $dest ~/bak -f
-				fi
-				mkdir -p $(dirname $dest)
-				ln -s $(realpath $file) "$dest" -f
+				link $file $dest
 			done
 			# TODO support with or without X
 		fi
 	done
 }
 
-while getopts "dx" opt; do
+while getopts "dix" opt; do
 	case $opt in
 	d) dependencies ;;
-	x) echo "Not Implemented yet." ;;
+	i) packages ;;
+	x) echo "Not Implemented yet."; exit 1 ;;
 	*) usage ;;
 	esac
 done
 
 install
 
-# TODO pacman/zsh.hook location.
-
-# TODO clean up this huge chunk
+info "Installing dwm scripts... (requires sudo privilege)"
 sudo ln -s "$(realpath startdwm)" /usr/bin/startdwm -f
 sudo ln -s "$(realpath dwm.desktop)" /usr/share/xsessions/dwm.desktop -f
-sudo ln -s "$(realpath fonts)" /usr/local/share/fonts -f
-sudo ln -s /etc/fonts/conf.avail/10-scale-bitmap-fonts.conf /etc/fonts/conf.d/
 
 info "DONE."
