@@ -81,7 +81,6 @@ install()
 			info "Running Makefile for $topic"
 			sudo make -C $topic install
 		elif [[ -f $topic/install.sh ]]; then
-			info "Running install.sh for $topic"
 			cwd=$(pwd)
 			source $topic/install.sh
 			cd $cwd
@@ -94,10 +93,6 @@ install()
 			# TODO support with or without X
 		fi
 	done
-
-	info "Installing dwm scripts... (requires sudo privilege)"
-	sudo ln -s "$(realpath startdwm)" /usr/bin/startdwm -f
-	sudo cp "$(realpath dwm.desktop)" /usr/share/xsessions/dwm.desktop
 	info "DONE."
 }
 
