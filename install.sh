@@ -68,7 +68,7 @@ dependencies()
 packages()
 {
 	info "Installing packages via yay... (requires sudo privilege)"
-	yay -S $(cat packages.txt)
+	yay -S --needed $(cat packages.txt)
 }
 
 install()

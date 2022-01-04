@@ -16,3 +16,5 @@ polkit-kde-agent
 dbus
 redshift
 sxhkd
+kwallet
+kwallet-pam
