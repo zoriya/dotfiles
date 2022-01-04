@@ -10,6 +10,9 @@ super + r
 super + e
 	$TERMINAL
 
+super + x
+	rofi -modi todo:~/.config/rofi/todo.sh -show todo
+
 super + v
 	CM_LAUNCHER=rofi clipmenu
 

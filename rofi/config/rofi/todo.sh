@@ -2,25 +2,14 @@
 
 TODO_FILE=~/todo
 
-add_todo()
-{
-	echo -e "$(date +"%B %d %H:%M") $*" >> $TODO_FILE
-}
+touch $TODO_FILE
 
-remove_todo()
-{
-	sed -i "/^$*$/d" $TODO_FILE
-}
-
-if [[ ! -z "$@" ]; then
-	if [[ $@ == +* ]]; then
-		LINE=$(echo $@ | sed s/^+//g)
-		add_todo $LINE
+if [[ ! -z $* ]]; then
+	if [[ $* == +* ]]; then
+		LINE=$(echo $* | sed 's/^+\s*//g')
+		echo -e "$(date +"%B %d %H:%M"): $LINE" >> $TODO_FILE
 	else
-		MATCHING=$(grep -n "^$*$" $TODO_FILE)
-		if [[ -n "$MATCHING" ]]; then
-			remove_todo $MATCHING
-		fi
+		sed -i -r "/^$*$/d" $TODO_FILE
 	fi
 fi
 
