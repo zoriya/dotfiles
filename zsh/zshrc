@@ -24,6 +24,7 @@ plugins=(
 	jsontools
 	zsh-completions
 	docker-compose
+	zsh-autosuggestions
 	zsh-syntax-highlighting
 )
 ENABLE_CORRECTION="true"

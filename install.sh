@@ -53,7 +53,8 @@ dependencies()
 
 	clone ~/.oh-my-zsh                                git@github.com:ohmyzsh/ohmyzsh.git
 	clone $ZSH_CUSTOM/themes/powerlevel10k            git@github.com:romkatv/powerlevel10k.git
-	clone $ZSH_CUSTOM/plugins/zsh-completions         git@github.com:zsh-users/zsh-completions 
+	clone $ZSH_CUSTOM/plugins/zsh-completions         git@github.com:zsh-users/zsh-completions
+	clone $ZSH_CUSTOM/plugins/zsh-autosuggestions     git@github.com:zsh-users/zsh-autosuggestions
 	clone $ZSH_CUSTOM/plugins/zsh-syntax-highlighting git@github.com:zsh-users/zsh-syntax-highlighting.git
 
 	if [[ ! -e ~/.localrc ]]; then
