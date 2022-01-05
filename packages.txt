@@ -18,3 +18,4 @@ redshift
 sxhkd
 kwallet
 kwallet-pam
+google-chrome

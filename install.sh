@@ -30,9 +30,10 @@ link()
 usage()
 {
 	echo "Usage: $0 [-i]"
+	echo "\t-i: Install configs, link files..." 
+	echo "\t-c: Run the one-time configuration script" 
 	echo "\t-d: Clone dependencies (oh-my-zsh, powerlevel10k...)"
-	echo "\t-i: Install needed packages via yay."
-	echo "\t-x: Disable X11 resources (install only things needed for an headless. No fonts, dwm, redshift...)"
+	echo "\t-y: Install needed packages via yay."
 	echo "\t-h: Show this help message."
 	exit 0
 }
@@ -96,13 +97,23 @@ install()
 	info "DONE."
 }
 
+config()
+{
+	info "Setting google-chrome as the default browser"
+	xdg-settings set default-web-browser google-chrome.desktop
+	[[ -e ~/.ssh/*.pub ]] || { info "Generating an ssh-key since none exists"; ssh-keygen }
+	#[[ -e ~/.ssh/*.pub ]] || { info "Generating an gpg-key since none exists.\
+#\nSee https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key for more details"; gpg --full-generate-key }
+}
+
 while getopts "dix" opt; do
 	case $opt in
 	d) dependencies ;;
-	i) packages ;;
+	i) install ;;
+	y) packages ;;
+	c) config ;;
 	x) echo "Not Implemented yet."; exit 1 ;;
 	*) usage ;;
 	esac
 done
 
-install
