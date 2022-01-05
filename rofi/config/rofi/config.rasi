@@ -9,6 +9,9 @@ window {
 	transparency: "real";
 	background-color: @background;
 	text-color: @foreground;
+	border: 1px;
+	border-radius: 20;
+	border-color: @accent;
 }
 
 prompt {
