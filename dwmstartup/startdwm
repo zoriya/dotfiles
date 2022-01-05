@@ -23,7 +23,7 @@ xset s off -dpms
 export $(dbus-launch)
 
 picom -b
-feh --bg-center ~/.wallpapers/blue-period.jpg
+feh --no-fehbg --bg-center --recursive --randomize ~/.wallpaper &
 dwmblocks &
 sxhkd &
 dunst & 
