@@ -19,3 +19,4 @@ sxhkd
 kwallet
 kwallet-pam
 google-chrome
+bluetooth-autoconnect
