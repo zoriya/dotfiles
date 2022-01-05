@@ -3,7 +3,7 @@ set -e
 
 source ~/.profile
 
-devices=$(xinput list --name-only | grep -i touchpad)
+devices=$(xinput list --name-only | grep -i touchpad || echo "")
 for device in $devices; do
 	xinput set-prop $device "libinput Tapping Enabled" 1
 	xinput set-prop $device "libinput Natural Scrolling Enabled" 1
@@ -23,7 +23,7 @@ xset s off -dpms
 export $(dbus-launch)
 
 picom -b
-feh --no-fehbg --bg-center --recursive --randomize ~/.wallpaper &
+feh --no-fehbg --bg-center --recursive --randomize ~/.wallpapers &
 dwmblocks &
 sxhkd &
 dunst & 
