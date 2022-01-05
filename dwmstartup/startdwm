@@ -3,7 +3,8 @@ set -e
 
 source ~/.profile
 
-for device in $(xinput list --name-only | grep -i touchpad); do
+devices=$(xinput list --name-only | grep -i touchpad)
+for device in $devices; do
 	xinput set-prop $device "libinput Tapping Enabled" 1
 	xinput set-prop $device "libinput Natural Scrolling Enabled" 1
 done
