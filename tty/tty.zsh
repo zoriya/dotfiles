@@ -15,6 +15,5 @@ if [ "$TERM" = "linux" ]; then
     echo -en "\e]PE8fbcbb" #cyan
     echo -en "\e]P7e5e0f0" #lightgrey
     echo -en "\e]PFe7b6de" #white
-    clear #for background artifacting
 fi
 

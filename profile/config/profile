@@ -17,6 +17,8 @@ export STACK_ROOT="$XDG_DATA_HOME"/stack
 mkdir -p "$XDG_DATA_HOME"/wineprefixes; export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export VIMDOTDIR="$XDG_CONFIG_HOME/vim"
+export XINITRC=$XDG_CONFIG_HOME/X11/xinitrc
+export XSERVERRC=$XDG_CONFIG_HOME/X11/xserverrc
 
 # Themings & breaking issues due to DWM.
 export _JAVA_AWT_WM_NONREPARENTING=1

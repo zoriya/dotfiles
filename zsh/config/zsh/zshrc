@@ -1,8 +1,6 @@
-compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
-zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
+source ~/.config/profile
 
 alias edit=$EDITOR
-export DOTFILES=$(realpath $(dirname $(realpath ~/.zshrc))/..)
 
 [[ -f ~/.localrc ]] && source ~/.localrc
 [[ -f $XDG_CONFIG_HOME/zsh/localrc ]] && source $XDG_CONFIG_HOME/zsh/localrc

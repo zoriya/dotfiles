@@ -2,6 +2,8 @@
 set -e
 cd $(dirname $0)
 
+source profile/config/profile
+
 info()
 {
 	printf "\r[ \033[00;34m..\033[0m ] $*\n"
@@ -99,6 +101,7 @@ install()
 
 config()
 {
+	mkdir -p $XDG_STATE_HOME
 	info "Setting google-chrome as the default browser"
 	xdg-settings set default-web-browser google-chrome.desktop
 	[[ -e ~/.ssh/*.pub ]] || { info "Generating an ssh-key since none exists"; ssh-keygen }
@@ -106,7 +109,7 @@ config()
 #\nSee https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key for more details"; gpg --full-generate-key }
 }
 
-while getopts "dix" opt; do
+while getopts "diycxh" opt; do
 	case $opt in
 	d) dependencies ;;
 	i) install ;;
