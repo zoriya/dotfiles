@@ -105,7 +105,7 @@ config()
 	info "Setting google-chrome as the default browser"
 	xdg-settings set default-web-browser google-chrome.desktop
 	[[ -e ~/.ssh/*.pub ]] || { info "Generating an ssh-key since none exists"; ssh-keygen }
-	#[[ -e ~/.ssh/*.pub ]] || { info "Generating an gpg-key since none exists.\
+	#[[ -e $XDG_CONFIG_HOME/gnpug/?? ]] || { info "Generating an gpg-key since none exists.\
 #\nSee https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key for more details"; gpg --full-generate-key }
 }
 
