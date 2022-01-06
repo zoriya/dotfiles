@@ -34,38 +34,9 @@ usage()
 	echo "Usage: $0 [-i]"
 	echo "\t-i: Install configs, link files..." 
 	echo "\t-c: Run the one-time configuration script" 
-	echo "\t-d: Clone dependencies (oh-my-zsh, powerlevel10k...)"
 	echo "\t-y: Install needed packages via yay."
 	echo "\t-h: Show this help message."
 	exit 0
-}
-
-dependencies()
-{
-	clone()
-	{
-		if [[ ! -d "$1" ]]; then
-			info "Clonning $(basename $1)..."
-			git clone "$2" "$1"
-		fi
-	}
-
-	info "Installing dependencies..."
-
-	local ZSH_CUSTOM=~/.oh-my-zsh/custom
-
-	clone ~/.oh-my-zsh                                git@github.com:ohmyzsh/ohmyzsh.git
-	clone $ZSH_CUSTOM/themes/powerlevel10k            git@github.com:romkatv/powerlevel10k.git
-	clone $ZSH_CUSTOM/plugins/zsh-completions         git@github.com:zsh-users/zsh-completions
-	clone $ZSH_CUSTOM/plugins/zsh-autosuggestions     git@github.com:zsh-users/zsh-autosuggestions
-	clone $ZSH_CUSTOM/plugins/zsh-syntax-highlighting git@github.com:zsh-users/zsh-syntax-highlighting.git
-
-	if [[ ! -e $XDG_CONFIG_HOME/zsh/localrc ]]; then
-		cat > $XDG_CONFIG_HOME/zsh/localrc <<- eof
-		export OMZ="$HOME/.oh-my-zsh"
-		export ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
-		eof
-	fi
 }
 
 packages()
@@ -111,7 +82,6 @@ config()
 
 while getopts "diycxh" opt; do
 	case $opt in
-	d) dependencies ;;
 	i) install ;;
 	y) packages ;;
 	c) config ;;

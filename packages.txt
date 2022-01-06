@@ -20,3 +20,10 @@ kwallet
 kwallet-pam
 google-chrome
 bluetooth-autoconnect
+nerd-fonts-noto
+oh-my-zsh-git
+zsh-theme-powerlevel10k
+zsh-completions
+zsh-autosuggestions
+zsh-syntax-highlighting
+

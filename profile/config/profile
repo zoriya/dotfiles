@@ -1,11 +1,11 @@
 export LANG=en_US.UTF-8
 
 # Specify defaults locations.
-export DOTFILES=$(realpath $(dirname $(realpath ~/.profile))/..)
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
+export DOTFILES=$(realpath $(dirname $(realpath $XDG_CONFIG_HOME/profile))/../..)
 
 # Load dotfiles from XDG directories instead of the HOME.
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh

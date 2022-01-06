@@ -11,4 +11,5 @@ sudolink()
 }
 
 sudolink "startdwm" "/usr/bin/startdwm"
+sudo mkdir -p /usr/share/xsessions
 sudolink "dwm.desktop" "/usr/share/xsessions/dwm.desktop" cp

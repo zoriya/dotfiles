@@ -11,6 +11,11 @@ warn()
 	printf "\r\033[00;31m$*\033[0m\n"
 }
 
+ZSH=/usr/share/oh-my-zsh/
+ZSH_CUSTOM=/usr/share/zsh
+zstyle ':omz:update' mode disabled
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -18,13 +23,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
 	sudo
 	copydir
 	copyfile
 	jsontools
-	zsh-completions
 	docker-compose
 	zsh-autosuggestions
 	zsh-syntax-highlighting
@@ -32,23 +35,12 @@ plugins=(
 ENABLE_CORRECTION="true"
 CORRECT_IGNORE_FILE='.*'
 
-if [[ -n $OMZ ]]; then
-	if [[ -z $PL10K ]]; then
-		local theme=${ZSH_CUSTOM:-$OMZ/custom}/themes/powerlevel10k
-		[[ -d $theme ]] || warn "PowerLevel10K could not be found. Please install it to $theme or set it's path in the PL10K var."
-	else
-		local OMZ_THEME=${ZSH_CUSTOM:-$OMZ/custom}/themes
-		if [[ ! -e $OMZ_THEME/powerlevel10k ]]; then
-			mkdir -p $OMZ_THEME \
-			  && ln -s $PL10K $OMZ_THEME/powerlevel10k \
-			  || warn "Can't write to the OMZ directory. Maybe define a ZSH_CUSTOM var in the .config/zsh/localrc."
-		fi
-	fi
-	source "$OMZ/oh-my-zsh.sh"
-else
-	warn "A .config/zsh/localrc file should exist on your home and contain the following variables declarations: OMZ."
-	warn "This can be automatically created using the -d flag of the install script"
-fi
+ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
+[[ -d $ZSH_CACHE_DIR ]] || mkdir $ZSH_CACHE_DIR
+source "$ZSH/oh-my-zsh.sh"
+
+setopt +o nomatch
+setopt extended_glob
 
 # Using custom configs at the end to override OMZ configs if needed.
 for tf ($DOTFILES/*) if [[ -d $tf ]]; then fpath=($tf $fpath); fi;
