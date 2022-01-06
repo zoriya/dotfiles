@@ -58,8 +58,8 @@ dependencies()
 	clone $ZSH_CUSTOM/plugins/zsh-autosuggestions     git@github.com:zsh-users/zsh-autosuggestions
 	clone $ZSH_CUSTOM/plugins/zsh-syntax-highlighting git@github.com:zsh-users/zsh-syntax-highlighting.git
 
-	if [[ ! -e ~/.localrc ]]; then
-		cat > ~/.localrc <<- eof
+	if [[ ! -e $XDG_CONFIG_HOME/zsh/localrc ]]; then
+		cat > $XDG_CONFIG_HOME/zsh/localrc <<- eof
 		export OMZ="$HOME/.oh-my-zsh"
 		export ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 		eof

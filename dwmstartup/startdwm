@@ -1,7 +1,9 @@
 #!/usr/bin/env zsh
 set -e
 
-source ~/.profile
+source ~/.config/profile
+
+[[ -f ~/.config/Xresources ]] && xrdb -merge -I$HOME ~/.config/Xresources
 
 devices=$(xinput list --name-only | grep -i touchpad || echo "")
 for device in $devices; do
@@ -13,7 +15,7 @@ done
 xrandr --output HDMI-0 --primary --auto --output DVI-D-0 --auto --right-of HDMI-0 --output DP-0 --auto --left-of HDMI-0
 setxkbmap fr
 
-xset +fp ~/.fonts
+xset +fp $XDG_DATA_HOME/fonts
 xset fp rehash
 
 xset s off -dpms

@@ -1,3 +1,0 @@
-[[ -f ~/.config/Xresources ]] && xrdb -merge -I$HOME ~/.config/Xresources
-
-exec startdwm

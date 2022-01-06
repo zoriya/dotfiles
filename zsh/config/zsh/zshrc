@@ -1,8 +1,12 @@
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
+zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
+
 alias edit=$EDITOR
 export DOTFILES=$(realpath $(dirname $(realpath ~/.zshrc))/..)
 
 [[ -f ~/.localrc ]] && source ~/.localrc
-[[ -f ~/.profile ]] && source ~/.profile
+[[ -f $XDG_CONFIG_HOME/zsh/localrc ]] && source $XDG_CONFIG_HOME/zsh/localrc
+[[ -f $XDG_CONFIG_HOME/profile ]] && source $XDG_CONFIG_HOME/profile
 
 warn()
 {
@@ -39,12 +43,12 @@ if [[ -n $OMZ ]]; then
 		if [[ ! -e $OMZ_THEME/powerlevel10k ]]; then
 			mkdir -p $OMZ_THEME \
 			  && ln -s $PL10K $OMZ_THEME/powerlevel10k \
-			  || warn "Can't write to the OMZ directory. Maybe define a ZSH_CUSTOM var in the .localrc."
+			  || warn "Can't write to the OMZ directory. Maybe define a ZSH_CUSTOM var in the .config/zsh/localrc."
 		fi
 	fi
 	source "$OMZ/oh-my-zsh.sh"
 else
-	warn "A .localrc file should exist on your home and contain the following variables declarations: OMZ."
+	warn "A .config/zsh/localrc file should exist on your home and contain the following variables declarations: OMZ."
 	warn "This can be automatically created using the -d flag of the install script"
 fi
 

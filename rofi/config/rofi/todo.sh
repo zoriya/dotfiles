@@ -7,7 +7,6 @@
 
 [[ -z $TODO_FILE ]] && TODO_FILE=~/todo
 [[ -z $TODO_GIT  ]] && TODO_GIT=$(realpath $DOTFILES/../.todo)
-alias todogit="git --work-tree=$(dirname $TODO_FILE) --git-dir=$TODO_GIT"
 
 [[ -e $TODO_FILE ]] || touch $TODO_FILE
 
