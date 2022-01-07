@@ -20,15 +20,16 @@ xset fp rehash
 
 xset s off -dpms
 
-/usr/lib/polkit-kde-authentication-agent-1 &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-export $(dbus-launch)
+eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+dbus-update-activation-environment --systemd DISPLAY
 
 picom -b
 feh --no-fehbg --bg-center --recursive --randomize ~/.wallpapers &
 dwmblocks &
 sxhkd &
-dunst & 
 clipmenud &
 redshift -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | awk 'OFS=":" {print $3,$5}' | tr -d ',}') &
 

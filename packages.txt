@@ -12,12 +12,9 @@ flameshot
 picom-ibhagwan-git
 qt5ct
 feh
-polkit-kde-agent
 dbus
 redshift
 sxhkd
-kwallet
-kwallet-pam
 google-chrome
 bluetooth-autoconnect
 nerd-fonts-noto
@@ -26,4 +23,9 @@ zsh-theme-powerlevel10k
 zsh-completions
 zsh-autosuggestions
 zsh-syntax-highlighting
+network-manager-applet
+gnome-keyring
+polkit-gnome
+htop
+kde-gtk-config
 
