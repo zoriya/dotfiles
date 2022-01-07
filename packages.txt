@@ -28,4 +28,5 @@ gnome-keyring
 polkit-gnome
 htop
 kde-gtk-config
+network-manager-applet
 
