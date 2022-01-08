@@ -25,7 +25,7 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh
 export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
 dbus-update-activation-environment --systemd DISPLAY
 
-picom -b
+picom -b > /dev/null 2>&1
 feh --no-fehbg --bg-center --recursive --randomize ~/.wallpapers &
 dwmblocks &
 sxhkd &
@@ -38,5 +38,5 @@ redshift -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=ge
 lock -n
 
 while true; do
-	dwm
+	dwm > /dev/null 2>&1
 done
