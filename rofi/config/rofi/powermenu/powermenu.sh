@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 cd $(dirname $0)
 
@@ -8,12 +8,12 @@ reboot=""
 lock=""
 logout=""
 
-options="$cancel\n$shutdown\n$reboot\n$lock\n$logout"
+opt=($cancel $shutdown $reboot $lock $logout)
 
-case $(echo -e "$options" | rofi -theme ./powermenu.rasi -dmenu) in
+case $(print -l "${(@)opt}" | rofi -theme ./powermenu.rasi -dmenu) in
 $cancel)   ;;
 $shutdown) systemctl poweroff ;;
 $reboot)   systemctl reboot ;;
-$lock)     slock ;;
+$lock)     source $DOTFILES/i3lock/lock.zsh && lock ;;
 $logout)   ;;
 esac
