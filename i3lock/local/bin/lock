@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 
 WALLPAPER=~/.wallpapers/$(ls ~/.wallpapers | sort -R | head -n 1)
-i3lock -F -i $WALLPAPER --clock
+i3lock -F -i $WALLPAPER --clock $@
 

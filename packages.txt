@@ -34,4 +34,9 @@ gtk-engines
 bluez-utils
 i3lock-color-git
 xss-lock
+ttf-dejavu
+ttf-liberation
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
 
