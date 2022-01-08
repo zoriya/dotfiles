@@ -7,6 +7,7 @@ export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 export XDG_DATA_DIRS="$XDG_DATA_HOME:/usr/share:/usr/local/share"
 export DOTFILES=$(realpath $(dirname $(realpath $XDG_CONFIG_HOME/profile))/../..)
+export PATH=$PATH:$HOME/.local/bin
 
 # Load dotfiles from XDG directories instead of the HOME.
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
