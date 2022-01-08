@@ -19,6 +19,7 @@ xset +fp $XDG_DATA_HOME/fonts
 xset fp rehash
 
 xset s off -dpms
+xss-lock lock &
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 

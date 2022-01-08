@@ -29,7 +29,9 @@ polkit-gnome
 htop
 kde-gtk-config
 network-manager-applet
-
 gtk-engine-murrine
 gtk-engines
 bluez-utils
+i3lock-color-git
+xss-lock
+

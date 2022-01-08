@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 cd $(dirname $0)
 
@@ -6,14 +6,16 @@ cancel="\u202Dﰸ"
 shutdown="襤"
 reboot=""
 lock=""
+suspend="鈴"
 logout=""
 
-options="$cancel\n$shutdown\n$reboot\n$lock\n$logout"
+opt=($lock $suspend $logout $reboot $shutdown)
 
-case $(echo -e "$options" | rofi -theme ./powermenu.rasi -dmenu) in
+case $(print -l "${(@)opt}" | rofi -theme ./powermenu.rasi -dmenu) in
 $cancel)   ;;
 $shutdown) systemctl poweroff ;;
 $reboot)   systemctl reboot ;;
-$lock)     slock ;;
+$lock)     lock ;; 
+$suspend)  systemctl suspend ;;
 $logout)   ;;
 esac
