@@ -11,6 +11,23 @@ warn()
 	printf "\r\033[00;31m$*\033[0m\n"
 }
 
+
+# Autocompletion selection (tab highlight + arrow move)
+zstyle ':completion:*' menu select
+
+# ^Z when a job is suspended runs it in the background.
+background()
+{
+	bg
+}
+zle -N background
+bindkey ^Z background
+
+# Use run-help to access zsh manuels
+(whence -w run-help | grep -q alias) && unalias run-help
+autoload run-help
+
+
 ZSH=/usr/share/oh-my-zsh/
 ZSH_CUSTOM=/usr/share/zsh
 zstyle ':omz:update' mode disabled
@@ -38,6 +55,11 @@ CORRECT_IGNORE_FILE='.*'
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 [[ -d $ZSH_CACHE_DIR ]] || mkdir $ZSH_CACHE_DIR
 source "$ZSH/oh-my-zsh.sh"
+
+mkdir -p $XDG_STATE_HOME/zsh
+mkdir -p $XDG_CACHE_HOME/zsh
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
+zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 
 setopt +o nomatch
 setopt extended_glob

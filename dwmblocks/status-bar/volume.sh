@@ -1,7 +1,7 @@
 #!/bin/sh
 
 case $BUTTON in
-	1) setsid -f st -c pamix -n pamix -e pamix ;;
+	1) kitty --class pamix pamix ;; 
 	4) pulseaudio-ctl up ;;
 	5) pulseaudio-ctl down ;;
 esac
