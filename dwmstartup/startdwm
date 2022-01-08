@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
-set -e
 
 source ~/.config/profile
-
 [[ -f ~/.config/Xresources ]] && xrdb -merge -I$HOME ~/.config/Xresources
 
 devices=$(xinput list --name-only | grep -i touchpad || echo "")
@@ -36,7 +34,8 @@ redshift -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=ge
 
 { source $DOTFILES/rofi/todo.zsh && todogit pull || true } &
 
-discord > /dev/null 2>&1 &!
+# I start the session via LightDM with auto-logging and here we show the lockscreen and wait for the password to unlock both the session and the gnome-keyring.
+lock -n
 
 while true; do
 	dwm
