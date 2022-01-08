@@ -30,3 +30,6 @@ htop
 kde-gtk-config
 network-manager-applet
 
+gtk-engine-murrine
+gtk-engines
+bluez-utils

@@ -5,12 +5,13 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
+export XDG_DATA_DIRS="$XDG_DATA_HOME:/usr/share:/usr/local/share"
 export DOTFILES=$(realpath $(dirname $(realpath $XDG_CONFIG_HOME/profile))/../..)
 
 # Load dotfiles from XDG directories instead of the HOME.
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
-export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/settings.ini
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
 export STACK_ROOT="$XDG_DATA_HOME"/stack

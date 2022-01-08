@@ -1,6 +1,0 @@
-[submodule "gtk/themes/MaterialOcean"]
-	path = gtk/themes.ln/MaterialOcean
-	url = git@github.com:material-ocean/Gtk-Theme.git
-[submodule "qt5ct/config"]
-	path = qt5ct/config
-	url = git@github.com:material-ocean/Qt5ct-theme.git
