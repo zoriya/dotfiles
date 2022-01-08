@@ -6,14 +6,16 @@ cancel="\u202Dﰸ"
 shutdown="襤"
 reboot=""
 lock=""
+suspend="鈴"
 logout=""
 
-opt=($cancel $shutdown $reboot $lock $logout)
+opt=($lock $suspend $logout $reboot $shutdown)
 
 case $(print -l "${(@)opt}" | rofi -theme ./powermenu.rasi -dmenu) in
 $cancel)   ;;
 $shutdown) systemctl poweroff ;;
 $reboot)   systemctl reboot ;;
-$lock)     source $DOTFILES/i3lock/lock.zsh && lock ;;
+$lock)     lock ;; 
+$suspend)  systemctl suspend ;;
 $logout)   ;;
 esac

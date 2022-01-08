@@ -17,6 +17,7 @@ xset +fp ~/.fonts
 xset fp rehash
 
 xset s off -dpms
+xss-lock lock &
 
 /usr/lib/polkit-kde-authentication-agent-1 &
 

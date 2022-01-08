@@ -21,4 +21,5 @@ kwallet-pam
 google-chrome
 bluetooth-autoconnect
 i3lock-color-git
+xss-lock
 
