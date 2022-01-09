@@ -39,4 +39,5 @@ ttf-liberation
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
+zsh-vi-mode
 

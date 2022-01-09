@@ -11,7 +11,6 @@ warn()
 	printf "\r\033[00;31m$*\033[0m\n"
 }
 
-
 # Autocompletion selection (tab highlight + arrow move)
 zstyle ':completion:*' menu select
 
@@ -26,6 +25,11 @@ bindkey ^Z background
 # Use run-help to access zsh manuels
 (whence -w run-help | grep -q alias) && unalias run-help
 autoload run-help
+
+function zvm_config() {
+	ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+	#ZVM_READKEY_ENGINE=$ZVM_READKEY_ENGINE_ZLE
+}
 
 
 ZSH=/usr/share/oh-my-zsh/
@@ -48,6 +52,7 @@ plugins=(
 	docker-compose
 	zsh-autosuggestions
 	zsh-syntax-highlighting
+	zsh-vi-mode
 )
 ENABLE_CORRECTION="true"
 CORRECT_IGNORE_FILE='.*'
