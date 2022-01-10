@@ -44,3 +44,6 @@ tldr
 bat
 zathura
 zathura-pdf-mupdf
+wget
+unzip
+
