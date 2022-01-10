@@ -27,7 +27,7 @@ export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
 dbus-update-activation-environment --systemd DISPLAY
 
 picom -b > /dev/null 2>&1
-feh --no-fehbg --bg-center --recursive --randomize ~/.wallpapers &
+source $DOTFILES/zsh/alias.zsh && wp &
 dwmblocks &
 sxhkd &
 clipmenud &

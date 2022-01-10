@@ -26,11 +26,16 @@ bindkey ^Z background
 (whence -w run-help | grep -q alias) && unalias run-help
 autoload run-help
 
-function zvm_config() {
+function zvm_config()
+{
 	ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 	#ZVM_READKEY_ENGINE=$ZVM_READKEY_ENGINE_ZLE
 }
-
+function zvm_after_init()
+{
+	bindkey '^[[A' up-line-or-search
+	bindkey '^[[B' down-line-or-search
+}
 
 ZSH=/usr/share/oh-my-zsh/
 ZSH_CUSTOM=/usr/share/zsh
@@ -45,6 +50,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 plugins=(
+	zsh-vi-mode
 	sudo
 	copydir
 	copyfile
@@ -52,7 +58,6 @@ plugins=(
 	docker-compose
 	zsh-autosuggestions
 	zsh-syntax-highlighting
-	zsh-vi-mode
 )
 ENABLE_CORRECTION="true"
 CORRECT_IGNORE_FILE='.*'
@@ -68,6 +73,7 @@ zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 
 setopt +o nomatch
 setopt extended_glob
+
 
 # Using custom configs at the end to override OMZ configs if needed.
 for tf ($DOTFILES/*) if [[ -d $tf ]]; then fpath=($tf $fpath); fi;

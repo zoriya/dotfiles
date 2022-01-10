@@ -11,4 +11,4 @@ alias "k"="l"
 
 alias "prename"="perl-rename"
 alias "chrome"="google-chrome-beta"
-alias "wp"="feh --no-fehbg --bg-center --recursive --randomize ~/.wallpapers"
+alias "wp"="feh --no-fehbg --bg-fill --recursive --randomize ~/.wallpapers"
