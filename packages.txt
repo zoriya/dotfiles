@@ -42,4 +42,5 @@ noto-fonts-emoji
 zsh-vi-mode
 tldr
 bat
-
+zathura
+zathura-pdf-mupdf
