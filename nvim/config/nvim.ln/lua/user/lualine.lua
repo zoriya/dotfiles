@@ -21,17 +21,17 @@ lualine.setup({
 			},
 		},
 		lualine_b = { 'filename', 'branch' },
-		lualine_c = {
+		lualine_c = {},
+		lualine_x = {
 			{
 				"diagnostics",
 				sources = { "nvim_diagnostic" },
 				sections = { "error", "warn" },
 				symbols = { error = " ", warn = " " },
-				--colored = false,
 				always_visible = false,
-			}
+			},
+			'fileformat',
 		},
-		lualine_x = { 'fileformat' },
 		lualine_y = { 'filetype', 'progress' },
 		lualine_z = {
 			{ 'location', separator = { right = '' }, left_padding = 2 },
