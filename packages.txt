@@ -46,4 +46,6 @@ zathura
 zathura-pdf-mupdf
 wget
 unzip
+ripgrep
+fd
 

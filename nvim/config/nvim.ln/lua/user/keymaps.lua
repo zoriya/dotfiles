@@ -3,6 +3,14 @@ local opts = { noremap = true, silent = true }
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
+-- remap [ and ] to use ( and ), it is the same keys but on an azerty keyboard.
+keymap("n", ")", "]", {silent = true})
+keymap("n", "(", "[", {silent = true})
+keymap("x", ")", "]", {silent = true})
+keymap("x", "(", "[", {silent = true})
+keymap("o", ")", "]", {silent = true})
+keymap("o", "(", "[", {silent = true})
+
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "

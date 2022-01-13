@@ -49,8 +49,10 @@ return packer.startup(function(use)
 	use "tpope/vim-surround"
 	use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
 	use "numToStr/Comment.nvim" -- Easily comment stuff
+	use "nishigori/increment-activator"
 
 	use "moll/vim-bbye"
+	use "Pocco81/AutoSave.nvim"
 	use "akinsho/toggleterm.nvim"
 	use "lukas-reineke/indent-blankline.nvim"
 	use "goolord/alpha-nvim"
@@ -79,9 +81,13 @@ return packer.startup(function(use)
 
 	-- LSP
 	use "neovim/nvim-lspconfig" -- enable LSP
-	use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+	use {
+		"williamboman/nvim-lsp-installer",
+		commit = "5d4195df48b7639aa1dbcf3e7d67fa9306ad0655" -- Using a specific commit since PATH handling as been broken on master.
+	} -- simple to use language server installer
 	use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
 	use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+	use "weilbith/nvim-code-action-menu"
 
 	-- Telescope
 	use "nvim-telescope/telescope.nvim"
@@ -92,6 +98,7 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 	}
 	use "JoosepAlviste/nvim-ts-context-commentstring"
+	use "sheerun/vim-polyglot" -- for languages that treesitter does not support.
 
 	-- Git
 	use "lewis6991/gitsigns.nvim"
