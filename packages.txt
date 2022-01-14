@@ -48,4 +48,5 @@ wget
 unzip
 ripgrep
 fd
+mpv
 

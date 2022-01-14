@@ -81,10 +81,7 @@ return packer.startup(function(use)
 
 	-- LSP
 	use "neovim/nvim-lspconfig" -- enable LSP
-	use {
-		"williamboman/nvim-lsp-installer",
-		commit = "5d4195df48b7639aa1dbcf3e7d67fa9306ad0655" -- Using a specific commit since PATH handling as been broken on master.
-	} -- simple to use language server installer
+	use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 	use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
 	use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 	use "weilbith/nvim-code-action-menu"
