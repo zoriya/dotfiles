@@ -105,7 +105,7 @@ static const int ulineall = 0;                  /* 1 to show underline on all ta
 
 /* Indicators: see patch/bar_indicators.h for options */
 // TODO change this to INDICATOR_NONE when adding colors to tags.
-static int tagindicatortype              = INDICATOR_TOP_LEFT_SQUARE;
+static int tagindicatortype              = INDICATOR_NONE;
 static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_TOP_LEFT_SQUARE;
 #if FAKEFULLSCREEN_CLIENT_PATCH && !FAKEFULLSCREEN_PATCH
@@ -374,7 +374,7 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration patches.
  */
 static char *tagicons[][NUMTAGS] = {
-	[DEFAULT_TAGS]        = { "", "", "", "", "\ufb6e" },
+	[DEFAULT_TAGS]        = { "一", "二", "三", "四", "五", "六", "七", "八", "九" },
 	[ALTERNATIVE_TAGS]    = { "1", "2", "3", "4", "5" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>" },
 };
