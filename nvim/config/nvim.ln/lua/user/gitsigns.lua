@@ -42,6 +42,14 @@ gitsigns.setup {
 		row = 0,
 		col = 1,
 	},
+	keymaps = {
+		['n ]h'] = { expr = true, "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'"},
+		['n [h'] = { expr = true, "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'"},
+
+		-- Text objects
+		['o ih'] = ':<C-U>Gitsigns select_hunk<CR>',
+		['x ih'] = ':<C-U>Gitsigns select_hunk<CR>'
+	},
 	yadm = {
 		enable = false,
 	},
