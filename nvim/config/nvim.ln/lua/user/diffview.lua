@@ -52,6 +52,7 @@ require'diffview'.setup {
 			["<C-w>gf"]    = cb("goto_file_tab"),      -- Open the file in a new tabpage
 			["<leader>e"]  = cb("focus_files"),        -- Bring focus to the files panel
 			["<leader>b"]  = cb("toggle_files"),       -- Toggle the files panel.
+			["<leader>q"]  = cb("close"),
 		},
 		file_panel = {
 			["j"]             = cb("next_entry"),           -- Bring the cursor to the next file entry
@@ -75,6 +76,7 @@ require'diffview'.setup {
 			["f"]             = cb("toggle_flatten_dirs"),  -- Flatten empty subdirectories in tree listing style.
 			["<leader>e"]     = cb("focus_files"),
 			["<leader>b"]     = cb("toggle_files"),
+			["<leader>q"]  = cb("close"),
 		},
 	 file_history_panel = {
 			["g!"]            = cb("options"),            -- Open the option panel

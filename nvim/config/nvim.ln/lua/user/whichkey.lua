@@ -121,6 +121,7 @@ local mappings = {
 		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
 		d = { "<cmd>DiffviewOpen<cr>", "Diff", },
 		h = { "<cmd>DiffviewFileHistory<cr>", "History" },
+		e = { "<cmd>MergetoolStart<cr>", "Merge" },
 	},
 
 	l = {
