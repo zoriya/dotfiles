@@ -8,7 +8,7 @@ lualine.setup({
 		theme = "auto", --bubbles_theme,
 		component_separators = '|',
 		section_separators = { left = '', right = '' },
-		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "Trouble" },
+		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "Trouble", "DiffviewFiles", "DiffviewFileHistory" },
 		always_divide_middle = true,
 	},
 	sections = {
