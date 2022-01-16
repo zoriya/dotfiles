@@ -45,10 +45,6 @@ keymap("n", "<A-l>", ":bnext<CR>", opts)
 keymap("n", "<A-h>", ":bprevious<CR>", opts)
 keymap("n", "<S-q>", ":Bdelete!<CR>", opts)
 
--- Navigate tabs
-keymap("n", "<A-J>", "<cmd>tabprev<cr>")
-keymap("n", "<A-K>", "<cmd>tabnext<cr>")
-
 -- Move text up and down
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
 keymap("n", "<A-k>", ":m .-2<CR>==", opts)
