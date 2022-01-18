@@ -4,5 +4,5 @@ vim.g.mergetool_prefer_revision = 'base'
 
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
-keymap("n", "eh", "<cmd>MergetoolDiffExchangeLeft<cr>", opts)
-keymap("n", "el", "<cmd>MergetoolDiffExchangeRight<cr>", opts)
+keymap("n", "mh", "<cmd>MergetoolDiffExchangeLeft<cr>", opts)
+keymap("n", "ml", "<cmd>MergetoolDiffExchangeRight<cr>", opts)
