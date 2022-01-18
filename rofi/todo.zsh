@@ -5,7 +5,7 @@ todoinit()
 {
 	if [[ -z $1 || -z $2 || -z $3 || $1 == -h  ]]; then
 		echo "Usage: todoinit <todo_file_path> <todo_git_path> <todo_git_remote>"
-		exit 2
+		return 2
 	fi
 
 	cat > $XDG_CONFIG_HOME/zsh/localrc  <<- eof
@@ -14,6 +14,7 @@ todoinit()
 	TODO_GIT=$2
 
 	eof
+	source $XDG_CONFIG_HOME/zsh/localrc
 	git clone --bare $3 $2
 	todogit reset $(basename $1)
 	[[ -e $1 ]] || touch $1
