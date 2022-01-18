@@ -32,4 +32,5 @@ XF86AudioStop
 	playerctl {previous,next}
 
 Print
-	flameshot gui
+	maim -s | xclip -selection clipboard -t image/png
+

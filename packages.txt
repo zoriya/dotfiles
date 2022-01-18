@@ -8,7 +8,8 @@ pulseaudio-ctl
 networkmanager
 blueberry
 clipmenu
-flameshot
+maim
+xclip
 picom-ibhagwan-git
 qt5ct
 feh
