@@ -1,5 +1,7 @@
 source ~/.config/profile
 
+export -U PATH=$PATH
+
 alias edit=$EDITOR
 
 [[ -f ~/.localrc ]] && source ~/.localrc
