@@ -5,6 +5,7 @@
 # The todo file can be automatically synced via git if the TODO_GIT envvar point to a bare git repository.
 # Custom values must be exported in the ~/.profile for them to be picked by rofi
 
+[[ -f ~/.config/zsh/localrc ]] && source ~/.config/zsh/localrc
 [[ -z $TODO_FILE ]] && TODO_FILE=~/todo
 [[ -z $TODO_GIT  ]] && TODO_GIT=$(realpath $DOTFILES/../.todo)
 
