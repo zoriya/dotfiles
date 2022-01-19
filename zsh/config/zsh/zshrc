@@ -35,6 +35,12 @@ function zvm_after_init()
 {
 	bindkey '^[[A' up-line-or-search
 	bindkey '^[[B' down-line-or-search
+	bindkey -M viins "^[[H" beginning-of-line
+	bindkey -M viins  "^[[F" end-of-line
+	bindkey -M vicmd "^[[H" beginning-of-line
+	bindkey -M vicmd "^[[F" end-of-line
+	bindkey -M visual "^[[H" beginning-of-line
+	bindkey -M visual "^[[F" end-of-line
 }
 
 ZSH=/usr/share/oh-my-zsh/
