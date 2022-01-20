@@ -2,7 +2,7 @@
 set -e
 cd $(dirname $0)
 
-source profile/config/profile
+source cli/profile/config/profile
 
 info()
 {
@@ -31,12 +31,12 @@ link()
 
 usage()
 {
-	echo "Usage: $0 [-i]"
+	echo "Usage: $0 [-yih] [topics]"
 	echo "\t-i: Install configs, link files..." 
-	echo "\t-c: Run the one-time configuration script" 
 	echo "\t-y: Install needed packages via yay."
 	echo "\t-h: Show this help message."
-	exit 0
+	echo "Topics:"
+	ls -d */ | xargs -L1 echo -e \\t
 }
 
 packages()
@@ -70,23 +70,30 @@ install()
 	info "DONE."
 }
 
-config()
-{
-	mkdir -p $XDG_STATE_HOME
-	info "Setting google-chrome as the default browser"
-	xdg-settings set default-web-browser google-chrome.desktop
-	[[ -e ~/.ssh/*.pub ]] || { info "Generating an ssh-key since none exists"; ssh-keygen }
-	#[[ -e $XDG_CONFIG_HOME/gnpug/?? ]] || { info "Generating an gpg-key since none exists.\
-#\nSee https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key for more details"; gpg --full-generate-key }
-}
+OPTS=$(getopt --options "iyh" --long "install,yay,help" --name $0 -- $@)
+eval set -- $OPTS
 
-while getopts "diycxh" opt; do
-	case $opt in
-	i) install ;;
-	y) packages ;;
-	c) config ;;
-	x) echo "Not Implemented yet."; exit 1 ;;
-	*) usage ;;
+shouldInstall=""
+shouldPackages=""
+while true; do
+	case $1 in
+	-i | --install) shouldInstall=true; shift ;;
+	-y | --yay) shouldPackages=true; shift ;;
+	-h | --help) usage; exit 0 ;;
+	--) shift; break ;;
+	*) usage; exit 2 ;;
 	esac
 done
 
+if [[ "x$shouldInstall" == "x" && "x$shouldPackages" == "x" ]]; then
+	shouldInstall=true
+	shouldPackages=true
+fi
+
+cwd=$(pwd)
+for topic in $@; do
+	cd $topic
+	[[ ! -z $shouldPackages ]] && packages
+	[[ ! -z $shouldInstall ]] && install
+	cd $cwd
+done
