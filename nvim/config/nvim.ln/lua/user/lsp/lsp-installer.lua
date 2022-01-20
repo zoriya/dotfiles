@@ -13,6 +13,22 @@ lsp_installer.settings({
 	}
 })
 
+local server_settings = {
+	["customserver_here"] = {
+		settings = {
+			python = {
+				analysis = {
+					autoSearchPaths = true,
+					diagnosticMode = "workspace",
+					useLibraryCodeForTypes = true,
+				},
+				venvPath = ".",
+			}
+		},
+		single_file_support = false,
+	}
+}
+
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 lsp_installer.on_server_ready(function(server)
@@ -20,16 +36,21 @@ lsp_installer.on_server_ready(function(server)
 		on_attach = require("user.lsp.handlers").on_attach,
 		capabilities = require("user.lsp.handlers").capabilities,
 	}
+	opts = vim.tbl_deep_extend("force", server:get_default_options(), opts)
 
-	 if server.name == "jsonls" then
+	if server.name == "jsonls" then
 		local jsonls_opts = require("user.lsp.settings.jsonls")
 		opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-	 end
+	end
 
-	 if server.name == "sumneko_lua" then
+	if server.name == "sumneko_lua" then
 		local sumneko_opts = require("user.lsp.settings.sumneko_lua")
 		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-	 end
+	end
+
+	if server_settings[server.name] then
+		opts = vim.tbl_deep_extend("force", server_settings[server.name], opts)
+	end
 
 	-- This setup() function is exactly the same as lspconfig's setup function.
 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
