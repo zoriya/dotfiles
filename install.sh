@@ -40,7 +40,7 @@ usage()
 packages()
 {
 	info "Installing packages via yay... (requires sudo privilege)"
-	yay -S --needed $(cat packages.txt)
+	yay -S --needed $(cut -d\# -f1 packages.txt)
 }
 
 install()

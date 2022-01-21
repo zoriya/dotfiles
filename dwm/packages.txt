@@ -1,0 +1,53 @@
+# Tools
+networkmanager
+pulseaudio
+pulseaudio-bluetooth
+bluez
+bluez-utils
+bluetooth-autoconnect
+
+# DE like tools
+dunst
+clipmenu
+maim
+xclip
+picom-ibhagwan-git
+sxhkd
+gnome-keyring
+dbus
+polkit-gnome
+xss-lock
+i3lock-color-git
+
+# Bar utils
+acpi
+playerctl
+pamix-git
+pulseaudio-ctl
+redshift
+network-manager-applet
+
+# Themes
+gtk-engines
+gtk-engine-murrine
+kde-gtk-config
+qt5ct
+
+# Fonts
+ttf-dejavu
+ttf-liberation
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+nerd-fonts-noto
+
+# Apps
+feh
+rofi
+kitty
+google-chrome
+zathura
+zathura-pdf-mupdf
+mpv
+blueberry
+

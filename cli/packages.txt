@@ -1,0 +1,13 @@
+zsh
+oh-my-zsh-git
+zsh-theme-powerlevel10k
+zsh-completions
+zsh-autosuggestions
+zsh-syntax-highlighting
+zsh-vi-mode
+tldr
+bat
+wget
+unzip
+tree
+htop
