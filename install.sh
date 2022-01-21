@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
-set -e
+set -eu
 cd $(dirname $0)
-
-source cli/profile/config/profile
 
 info()
 {
@@ -36,7 +34,7 @@ usage()
 	echo "\t-y: Install needed packages via yay."
 	echo "\t-h: Show this help message."
 	echo "Topics:"
-	echo */ | xargs -L1 echo -e \\t
+	ls -d */ | xargs -L1 echo -e \\t
 }
 
 packages()
@@ -49,25 +47,24 @@ install()
 {
 	for topic in $(find . -mindepth 1 -maxdepth 1 -type d -not -name '.*'); do
 		if [[ ${topic##*.} == "ln" ]]; then
-			dest=~/.$(basename ${topic%.*})
+			local dest=~/.$(basename ${topic%.*})
 			link $topic $dest
 		elif [[ -f $topic/Makefile ]]; then
 			info "Running Makefile for $topic"
 			sudo make -C $topic install
 		elif [[ -f $topic/install.sh ]]; then
-			cwd=$(pwd)
+			local cwd=$(pwd)
 			source $topic/install.sh
 			cd $cwd
 		else
 			for file in $(find $topic -type f -not -name '*.zsh' -or -type d -path '*.ln' -prune); do
-				dest=~/.$(realpath --relative-to $topic $file)
+				local dest=~/.$(realpath --relative-to $topic $file)
 				[[ -d $file ]] && dest=${dest%.*}
 				link $file $dest
 			done
 			# TODO support with or without X
 		fi
 	done
-	info "DONE."
 }
 
 OPTS=$(getopt --options "iyh" --long "install,yay,help" --name $0 -- $@)
@@ -91,8 +88,8 @@ if [[ "x$shouldInstall" == "x" && "x$shouldPackages" == "x" ]]; then
 fi
 
 cwd=$(pwd)
-TOPICS=$([[ $#@ -eq 0 ]] && echo */ || echo $@)
-for topic in $TOPICS do
+TOPICS=($([[ $#@ -eq 0 ]] && ls -d */ || ls -d $@))
+for topic in $TOPICS; do
 	cd $topic
 	[[ ! -z $shouldPackages ]] && packages
 	[[ ! -z $shouldInstall ]] && install

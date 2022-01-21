@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-set -e
+set +u
 cd $(dirname $0)
 
 sudolink()
