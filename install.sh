@@ -36,7 +36,7 @@ usage()
 	echo "\t-y: Install needed packages via yay."
 	echo "\t-h: Show this help message."
 	echo "Topics:"
-	ls -d */ | xargs -L1 echo -e \\t
+	echo */ | xargs -L1 echo -e \\t
 }
 
 packages()
@@ -91,7 +91,8 @@ if [[ "x$shouldInstall" == "x" && "x$shouldPackages" == "x" ]]; then
 fi
 
 cwd=$(pwd)
-for topic in $@; do
+TOPICS=$([[ $#@ -eq 0 ]] && echo */ || echo $@)
+for topic in $TOPICS do
 	cd $topic
 	[[ ! -z $shouldPackages ]] && packages
 	[[ ! -z $shouldInstall ]] && install
