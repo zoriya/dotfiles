@@ -1,0 +1,80 @@
+set incsearch
+set ignorecase
+set smartcase
+set multiple-cursors
+set clipboard+=unnamed
+set ideajoin
+set ideaput
+set number relativenumber
+set surround
+set showmode
+set commentary
+set NERDTree
+set which-key
+set notimeout
+set scrolloff=0
+
+nnoremap // :nohlsearch<CR>
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+"" remap [ and ] to use ( and ), it is the same keys but on an azerty keyboard.
+nmap ) ]
+nmap ( [
+xmap ) ]
+xmap ( [
+omap ) ]
+omap ( [
+
+"" Remap space as leader key
+noremap <SPACE> <Nop>
+let mapleader = " "
+let maplocalleader = " "
+
+"" Modes
+""   normal_mode = "n",
+""   insert_mode = "i",
+""   visual_mode = "v",
+""   visual_block_mode = "x",
+""   term_mode = "t",
+""   command_mode = "c",
+
+"-- Normal --
+""-- Better window navigation
+""keymap("n", "<C-h>", "<C-w>h", opts)
+""keymap("n", "<C-j>", "<C-w>j", opts)
+""keymap("n", "<C-k>", "<C-w>k", opts)
+"keymap("n", "<C-l>", "<C-w>l", opts)
+
+" Navigate buffers
+nnoremap <A-h> :action PreviousTab<CR>
+nnoremap <A-l> :action NextTab<CR>
+nnoremap <S-q> :action CloseContent<CR>
+
+" Move text up and down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+vnoremap <A-j> :m .+1<CR>==
+vnoremap <A-k> :m .-2<CR>==
+xnoremap <A-j> :m >+1<CR>gv-gv
+xnoremap <A-k> :m <-2<CR>gv-gv
+xnoremap <S-j> :m >+1<CR>gv-gv
+xnoremap <S-k> :m <-2<CR>gv-gv
+
+" Visual
+vnoremap < <gv
+vnoremap > >gv
+
+" Move in insert mode
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
