@@ -12,3 +12,4 @@ unzip
 tree
 htop
 kitty-shell-integration
+mlocate

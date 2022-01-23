@@ -47,6 +47,7 @@ return packer.startup(function(use)
 
 	use "tpope/vim-repeat"
 	use "tpope/vim-surround"
+	use "mg979/vim-visual-multi"
 	use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
 	use "numToStr/Comment.nvim" -- Easily comment stuff
 	use "nishigori/increment-activator"
