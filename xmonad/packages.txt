@@ -1,0 +1,3 @@
+xmonad
+xmonad-log
+polybar

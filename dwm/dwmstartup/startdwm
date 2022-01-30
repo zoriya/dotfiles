@@ -40,6 +40,7 @@ source $DOTFILES/rofi/todo.zsh
 # I start the session via LightDM with auto-logging and here we show the lockscreen and wait for the password to unlock both the session and the gnome-keyring.
 lock -n
 
+xmonad
 while true; do
 	dwm > /dev/null 2>&1
 done
