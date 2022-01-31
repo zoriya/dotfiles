@@ -11,7 +11,7 @@ done
 
 # TODO move this out of here, this should not be defined like that nor pushed
 xrandr --output HDMI-0 --primary --auto --output DVI-D-0 --auto --right-of HDMI-0 --output DP-0 --auto --left-of HDMI-0
-setxkbmap fr
+# setxkbmap fr
 setxkbmap -option caps:swapescape
 
 xset +fp $XDG_DATA_HOME/fonts
@@ -40,7 +40,7 @@ source $DOTFILES/rofi/todo.zsh
 # I start the session via LightDM with auto-logging and here we show the lockscreen and wait for the password to unlock both the session and the gnome-keyring.
 lock -n
 
-xmonad
 while true; do
-	dwm > /dev/null 2>&1
+	source ~/wm # A file to define the window manager to use. I use this to easilly switch between dwn and xmonad while the config is not done
+	${WM:-dwm}
 done

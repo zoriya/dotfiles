@@ -855,6 +855,15 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Right,        tagmon,               {.i = +1 } },
 	{ MODKEY,                       XK_f,            togglefullscreen,     {0} },
 	{ MODKEY|ControlMask,           XK_q,            quit,                 {0} },
+	TAGKEYS(                        XK_1,                                  0)
+	TAGKEYS(                        XK_2,                                  1)
+	TAGKEYS(                        XK_3,                                  2)
+	TAGKEYS(                        XK_4,                                  3)
+	TAGKEYS(                        XK_5,                                  4)
+	TAGKEYS(                        XK_6,                                  5)
+	TAGKEYS(                        XK_7,                                  6)
+	TAGKEYS(                        XK_8,                                  7)
+	TAGKEYS(                        XK_8,                                  8)
 	TAGKEYS(                        XK_ampersand,                          0)
 	TAGKEYS(                        XK_eacute,                             1)
 	TAGKEYS(                        XK_quotedbl,                           2)

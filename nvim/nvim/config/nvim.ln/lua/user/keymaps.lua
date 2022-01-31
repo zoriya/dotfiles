@@ -10,6 +10,7 @@ keymap("x", ")", "]", {silent = true})
 keymap("x", "(", "[", {silent = true})
 keymap("o", ")", "]", {silent = true})
 keymap("o", "(", "[", {silent = true})
+keymap("n", "_", "\\", {silent = true})
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
