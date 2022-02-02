@@ -26,8 +26,8 @@ dependencies:
 
 executables:
   xmonad:
-    main:                xmonad.hs
-    source-dirs:         .
+    main:                Main.hs
+    source-dirs:         src
     ghc-options:
     - -threaded
     - -rtsopts

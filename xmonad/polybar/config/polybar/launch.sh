@@ -10,5 +10,6 @@ polybar -c "$XDG_CONFIG_HOME"/polybar/config.ini main &
 # while ! pgrep -axf "cat ${fifo}"; do : ; done
 # todo ask xmonad to send a refresh to update polybar
 
+echo $STDINFIFO
 cat > "$STDINFIFO"
 
