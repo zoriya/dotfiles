@@ -47,6 +47,7 @@ return packer.startup(function(use)
 
 	use "tpope/vim-repeat"
 	use "tpope/vim-surround"
+	use "wellle/targets.vim"
 	use "mg979/vim-visual-multi"
 	use {"RRethy/vim-hexokinase", run = "make hexokinase"}
 	use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
@@ -87,6 +88,7 @@ return packer.startup(function(use)
 	use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
 	use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 	use "weilbith/nvim-code-action-menu"
+	use "ray-x/lsp_signature.nvim"
 
 	-- Telescope
 	use "nvim-telescope/telescope.nvim"
