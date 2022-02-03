@@ -1,4 +1,8 @@
 module Lemonbar where
+import Data.List.Utils (replace)
+import XMonad.Hooks.DynamicLog (wrap)
+
+type Color = String
 
 data MouseButton
     = LeftClick
@@ -27,20 +31,21 @@ data LemonbarFormatting
 
 lemonbarFormatOne :: LemonbarFormatting -> String -> String
 lemonbarFormatOne fmt = case fmt of
-    (Foreground color)      -> wrap (bracket $ format1 "F{}" color) (bracket "F-")
-    (Background color)      -> wrap (bracket $ format1 "B{}" color) (bracket "B-")
-    (Reverse)               -> wrap (bracket "R") (bracket "R")
-    (Underline color)       -> wrap (bracket (format1 "u{}" color) <> bracket "+u") (bracket "-u")
-    (Overline color)        -> wrap (bracket (format1 "o{}" color) <> bracket "+o") (bracket "-o")
-    (Font index)            -> wrap (bracket (format1 "T{}" index)) (bracket "T-")
-    (Offset size)           -> (bracket (format1 "O{}" size) <>)
-    (Action button cmd)     -> wrap (bracket (format "A{}:{}:" (fromMouseButton button, (escape ':' cmd))))
+    (Foreground color)      -> wrap (bracket $ "F" <> color) (bracket "F-")
+    (Background color)      -> wrap (bracket $ "B" <> color) (bracket "B-")
+    Reverse                 -> wrap (bracket "R") (bracket "R")
+    (Underline color)       -> wrap (bracket ("u" <> color) <> bracket "+u") (bracket "-u")
+    (Overline color)        -> wrap (bracket ("o" <> color) <> bracket "+o") (bracket "-o")
+    (Font index)            -> wrap (bracket ("T" <> show index)) (bracket "T-")
+    (Offset size)           -> (bracket ("O" <> show size) <>)
+    (Action button cmd)     -> wrap (bracket (format "A{}:{}:" (fromMouseButton button, escape ':' cmd)))
                                     (bracket "A")
     where
+        escape :: Char -> String -> String
+        escape char = replace [char] ('\\':[char])
+
+        bracket :: String -> String
         bracket = wrap "%{" "}"
-        escape char =
-            let charT = T.singleton char in
-            T.replace charT (T.cons '\\' charT)
 
 lemonbarFormat :: [LemonbarFormatting] -> String -> String
 lemonbarFormat fmts = foldr (.) id (lemonbarFormatOne <$> fmts)

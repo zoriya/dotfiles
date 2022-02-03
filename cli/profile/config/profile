@@ -29,6 +29,7 @@ export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export PUB_CACHE="$XDG_CACHE_HOME/pub-cache"
 export OMNISHARPHOME="$XDG_DATA_HOME/omnisharp"
 export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
+export GOPATH="$XDG_DATA_HOME"/go
 
 # Themings & breaking issues due to DWM.
 export _JAVA_AWT_WM_NONREPARENTING=1
