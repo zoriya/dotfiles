@@ -2,35 +2,21 @@
 
 module Main where
 
-import Data.Maybe (mapMaybe)
-import GHC.IO.Handle (hClose, hDuplicateTo, Handle)
-import Data.List.Utils (split)
-import System.Posix.Process (getProcessID)
-import System.Posix.Types (CPid(..))
-import Text.Read (readMaybe, Lexeme (String))
-import Text.Printf (printf)
-
-import Lemonbar
-
 import XMonad
-import XMonad.Actions.Navigation2D (withNavigation2DConfig)
-import XMonad.Config.Dmwit (outputOf)
-import XMonad.Hooks.DynamicLog (dynamicLogWithPP, PP (..), wrap, shorten)
 import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
 import XMonad.Hooks.ManageDocks (docks, avoidStruts)
-import XMonad.Hooks.StatusBar
-import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout.Named (named)
 import XMonad.Layout.NoBorders (noBorders)
-import XMonad.Util.Run (spawnPipe)
-import XMonad.Util.Loggers
+import XMonad.Util.WorkspaceCompare (getSortByIndex)
+import XMonad.Hooks.StatusBar.PP (PP(..))
+import XMonad.Hooks.StatusBar (StatusBarConfig, statusBarPipe, dynamicSBs)
 
 
 main :: IO ()
 main = xmonad
-     . ewmhFullscreen
-     . ewmh
-     . docks
+     -- . ewmhFullscreen
+     -- . ewmh
+     -- . docks
      . polybarEnable
      $ xConfig
 
@@ -38,28 +24,53 @@ polybarEnable :: XConfig a -> XConfig a
 polybarEnable = dynamicSBs barSpawner
   where
     barSpawner :: ScreenId -> IO StatusBarConfig
-    barSpawner x = statusBarPipe (barScript x) (polyPP x)
+    barSpawner x = statusBarPipe (barScript x) (pure basicPP)
 
     barScript (S x) = "~/.config/polybar/launch.sh " ++ show x
 
-polyPP :: ScreenId -> X PP
-polyPP sid = pure $ def
-  { ppCurrent = lemonbarFormat [Background accent]
-  , ppExtras  = [logTitlesOnScreen sid formatFocused formatUnfocused]
-  --, ppSep     = magenta " • "
+basicPP :: PP
+basicPP = def
+  { ppSep = "  "
+  , ppWsSep = " "
+  , ppTitleSanitize = filter (`notElem` ['%','{','}'])
+  , ppOrder = layoutFirstOrder
+  , ppSort = getSortByIndex
+  , ppExtras = []
+  , ppOutput = const mempty
   }
- where
-  formatFocused, formatUnfocused :: String -> String
-  formatFocused   = wrap (white    "[") (white    "]") . magenta . ppWindow
-  formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . blue    . ppWindow
+  where
+    layoutFirstOrder (workspaces : layout : title : extras) =
+      [layout] ++ extras ++ [workspaces, title]
+    layoutFirstOrder other = other
 
-  -- | Windows should have *some* title, which should not not exceed a
-  -- sane length.
-  ppWindow :: String -> String
-  ppWindow = xmobarRaw
-           . (\w -> if null w then "untitled" else w)
-           . shorten 30
-           . xmobarStrip
+-- polyPP :: ScreenId -> X PP
+-- polyPP sid = pure $ basicPP
+--   { ppCurrent = lemonbarFormat [ Foreground accent, Background white, Underline magenta ]
+--   , ppVisible = lemonbarFormat [ Foreground blue, Background white, Underline magenta ]
+--   , ppVisibleNoWindows = Just $
+--       lemonbarFormat [ Foreground blue, Background white, Underline magenta ]
+--   , ppHidden = lemonbarFormat [ Foreground blue, Underline magenta ]
+--   , ppHiddenNoWindows = lemonbarFormat [ Foreground magenta ]
+--   , ppUrgent = lemonbarFormat [ Foreground blue, Background magenta ]
+--   , ppTitle = lemonbarFormat [ Foreground blue ] . shorten 50
+--   , ppLayout = lemonbarFormat [ Foreground blue ]
+--   }
+--   -- { ppCurrent = lemonbarFormat [Background accent]
+--   -- -- , ppExtras  = [logTitlesOnScreen sid formatFocused formatUnfocused]
+--   -- --, ppSep     = magenta " • "
+--   -- }
+--  where
+--   -- formatFocused, formatUnfocused :: String -> String
+--   -- formatFocused   = wrap (white    "[") (white    "]") . magenta . ppWindow
+--   -- formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . blue    . ppWindow
+
+  -- -- | Windows should have *some* title, which should not not exceed a
+  -- -- sane length.
+  -- ppWindow :: String -> String
+  -- ppWindow = xmobarRaw
+  --          . (\w -> if null w then "untitled" else w)
+  --          . shorten 30
+  --          . xmobarStrip
 
 
 

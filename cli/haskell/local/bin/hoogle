@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+[[ ! -d ~/.local/share/hoogle/ ]] && ~/.cache/cabal/bin/hoogle generate --database ~/.local/share/hoogle/database
+
+~/.cache/cabal/bin/hoogle --database ~/.local/share/hoogle/database $@

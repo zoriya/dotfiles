@@ -1,4 +1,4 @@
-module Lemonbar where
+    module Lemonbar where
 import Data.List.Utils (replace)
 import XMonad.Hooks.DynamicLog (wrap)
 
@@ -38,7 +38,7 @@ lemonbarFormatOne fmt = case fmt of
     (Overline color)        -> wrap (bracket ("o" <> color) <> bracket "+o") (bracket "-o")
     (Font index)            -> wrap (bracket ("T" <> show index)) (bracket "T-")
     (Offset size)           -> (bracket ("O" <> show size) <>)
-    (Action button cmd)     -> wrap (bracket (format "A{}:{}:" (fromMouseButton button, escape ':' cmd)))
+    (Action button cmd)     -> wrap (bracket ("A" <> (show . fromMouseButton) button <> ":" <> escape ':' cmd <> ":"))
                                     (bracket "A")
     where
         escape :: Char -> String -> String

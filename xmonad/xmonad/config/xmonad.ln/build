@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+stack build
+cp -uf $(stack path --local-install-root)/bin/xmonad "$1"
