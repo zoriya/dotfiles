@@ -48,6 +48,7 @@ return packer.startup(function(use)
 	use "tpope/vim-repeat"
 	use "tpope/vim-surround"
 	use "wellle/targets.vim"
+	use "justinmk/vim-sneak"
 	use "mg979/vim-visual-multi"
 	use {"RRethy/vim-hexokinase", run = "make hexokinase"}
 	use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
