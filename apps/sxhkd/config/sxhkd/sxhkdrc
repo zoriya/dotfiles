@@ -1,8 +1,8 @@
 super + p
 	rofi -modi drun,run -show drun
 
-# super + q
-# 	~/.config/rofi/powermenu/powermenu.sh
+super + q
+	~/.config/rofi/powermenu/powermenu.sh
 
 super + r
 	$BROWSER

@@ -51,6 +51,7 @@ return packer.startup(function(use)
 	use "justinmk/vim-sneak"
 	use "mg979/vim-visual-multi"
 	use {"RRethy/vim-hexokinase", run = "make hexokinase"}
+	use "lukas-reineke/virt-column.nvim"
 	use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
 	use "numToStr/Comment.nvim" -- Easily comment stuff
 	use "nishigori/increment-activator"
