@@ -44,6 +44,7 @@ local options = {
 	fillchars = {
 		diff = "╱",
 	},
+	cc = "80,120"
 }
 
 vim.opt.shortmess:append "c"
@@ -60,5 +61,4 @@ vim.g.colorizer_nomap = 1
 
 vim.g.targets_gracious = 1 -- for wellle/targets.vim
 
-
-require("virt-column").setup({ char = "▏", virtcolumn = "80,120" })
+-- require("virt-column").setup({ char = "▏" })

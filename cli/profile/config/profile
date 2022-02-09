@@ -30,6 +30,7 @@ export PUB_CACHE="$XDG_CACHE_HOME/pub-cache"
 export OMNISHARPHOME="$XDG_DATA_HOME/omnisharp"
 export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
 export GOPATH="$XDG_DATA_HOME"/go
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 
 # Themings & breaking issues due to DWM.
 export _JAVA_AWT_WM_NONREPARENTING=1

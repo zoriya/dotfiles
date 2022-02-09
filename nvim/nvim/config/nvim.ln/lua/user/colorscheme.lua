@@ -8,3 +8,7 @@ catch /^Vim\%((\a\+)\)\=:E185/
   set background=dark
 endtry
 ]]
+
+vim.cmd [[
+  hi ColorColumn guibg=NONE ctermbg=NONE
+]]

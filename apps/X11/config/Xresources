@@ -6,6 +6,9 @@
 ! special
 *foreground:   #d8dee9
 *background:   #0f111a
+*accent:       #FF4151
+*secondary:    #88C0D0
+*border:       #3a575c
 *cursorColor:  #d8dee9
 
 ! black
