@@ -2,6 +2,8 @@
 set -eu
 cd $(dirname $0)
 
+git submodule update --init
+
 info()
 {
 	printf "\r[ \033[00;34m..\033[0m ] $*\n"

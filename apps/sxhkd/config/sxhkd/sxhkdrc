@@ -34,3 +34,5 @@ XF86AudioStop
 Print
 	maim -s | xclip -selection clipboard -t image/png
 
+super + z
+	dunstctl close-all

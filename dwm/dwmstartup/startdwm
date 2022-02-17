@@ -39,6 +39,7 @@ source $DOTFILES/rofi/todo.zsh
 
 # I start the session via LightDM with auto-logging and here we show the lockscreen and wait for the password to unlock both the session and the gnome-keyring.
 lock -n
+discord &
 
 while true; do
 	source ~/wm # A file to define the window manager to use. I use this to easilly switch between dwn and xmonad while the config is not done
