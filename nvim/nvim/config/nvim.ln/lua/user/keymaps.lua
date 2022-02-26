@@ -38,7 +38,8 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 -- Navigate buffers
 keymap("n", "<A-l>", ":bnext<CR>", opts)
 keymap("n", "<A-h>", ":bprevious<CR>", opts)
-keymap("n", "<S-q>", ":Bdelete!<CR>", opts)
+keymap("n", "<A-q>", ":Bdelete!<CR>", opts)
+keymap("n", "<A-o>", ":w | %bd | e# | bd#<CR>", opts)
 
 -- Move text up and down
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
