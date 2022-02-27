@@ -92,9 +92,9 @@ local mappings = {
 		"Find files",
 	},
 	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-	-- ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+	["p"] = { "<cmd>lua require('gfold').pick_repo()<cr>", "Projects" },
 
-	p = {
+	P = {
 		name = "Packer",
 		c = { "<cmd>PackerCompile<cr>", "Compile" },
 		i = { "<cmd>PackerInstall<cr>", "Install" },

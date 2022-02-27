@@ -1,5 +1,4 @@
-vim.cmd [[
-  augroup _general_settings
+vim.cmd [[ augroup _general_settings
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
     autocmd FileType qf,help,man,lspinfo set cc=""

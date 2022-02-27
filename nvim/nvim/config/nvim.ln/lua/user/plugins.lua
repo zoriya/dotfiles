@@ -47,14 +47,14 @@ return packer.startup(function(use)
 
 	use "tpope/vim-repeat"
 	use "tpope/vim-surround"
+	use "tpope/vim-abolish"
+	use "tpope/vim-unimpaired"
 	use "wellle/targets.vim"
 	use "justinmk/vim-sneak"
-	use "mg979/vim-visual-multi"
-	use {"RRethy/vim-hexokinase", run = "make hexokinase"}
-	use "lukas-reineke/virt-column.nvim"
-	use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
-	use "numToStr/Comment.nvim" -- Easily comment stuff
+	use "numToStr/Comment.nvim"
 	use "nishigori/increment-activator"
+	use {'ZhiyuanLck/smart-pairs', event = 'InsertEnter', config = function() require('pairs'):setup() end}
+
 
 	use "moll/vim-bbye"
 	use "Pocco81/AutoSave.nvim"
@@ -62,7 +62,6 @@ return packer.startup(function(use)
 	use "lukas-reineke/indent-blankline.nvim"
 	use "goolord/alpha-nvim"
 	use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
-	use "folke/which-key.nvim"
 
 	-- Colorschemes
 	use "folke/tokyonight.nvim"
@@ -71,6 +70,16 @@ return packer.startup(function(use)
 	use "kyazdani42/nvim-web-devicons"
 	use "kyazdani42/nvim-tree.lua"
 	use "petertriho/nvim-scrollbar"
+	use "folke/which-key.nvim"
+	use {'stevearc/dressing.nvim'}
+	use {
+	  "AckslD/nvim-gfold.lua",
+	  config = function()
+		require('gfold').setup()
+	  end,
+	}
+	use {"RRethy/vim-hexokinase", run = "make hexokinase"}
+	-- use "lukas-reineke/virt-column.nvim"
 
 	-- cmp plugins
 	use "hrsh7th/nvim-cmp" -- The completion plugin

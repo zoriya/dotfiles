@@ -12,10 +12,11 @@ keymap("o", ")", "]", {silent = true})
 keymap("o", "(", "[", {silent = true})
 keymap("n", "_", "\\", {silent = true})
 
---Remap space as leader key
+--Remap space and enter as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+keymap("n", "<Enter>", "<Leader>", {silent = true})
 
 -- Modes
 --   normal_mode = "n",
