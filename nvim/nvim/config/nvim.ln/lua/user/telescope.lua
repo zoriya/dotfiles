@@ -42,6 +42,7 @@ telescope.setup {
 				["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 				["<C-l>"] = actions.complete_tag,
 				["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
+				["<esc>"] = actions.close,
 			},
 
 			n = {
@@ -78,6 +79,10 @@ telescope.setup {
 		},
 	},
 	pickers = {
+		find_files = {
+			find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+			hidden = true,
+		},
 		-- Default configuration for builtin pickers goes here:
 		-- picker_name = {
 		--   picker_config_key = value,

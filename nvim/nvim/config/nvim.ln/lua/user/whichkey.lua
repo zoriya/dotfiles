@@ -87,10 +87,7 @@ local mappings = {
 	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 	["w"] = { "<cmd>w!<CR>", "Save" },
 	["q"] = { "<cmd>q!<CR>", "Quit" },
-	["f"] = {
-		"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-		"Find files",
-	},
+	["f"] = { "<cmd>Telescope find_files<cr>", "Find files", },
 	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
 	["p"] = { "<cmd>lua require('gfold').pick_repo()<cr>", "Projects" },
 
