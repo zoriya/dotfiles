@@ -79,10 +79,10 @@ telescope.setup {
 		},
 	},
 	pickers = {
-		find_files = {
-			find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
-			hidden = true,
-		},
+		-- find_files = {
+		-- 	find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+		-- 	hidden = true,
+		-- },
 		-- Default configuration for builtin pickers goes here:
 		-- picker_name = {
 		--   picker_config_key = value,
