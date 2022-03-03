@@ -45,6 +45,9 @@ function zvm_after_init()
 	bindkey -M visual "^[[F" end-of-line
 }
 
+bindkey '^H' backward-kill-word
+bindkey '5~' kill-word
+
 ZSH=/usr/share/oh-my-zsh/
 ZSH_CUSTOM=/usr/share/zsh
 zstyle ':omz:update' mode disabled
