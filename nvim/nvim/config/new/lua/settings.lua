@@ -17,7 +17,6 @@ local options = {
 	termguicolors = true,
 	swapfile = false,
 	undofile = true,
-	timeoutlen = 100,
 	updatetime = 300,                        -- faster completion (4000ms default)
 
 	number = true,

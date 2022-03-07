@@ -41,23 +41,21 @@ packer.init {
 return packer.startup(function(use)
 	use "wbthomason/packer.nvim"
 
+	use "tpope/vim-surround"
+	use "tpope/vim-unimpaired"
+	use "tpope/vim-commentary"
+	use "tpope/vim-speeddating"
+	use "tpope/vim-repeat"
+
 	use "folke/tokyonight.nvim"
 
-	use {
-		"folke/which-key.nvim", 
-		config = function() require("which-key").setup({
-			window = {
-				border = "rounded",
-			},
-		}) end 
-	}
+	use "folke/which-key.nvim"
 	use "akinsho/toggleterm.nvim"
 
 	use {
 		'neovim/nvim-lspconfig',
 		'williamboman/nvim-lsp-installer',
 	}
-
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

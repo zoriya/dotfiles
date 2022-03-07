@@ -10,8 +10,8 @@ local on_attach = function(client, bufnr)
 			r = { '<cmd>lua vim.lsp.buf.references()<CR>', "Go to reference(s)" },
 		},
 		K = { '<cmd>lua vim.lsp.buf.hover()<CR>', "See LSP tooltip" },
-		"<C-k>" = { '<cmd>lua vim.lsp.buf.signature_help()<CR>', "See signature help" },
-		"<leader>l" = {
+		["<C-k>"] = { '<cmd>lua vim.lsp.buf.signature_help()<CR>', "See signature help" },
+		["<leader>l"] = {
 			name = "LSP",
 			r = { '<cmd>lua vim.lsp.buf.rename()<CR>', "Rename" },
 			a = { '<cmd>lua vim.lsp.buf.code_action()<CR>', "Code action" },
