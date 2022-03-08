@@ -56,6 +56,14 @@ return packer.startup(function(use)
 		'neovim/nvim-lspconfig',
 		'williamboman/nvim-lsp-installer',
 	}
+	use {
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-cmdline",
+		"hrsh7th/nvim-cmp",
+		"L3MON4D3/LuaSnip",
+	}
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
