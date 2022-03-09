@@ -1,29 +1,5 @@
 local M = {}
 
-M.icons = {
-	Class = " ",
-	Color = " ",
-	Constant = " ",
-	Constructor = " ",
-	Enum = "了 ",
-	EnumMember = " ",
-	Field = " ",
-	File = " ",
-	Folder = " ",
-	Function = " ",
-	Interface = "ﰮ ",
-	Keyword = " ",
-	Method = "ƒ ",
-	Module = " ",
-	Property = " ",
-	Snippet = "﬌ ",
-	Struct = " ",
-	Text = " ",
-	Unit = " ",
-	Value = " ",
-	Variable = " ",
-}
-
 M.setup = function()
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
@@ -39,11 +15,6 @@ M.setup = function()
 		virtual_text = false,
 		update_in_insert = true,
 	})
-
-	local kinds = vim.lsp.protocol.CompletionItemKind
-	for i, kind in ipairs(kinds) do
-		kinds[i] = M.icons[kind] or kind
-	end
 end
 
 local function lsp_highlight_document(client)

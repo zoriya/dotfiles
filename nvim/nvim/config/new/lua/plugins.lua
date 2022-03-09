@@ -49,6 +49,12 @@ return packer.startup(function(use)
 
 	use "folke/tokyonight.nvim"
 
+	use {
+		'nvim-telescope/telescope.nvim',
+		requires = { {'nvim-lua/plenary.nvim'} }
+	}
+	use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
 	use "folke/which-key.nvim"
 	use "akinsho/toggleterm.nvim"
 
