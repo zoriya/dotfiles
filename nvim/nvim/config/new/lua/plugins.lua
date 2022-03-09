@@ -50,11 +50,9 @@ return packer.startup(function(use)
 	use "folke/tokyonight.nvim"
 
 	use {
-		'nvim-telescope/telescope.nvim',
-		requires = { {'nvim-lua/plenary.nvim'} }
+		{ 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} } },
+		{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
 	}
-	use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-
 	use "folke/which-key.nvim"
 	use "akinsho/toggleterm.nvim"
 
@@ -62,6 +60,7 @@ return packer.startup(function(use)
 		'neovim/nvim-lspconfig',
 		'williamboman/nvim-lsp-installer',
 	}
+	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 	use {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
@@ -70,6 +69,8 @@ return packer.startup(function(use)
 		"hrsh7th/nvim-cmp",
 		"L3MON4D3/LuaSnip",
 	}
+
+	use { "lukas-reineke/virt-column.nvim", config = function() require("virt-column").setup() end }
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

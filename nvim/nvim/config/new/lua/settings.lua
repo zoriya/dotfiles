@@ -34,7 +34,8 @@ local options = {
 	},
 	fillchars = {
 		diff = "╱",
-	}
+	},
+	colorcolumn = "80,120",
 }
 
 for k, v in pairs(options) do
@@ -56,3 +57,6 @@ keymap("i", "<C-j>", "<Down>", opts)
 keymap("i", "<C-k>", "<Up>", opts)
 keymap("i", "<C-h>", "<Left>", opts)
 keymap("i", "<C-l>", "<Right>", opts)
+
+keymap("i", "<C-BS>", "<C-w>", opts)
+
