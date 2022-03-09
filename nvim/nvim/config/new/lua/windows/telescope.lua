@@ -37,6 +37,12 @@ local wk = require("which-key")
 wk.register({
 	f = { "<cmd>Telescope find_files<cr>", "Find files", },
 	F = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+	g = {
+		name = "Git",
+		s = { "<cmd>Telescope git_status<cr>", "Git status" },
+		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+	},
 }, {
 	prefix = "<leader>",
 })
