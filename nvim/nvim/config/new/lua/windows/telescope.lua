@@ -5,8 +5,16 @@ end
 
 telescope.setup({
 	defaults = {
-		prompt_prefix = " ",
+		prompt_prefix = "   ",
 		selection_caret = " ",
+		sorting_strategy = "ascending",
+		layout_strategy = "horizontal",
+		layout_config = {
+			horizontal = {
+				prompt_position = "top",
+			}
+		},
+		path_display = { "truncate" },
 	},
 	extensions = {
 		fzf = {
@@ -18,8 +26,17 @@ telescope.setup({
 	pickers = {
 		find_files = {
 			hidden = true,
+			find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "-E", ".git" },
 		},
 	},
 })
 
-require('telescope').load_extension('fzf')
+telescope.load_extension('fzf')
+
+local wk = require("which-key")
+wk.register({
+	f = { "<cmd>Telescope find_files<cr>", "Find files", },
+	F = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+}, {
+	prefix = "<leader>",
+})
