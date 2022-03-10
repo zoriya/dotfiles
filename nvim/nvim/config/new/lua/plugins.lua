@@ -42,12 +42,14 @@ return packer.startup(function(use)
 	use "wbthomason/packer.nvim"
 	use 'lewis6991/impatient.nvim'
 
+
 	use "tpope/vim-surround"
 	use "tpope/vim-unimpaired"
 	use "tpope/vim-speeddating"
 	use "tpope/vim-repeat"
 	use "tpope/vim-sleuth"
 	use "ggandor/lightspeed.nvim"
+
 
 	use "folke/tokyonight.nvim"
 
@@ -60,6 +62,10 @@ return packer.startup(function(use)
 	use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
 	use "folke/which-key.nvim"
 	use "akinsho/toggleterm.nvim"
+	use { "RRethy/vim-hexokinase", run = "make hexokinase", config = function()
+		vim.g["Hexokinase_optInPatterns"] = "full_hex,triple_hex,rgb,rgba,hsl,hsla"
+	end }
+
 
 	use {
 		'neovim/nvim-lspconfig',
@@ -81,12 +87,15 @@ return packer.startup(function(use)
 		config = function() require('dim').setup({}) end
 	}
 
+
 	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 	use "numToStr/Comment.nvim"
 	use "JoosepAlviste/nvim-ts-context-commentstring"
 
+
 	use { "lukas-reineke/virt-column.nvim", config = function() require("virt-column").setup() end }
 	use "lukas-reineke/indent-blankline.nvim"
+	use "petertriho/nvim-scrollbar"
 
 	use { "lewis6991/gitsigns.nvim", requires = { 'nvim-lua/plenary.nvim' } }
 
