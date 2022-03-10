@@ -65,6 +65,7 @@ return packer.startup(function(use)
 		'neovim/nvim-lspconfig',
 		'williamboman/nvim-lsp-installer',
 	}
+	use "Hoffs/omnisharp-extended-lsp.nvim"
 	use {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
@@ -76,15 +77,12 @@ return packer.startup(function(use)
 	use {
 		"narutoxy/dim.lua",
 		requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
-		config = function()
-			require('dim').setup({})
-		end
+		config = function() require('dim').setup({}) end
 	}
 
 	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 	use "numToStr/Comment.nvim"
 	use "JoosepAlviste/nvim-ts-context-commentstring"
-	use { "code-biscuits/nvim-biscuits", config = function() require('nvim-biscuits').setup({}) end }
 
 	use { "lukas-reineke/virt-column.nvim", config = function() require("virt-column").setup() end }
 	use "lukas-reineke/indent-blankline.nvim"

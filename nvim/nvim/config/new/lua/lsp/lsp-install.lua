@@ -3,7 +3,19 @@ if not status_ok then
 	return
 end
 
-local server_settings = {}
+local server_settings = {
+	omnisharp = {
+		handlers = {
+			["textDocument/definition"] = require('omnisharp_extended').handler,
+		},
+		cmd_env = {
+			["OMNISHARP_FormattingOptions:EnableEditorConfigSupport"] = true,
+			["OMNISHARP_RoslynExtensionsOptions:enableAnalyzersSupport"] = true,
+			["OMNISHARP_RoslynExtensionsOptions:enableImportCompletion"] = true,
+			["OMNISHARP_RoslynExtensionsOptions:enableDecompilationSupport"] = true,
+		},
+	},
+}
 
 lsp_installer.settings({
 	ui = {
