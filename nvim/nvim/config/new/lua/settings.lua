@@ -60,3 +60,9 @@ keymap("i", "<C-l>", "<Right>", opts)
 
 keymap("i", "<C-BS>", "<C-w>", opts)
 
+vim.cmd [[ augroup highlight_yank
+	autocmd!
+		autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
+	augroup end
+]]
+

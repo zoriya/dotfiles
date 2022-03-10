@@ -40,6 +40,7 @@ packer.init {
 
 return packer.startup(function(use)
 	use "wbthomason/packer.nvim"
+	use 'lewis6991/impatient.nvim'
 
 	use "tpope/vim-surround"
 	use "tpope/vim-unimpaired"
@@ -52,6 +53,7 @@ return packer.startup(function(use)
 	use {
 		{ 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} } },
 		{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+		'stevearc/dressing.nvim',
 	}
 	use "folke/which-key.nvim"
 	use "akinsho/toggleterm.nvim"
@@ -71,6 +73,9 @@ return packer.startup(function(use)
 	}
 
 	use { "lukas-reineke/virt-column.nvim", config = function() require("virt-column").setup() end }
+	use "lukas-reineke/indent-blankline.nvim"
+
+	use { "lewis6991/gitsigns.nvim", requires = { 'nvim-lua/plenary.nvim' } }
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
