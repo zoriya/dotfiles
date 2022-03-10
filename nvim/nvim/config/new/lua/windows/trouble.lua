@@ -17,3 +17,11 @@ wk.register({
 }, {
 	prefix = "<leader>",
 })
+
+local tc_ok, tc = pcall(require, "todo-comments")
+if not tc_ok then
+	return
+end
+
+tc.setup({ })
+
