@@ -46,6 +46,8 @@ return packer.startup(function(use)
 	use "tpope/vim-unimpaired"
 	use "tpope/vim-speeddating"
 	use "tpope/vim-repeat"
+	use "tpope/vim-sleuth"
+	use "ggandor/lightspeed.nvim"
 
 	use "folke/tokyonight.nvim"
 
@@ -71,10 +73,18 @@ return packer.startup(function(use)
 		"hrsh7th/nvim-cmp",
 		"L3MON4D3/LuaSnip",
 	}
+	use {
+		"narutoxy/dim.lua",
+		requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+		config = function()
+			require('dim').setup({})
+		end
+	}
 
 	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 	use "numToStr/Comment.nvim"
 	use "JoosepAlviste/nvim-ts-context-commentstring"
+	use { "code-biscuits/nvim-biscuits", config = function() require('nvim-biscuits').setup({}) end }
 
 	use { "lukas-reineke/virt-column.nvim", config = function() require("virt-column").setup() end }
 	use "lukas-reineke/indent-blankline.nvim"
