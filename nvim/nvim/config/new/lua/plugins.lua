@@ -66,6 +66,7 @@ return packer.startup(function(use)
 		'williamboman/nvim-lsp-installer',
 	}
 	use "Hoffs/omnisharp-extended-lsp.nvim"
+	use "b0o/schemastore.nvim"
 	use {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",

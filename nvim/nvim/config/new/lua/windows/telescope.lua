@@ -19,12 +19,8 @@ telescope.setup({
 		path_display = { "truncate" },
 		mappings = {
 			i = {
-				["<CR>"] = actions.file_edit,
 				["<A-k>"] = actions.move_selection_previous,
 				["<A-j>"] = actions.move_selection_next,
-			},
-			n = {
-				["<CR>"] = actions.file_edit,
 			},
 		},
 	},

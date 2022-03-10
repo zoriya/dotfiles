@@ -15,6 +15,13 @@ local server_settings = {
 			["OMNISHARP_RoslynExtensionsOptions:enableDecompilationSupport"] = true,
 		},
 	},
+	jsonls = {
+		settings = {
+			json = {
+				schemas = require('schemastore').json.schemas(),
+			},
+		},
+	},
 }
 
 lsp_installer.settings({
