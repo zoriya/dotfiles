@@ -53,12 +53,13 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Move in insert mode --
-keymap("i", "<C-j>", "<Down>", opts)
-keymap("i", "<C-k>", "<Up>", opts)
-keymap("i", "<C-h>", "<Left>", opts)
-keymap("i", "<C-l>", "<Right>", opts)
+keymap("i", "<A-j>", "<Down>", opts)
+keymap("i", "<A-k>", "<Up>", opts)
+keymap("i", "<A-h>", "<Left>", opts)
+keymap("i", "<A-l>", "<Right>", opts)
 
 keymap("i", "<C-BS>", "<C-w>", opts)
+keymap("i", "<C-H>", "<C-w>", opts) -- Keymap for CTRL-BACKSPACE on some termial emulators.
 
 vim.cmd [[ augroup highlight_yank
 	autocmd!

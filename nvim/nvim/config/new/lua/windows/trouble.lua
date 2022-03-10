@@ -12,6 +12,7 @@ wk.register({
 	l = {
 		d = { "<cmd>Trouble document_diagnostics<cr>", "Document Diagnostics" },
 		w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
+		t = { "<cmd>TroubleToggle<CR>", "Toogle trouble window" },
 	},
 }, {
 	prefix = "<leader>",
