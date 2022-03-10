@@ -55,6 +55,7 @@ return packer.startup(function(use)
 		{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
 		'stevearc/dressing.nvim',
 	}
+	use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
 	use "folke/which-key.nvim"
 	use "akinsho/toggleterm.nvim"
 

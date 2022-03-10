@@ -3,6 +3,8 @@ if not status_ok then
 	return
 end
 
+local actions = require "telescope.actions"
+
 telescope.setup({
 	defaults = {
 		prompt_prefix = "   ",
@@ -15,6 +17,14 @@ telescope.setup({
 			}
 		},
 		path_display = { "truncate" },
+		mappings = {
+			i = {
+				["<CR>"] = actions.file_edit
+			},
+			n = {
+				["<CR>"] = actions.file_edit
+			},
+		},
 	},
 	extensions = {
 		fzf = {
