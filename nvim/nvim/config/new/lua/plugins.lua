@@ -49,6 +49,7 @@ return packer.startup(function(use)
 	use "tpope/vim-repeat"
 	use "tpope/vim-sleuth"
 	use "ggandor/lightspeed.nvim"
+	use { "airblade/vim-rooter", config = function() vim.g.rooter_manual_only = 1 end }
 
 
 	use "folke/tokyonight.nvim"
@@ -81,6 +82,7 @@ return packer.startup(function(use)
 		"hrsh7th/nvim-cmp",
 		"L3MON4D3/LuaSnip",
 	}
+	use "ray-x/lsp_signature.nvim"
 	use {
 		"narutoxy/dim.lua",
 		requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
