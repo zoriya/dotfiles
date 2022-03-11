@@ -35,7 +35,6 @@ local options = {
 	fillchars = {
 		diff = "╱",
 	},
-	colorcolumn = "80,120",
 }
 
 for k, v in pairs(options) do
