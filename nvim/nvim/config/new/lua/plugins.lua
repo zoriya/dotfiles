@@ -94,6 +94,9 @@ return packer.startup(function(use)
 	use "numToStr/Comment.nvim"
 	use "JoosepAlviste/nvim-ts-context-commentstring"
 
+	use "mfussenegger/nvim-dap"
+	use { "theHamsta/nvim-dap-virtual-text", requires = { "nvim-treesitter/nvim-treesitter" }, config = function() require("nvim-dap-virtual-text").setup() end }
+
 
 	use { "lukas-reineke/virt-column.nvim", config = function() require("virt-column").setup() end }
 	use "lukas-reineke/indent-blankline.nvim"
