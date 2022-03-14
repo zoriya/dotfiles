@@ -19,7 +19,6 @@ wk.setup({
 wk.register({
 	gc = {
 		name = "Comment",
-		c = { "gc_", "Comment Line" },
 	},
 	ys = { name = "Add Surroundings" },
 	ds = { name = "Delete Surroundings" },

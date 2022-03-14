@@ -8,4 +8,5 @@ require "lsp"
 require "treesitter"
 require "utils"
 require "dap-config"
+require "tests"
 
