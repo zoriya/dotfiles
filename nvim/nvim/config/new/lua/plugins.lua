@@ -88,6 +88,7 @@ return packer.startup(function(use)
 		requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
 		config = function() require('dim').setup({}) end
 	}
+	use { "j-hui/fidget.nvim", config = function() require("fidget").setup {} end }
 
 
 	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
