@@ -82,6 +82,7 @@ return packer.startup(function(use)
 		"hrsh7th/nvim-cmp",
 		"L3MON4D3/LuaSnip",
 	}
+	use "rafamadriz/friendly-snippets"
 	use "ray-x/lsp_signature.nvim"
 	use {
 		"narutoxy/dim.lua",
