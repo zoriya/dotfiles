@@ -97,6 +97,7 @@ return packer.startup(function(use)
 	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 	use "nvim-treesitter/nvim-treesitter-textobjects"
 	use "windwp/nvim-autopairs"
+	use "windwp/nvim-ts-autotag"
 	use "numToStr/Comment.nvim"
 	use "JoosepAlviste/nvim-ts-context-commentstring"
 	use { "danymat/neogen", requires = "nvim-treesitter/nvim-treesitter",}

@@ -32,4 +32,7 @@ configs.setup({
 			},
 		},
 	},
+	autotag = {
+		enable = true,
+	},
 })
