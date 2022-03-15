@@ -50,6 +50,7 @@ return packer.startup(function(use)
 	use "tpope/vim-sleuth"
 	use "ggandor/lightspeed.nvim"
 	use { "airblade/vim-rooter", config = function() vim.g.rooter_manual_only = 1 end }
+	use { "Pocco81/AutoSave.nvim", config = function() require "autosave".setup() end }
 
 
 	use "folke/tokyonight.nvim"
@@ -95,6 +96,7 @@ return packer.startup(function(use)
 	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 	use "numToStr/Comment.nvim"
 	use "JoosepAlviste/nvim-ts-context-commentstring"
+	use { "danymat/neogen", requires = "nvim-treesitter/nvim-treesitter",}
 
 
 	use "mfussenegger/nvim-dap"

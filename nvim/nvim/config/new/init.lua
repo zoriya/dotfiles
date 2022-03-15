@@ -9,4 +9,5 @@ require "treesitter"
 require "utils"
 require "dap-config"
 require "tests"
+require "documentation"
 
