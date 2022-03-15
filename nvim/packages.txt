@@ -1,4 +1,5 @@
 neovim
+python-pynvim
 ripgrep
 fd
 gfold

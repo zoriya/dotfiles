@@ -18,7 +18,9 @@ wk.register({
 		name = "Unit Tests",
 		r = { "<Plug>(ultest-run-nearest)", "Run nearest" },
 		o = { "<Plug>(ultest-output-show)", "Show test output" },
-		t = { "<Plug>(ultest-summary-toggle)", "Toggle the test window" },
+		a = { "<Plug>(ultest-attach)", "Attach to the nearest running test" },
+		s = { "<Plug>(ultest-stop-nearest)", "Stop the nearest test" },
+		t = { "<cmd>UltestSummary!<cr>", "Toggle the test window" },
 	},
 }, {
 	prefix = "<leader>",

@@ -10,4 +10,5 @@ require "utils"
 require "dap-config"
 require "tests"
 require "documentation"
+require "build"
 

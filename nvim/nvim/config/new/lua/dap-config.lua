@@ -6,7 +6,7 @@ end
 dap.adapters = {
 	coreclr = {
 		type = 'executable',
-		command = 'netcoredbg',
+		command = '/usr/bin/netcoredbg',
 		args = {'--interpreter=vscode'}
 	},
 }
@@ -18,12 +18,13 @@ dap.configurations = {
 			name = "launch - netcoredbg",
 			request = "launch",
 			program = function()
-				return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+				return "/home/anonymus-raccoon/projects/Kyoo/src/Kyoo.Host.Console/bin/Debug/net6.0/Kyoo.Host.Console.dll"
+				-- return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
 			end,
 		},
 	},
 }
-
+require('dap').set_log_level('TRACE')
 
 local wk = require("which-key")
 wk.register({

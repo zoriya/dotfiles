@@ -19,6 +19,7 @@ telescope.setup({
 		path_display = { "truncate" },
 		mappings = {
 			i = {
+				["<esc>"] = actions.close,
 				["<A-k>"] = actions.move_selection_previous,
 				["<A-j>"] = actions.move_selection_next,
 			},
