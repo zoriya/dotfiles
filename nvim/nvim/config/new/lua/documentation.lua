@@ -13,3 +13,10 @@ neogen.setup({
 		}
 	}
 })
+
+local wk = require("which-key")
+wk.register({
+	d = { "<cmd>Neogen any<cr>", "Generate documentation" },
+}, {
+	prefix = "<leader>",
+})

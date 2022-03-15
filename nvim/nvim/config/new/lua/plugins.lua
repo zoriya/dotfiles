@@ -49,6 +49,7 @@ return packer.startup(function(use)
 	use "tpope/vim-repeat"
 	use "tpope/vim-sleuth"
 	use "ggandor/lightspeed.nvim"
+	use "nishigori/increment-activator"
 	use { "airblade/vim-rooter", config = function() vim.g.rooter_manual_only = 1 end }
 	use { "Pocco81/AutoSave.nvim", config = function() require "autosave".setup() end }
 
@@ -94,6 +95,8 @@ return packer.startup(function(use)
 
 
 	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+	use "nvim-treesitter/nvim-treesitter-textobjects"
+	use "windwp/nvim-autopairs"
 	use "numToStr/Comment.nvim"
 	use "JoosepAlviste/nvim-ts-context-commentstring"
 	use { "danymat/neogen", requires = "nvim-treesitter/nvim-treesitter",}

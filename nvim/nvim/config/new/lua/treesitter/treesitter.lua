@@ -17,4 +17,19 @@ configs.setup({
 		enable = true,
 		enable_autocmd = false,
 	},
+	textobjects = {
+		select = {
+			enable = true,
+			lookahead = false,
+
+			keymaps = {
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+				["ia"] = "@parameter.inner",
+				["aa"] = "@parameter.outer",
+			},
+		},
+	},
 })
