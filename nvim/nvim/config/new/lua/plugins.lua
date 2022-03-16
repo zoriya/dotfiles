@@ -104,7 +104,7 @@ return packer.startup(function(use)
 
 
 	use "mfussenegger/nvim-dap"
-	use { "theHamsta/nvim-dap-virtual-text", requires = { "nvim-treesitter/nvim-treesitter" }, config = function() require("nvim-dap-virtual-text").setup() end }
+	use { "theHamsta/nvim-dap-virtual-text", requires = { "nvim-treesitter/nvim-treesitter" } }
 
 
 	use { "rcarriga/vim-ultest", requires = {"vim-test/vim-test"}, run = ":UpdateRemotePlugins" }
