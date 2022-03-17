@@ -6,7 +6,7 @@ vim.g["ultest_running_sign"] = ""
 vim.g["ultest_not_run_sign"] = ""
 
 vim.cmd [[
-	augroup virtcolumn
+	augroup test_list
 		autocmd!
 		autocmd FileType UltestSummary setl nolist
 	augroup end
