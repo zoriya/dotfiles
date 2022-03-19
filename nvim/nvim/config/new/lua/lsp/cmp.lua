@@ -10,11 +10,11 @@ end
 
 local kind_icons = {
 	Text = "",
-	Method = "m",
+	Method = "",
 	Function = "",
 	Constructor = "",
-	Field = "",
-	Variable = "",
+	Field = "ﰠ",
+	Variable = "",
 	Class = "",
 	Interface = "",
 	Module = "",
@@ -29,8 +29,8 @@ local kind_icons = {
 	Reference = "",
 	Folder = "",
 	EnumMember = "",
-	Constant = "",
-	Struct = "",
+	Constant = "",
+	Struct = "פּ",
 	Event = "",
 	Operator = "",
 	TypeParameter = "",
@@ -93,6 +93,12 @@ cmp.setup({
 			-- })[entry.source.name]
 			return vim_item
 		end,
+	},
+	documentation = {
+		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+	},
+	experimental = {
+		ghost_text = true,
 	},
 })
 
