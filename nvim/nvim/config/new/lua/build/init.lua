@@ -2,9 +2,17 @@ local has_icon, nwicon = pcall(require, 'nvim-web-devicons')
 
 local M = {
 	adapters = {},
+	projects = {},
+	config = {
+		runner = "AsyncRun",
+	},
 }
 
 table.insert(M.adapters, require "build.adapters.dotnet")
+
+M.setup = function (config)
+	M.config = vim.tbl_deep_extend('keep', M.config, config)
+end
 
 -- https://stackoverflow.com/questions/49907620/how-to-fuse-array-in-lua
 local function concatArray(a, b)
@@ -37,8 +45,19 @@ M.select_proj = function ()
 			return icon .. " " .. proj.name
 		end
 	}, function (proj)
-
+		M.projects[vim.fn.getcwd()] = proj
+		if M.config.on_select then
+			M.config.on_select()
+		end
 	end)
+end
+
+M.get_project = function ()
+	return M.projects[vim.fn.getcwd()]
+end
+
+M.build = function ()
+	vim.cmd(M.config.runner .. " " .. M.get_project().adapter.build())
 end
 
 

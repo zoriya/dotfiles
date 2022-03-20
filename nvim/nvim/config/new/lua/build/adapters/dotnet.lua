@@ -3,13 +3,13 @@ local M = {}
 M.pattern = "*.sln"
 
 M.list = function ()
-	-- broken
 	local projs = io.popen("dotnet sln list | tail -n +3")
 	local ret = {}
 	for line in projs:lines() do
 		table.insert(ret, {
 			name = line:match("([^/]+).csproj$"),
 			file = line,
+			icon = "",
 		})
 	end
 	projs:close()
