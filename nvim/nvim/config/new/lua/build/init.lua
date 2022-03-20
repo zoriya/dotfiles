@@ -3,16 +3,9 @@ local has_icon, nwicon = pcall(require, 'nvim-web-devicons')
 local M = {
 	adapters = {},
 	projects = {},
-	config = {
-		runner = "AsyncRun",
-	},
 }
 
 table.insert(M.adapters, require "build.adapters.dotnet")
-
-M.setup = function (config)
-	M.config = vim.tbl_deep_extend('keep', M.config, config)
-end
 
 M.list_projs = function ()
 	local projs = {}
@@ -60,8 +53,8 @@ M.build = function ()
 		M.select_proj(M.build)
 		return
 	end
-	vim.cmd(M.config.runner .. " " .. proj.adapter.build(proj))
+	-- TODO: escape the errorformat
+	vim.cmd(":copen | :AsyncRun -errorformat=" .. proj.adapter.errorformat .. " " .. proj.adapter.build(proj))
 end
-
 
 return M
