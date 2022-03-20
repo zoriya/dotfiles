@@ -8,7 +8,7 @@ M.list = function ()
 	for line in projs:lines() do
 		table.insert(ret, {
 			name = line:match("([^/]+).csproj$"),
-			file = line,
+			csproj = line,
 			icon = "",
 		})
 	end
@@ -23,7 +23,7 @@ end
 M.errorformat = ""
 
 M.run = function (proj)
-	return "dotnet run --project " .. proj[2]
+	return "dotnet run --project " .. proj.csproj
 end
 
 return M

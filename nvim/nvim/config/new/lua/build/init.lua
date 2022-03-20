@@ -57,4 +57,14 @@ M.build = function ()
 	vim.cmd(":copen | :AsyncRun -errorformat=" .. proj.adapter.errorformat .. " " .. proj.adapter.build(proj))
 end
 
+M.run = function ()
+	local proj = M.get_project()
+	if not proj then
+		M.select_proj(M.run)
+		return
+	end
+	-- TODO: build project before running it if required
+	vim.cmd(":AsyncRun -mode=terminal " .. proj.adapter.run(proj))
+end
+
 return M
