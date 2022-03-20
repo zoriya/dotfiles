@@ -10,6 +10,8 @@ local options = {
 	smartcase = true,
 
 	mouse = "a",
+	splitbelow = true,
+	splitright = true,
 	cursorline = true,
 	sidescrolloff = 8,
 	wrap = false,
