@@ -53,8 +53,12 @@ M.build = function ()
 		M.select_proj(M.build)
 		return
 	end
-	-- TODO: escape the errorformat
-	vim.cmd(":copen | :AsyncRun -errorformat=" .. proj.adapter.errorformat .. " " .. proj.adapter.build(proj))
+	local old = vim.g.asyncrun_open
+	vim.g.asyncrun_open = 10
+	-- TODO: the gobal errorformat should not be overriden but it could not find how to excape the string.
+	vim.cmd(":set errorformat=" .. proj.adapter.errorformat)
+	vim.cmd(":AsyncRun " .. proj.adapter.build(proj))
+	vim.g.asyncrun_open = old
 end
 
 M.run = function ()

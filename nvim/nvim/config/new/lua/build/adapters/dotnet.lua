@@ -20,7 +20,7 @@ M.build = function ()
 	return "dotnet build"
 end
 
-M.errorformat = ""
+M.errorformat = [[%f(%l\\,%c):\ %t%*[^\ ]\ %m]]
 
 M.run = function (proj)
 	return "dotnet run --project " .. proj.csproj
