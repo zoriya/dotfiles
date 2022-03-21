@@ -3,6 +3,9 @@ local has_icon, nwicon = pcall(require, 'nvim-web-devicons')
 local M = {
 	adapters = {},
 	projects = {},
+	config = {
+		height = 10,
+	},
 }
 
 table.insert(M.adapters, require "build.adapters.dotnet")
@@ -47,17 +50,25 @@ M.get_project = function ()
 	return M.projects[vim.fn.getcwd()]
 end
 
-M.build = function ()
+M.post_build = function ()
+	vim.g.errorformat = M._old_efm
+	if M._post_callback then
+		M._post_callback(vim.g.asyncrun_code)
+	end
+end
+
+M.build = function (post)
 	local proj = M.get_project()
 	if not proj then
 		M.select_proj(M.build)
 		return
 	end
+	M._post_callback = post
+	M._old_efm = vim.g.errorformat
 	local old = vim.g.asyncrun_open
-	vim.g.asyncrun_open = 10
-	-- TODO: the gobal errorformat should not be overriden but it could not find how to excape the string.
-	vim.cmd(":set errorformat=" .. proj.adapter.errorformat)
-	vim.cmd(":AsyncRun " .. proj.adapter.build(proj))
+	vim.g.asyncrun_open = M.config.height
+	vim.go.errorformat = proj.adapter.errorformat
+	vim.cmd(":AsyncRun -post=lua\\ require('build').post_build() " .. proj.adapter.build(proj))
 	vim.g.asyncrun_open = old
 end
 
@@ -67,8 +78,19 @@ M.run = function ()
 		M.select_proj(M.run)
 		return
 	end
-	-- TODO: build project before running it if required
-	vim.cmd(":AsyncRun -mode=terminal " .. proj.adapter.run(proj))
+	M.build(function (status)
+		print(status)
+		if status == 0 then
+			vim.cmd(":cclose")
+			vim.cmd(":AsyncRun -mode=terminal -focus=0 -rows=" .. M.config.height .. " " .. proj.adapter.run(proj))
+		else
+			vim.notify("Build failed")
+		end
+	end)
+end
+
+M.cancel = function ()
+	vim.cmd(":AsyncStop")
 end
 
 return M
