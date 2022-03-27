@@ -118,7 +118,6 @@ return packer.startup(function(use)
 
 
 	use "skywind3000/asyncrun.vim"
-	use "datamadsen/vim-compiler-plugin-for-dotnet"
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

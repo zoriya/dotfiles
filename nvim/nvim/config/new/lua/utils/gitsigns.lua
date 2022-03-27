@@ -28,6 +28,7 @@ wk.register({
 		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
 		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
 		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+		a = { "<cmd>Gitsigns stage_buffer<CR>", "Add buffer" },
 	},
 }, {
 	prefix = "<leader>",
