@@ -68,6 +68,7 @@ return packer.startup(function(use)
 	use { "RRethy/vim-hexokinase", run = "make hexokinase", config = function()
 		vim.g["Hexokinase_optInPatterns"] = "full_hex,triple_hex,rgb,rgba,hsl,hsla"
 	end }
+	use "kyazdani42/nvim-tree.lua"
 
 
 	use {

@@ -4,4 +4,5 @@ require "windows.telescope"
 require "windows.trouble"
 require "windows.scrollbar"
 require "windows.colorcolumn"
+require "windows.tree"
 
