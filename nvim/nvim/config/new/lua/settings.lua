@@ -1,9 +1,11 @@
 local options = {
 	fileencoding = "utf-8",
-	smartindent = true,
 	expandtab = false,
 	shiftwidth = 4,
 	tabstop = 4,
+	cinoptions = {
+		"(1s"
+	},
 
 	hlsearch = true,
 	ignorecase = true,
