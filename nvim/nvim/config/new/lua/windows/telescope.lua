@@ -22,6 +22,7 @@ telescope.setup({
 				["<esc>"] = actions.close,
 				["<A-k>"] = actions.move_selection_previous,
 				["<A-j>"] = actions.move_selection_next,
+				["<c-t>"] = require "trouble.providers.telescope".open_with_trouble
 			},
 		},
 	},
