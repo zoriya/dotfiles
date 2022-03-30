@@ -8,6 +8,11 @@ if not lsn_status_ok then
 	return
 end
 
+require("luasnip/loaders/from_vscode").lazy_load()
+
+vim.opt.completeopt = { "menuone", "preview", }
+vim.opt.pumheight = 15
+
 local kind_icons = {
 	Text = "",
 	Method = "",
@@ -76,11 +81,12 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 	},
-	sources = cmp.config.sources({
+	sources = {
 		{ name = "nvim_lsp" },
+		{ name = 'luasnip' },
 		{ name = "buffer" },
 		{ name = "path" },
-	}),
+	},
 	formatting = {
 		fields = { "abbr", "kind" },
 		format = function(entry, vim_item)
