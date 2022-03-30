@@ -16,7 +16,12 @@ neogen.setup({
 
 local wk = require("which-key")
 wk.register({
-	n = { "<cmd>Neogen any<cr>", "Generate documentation" },
+	n = {
+		name = "Generate documentation",
+		f = { "<cmd>Neogen func<CR>", "Function" },
+		c = { "<cmd>Neogen class<CR>", "Class" },
+		t = { "<cmd>Neogen type<CR>", "Type" },
+	},
 }, {
 	prefix = "<leader>",
 })
