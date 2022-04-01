@@ -44,7 +44,7 @@ return packer.startup(function(use)
 
 
 	use "tpope/vim-surround"
-	use "tpope/vim-unimpaired"
+	use{ "tpope/vim-unimpaired", config = function() vim.g.nremap = { ["[u"] = "", ["]u"] = "" } end }
 	use "tpope/vim-speeddating"
 	use "tpope/vim-repeat"
 	use "tpope/vim-sleuth"

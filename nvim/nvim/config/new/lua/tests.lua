@@ -5,12 +5,8 @@ vim.g["ultest_fail_sign"] = ""
 vim.g["ultest_running_sign"] = ""
 vim.g["ultest_not_run_sign"] = ""
 
-vim.cmd [[
-	augroup test_list
-		autocmd!
-		autocmd FileType UltestSummary setl nolist
-	augroup end
-]]
+vim.cmd [[ autocmd FileType UltestSummary setl nolist ]]
+vim.cmd [[ autocmd FileType UltestSummary echo "toto" ]]
 
 local wk = require("which-key")
 wk.register({
