@@ -64,8 +64,9 @@ keymap("i", "<A-l>", "<Right>", opts)
 keymap("i", "<C-BS>", "<C-w>", opts)
 keymap("i", "<C-H>", "<C-w>", opts) -- Keymap for CTRL-BACKSPACE on some termial emulators.
 
-vim.cmd [[ augroup highlight_yank
-	autocmd!
+vim.cmd [[
+	augroup highlight_yank
+		autocmd!
 		autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
 	augroup end
 ]]

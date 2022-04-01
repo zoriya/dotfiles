@@ -13,6 +13,7 @@ local server_settings = {
 			["OMNISHARP_RoslynExtensionsOptions:enableAnalyzersSupport"] = true,
 			["OMNISHARP_RoslynExtensionsOptions:enableImportCompletion"] = true,
 			["OMNISHARP_RoslynExtensionsOptions:enableDecompilationSupport"] = true,
+			["OMNISHARP_msbuild:EnablePackageAutoRestore"] = true,
 		},
 	},
 	jsonls = {
