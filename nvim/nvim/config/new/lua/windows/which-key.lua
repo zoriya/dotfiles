@@ -30,3 +30,10 @@ wk.register({
 	noremap = false,
 })
 
+wk.register({
+	y = { "Yank to system clipboard" },
+	Y = { "Yank line to system clipboard" },
+}, {
+	prefix = "<leader>"
+})
+

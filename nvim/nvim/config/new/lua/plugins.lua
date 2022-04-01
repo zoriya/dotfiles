@@ -44,14 +44,17 @@ return packer.startup(function(use)
 
 
 	use "tpope/vim-surround"
-	use{ "tpope/vim-unimpaired", config = function() vim.g.nremap = { ["[u"] = "", ["]u"] = "" } end }
+	use { "tpope/vim-unimpaired", config = function() vim.g.nremap = { ["[u"] = "", ["]u"] = "" } end }
 	use "tpope/vim-speeddating"
 	use "tpope/vim-repeat"
 	use "tpope/vim-sleuth"
-	use "ggandor/lightspeed.nvim"
 	use "nishigori/increment-activator"
 	use { "airblade/vim-rooter", config = function() vim.g.rooter_manual_only = 1 end }
 	use { "Pocco81/AutoSave.nvim", config = function() require "autosave".setup() end }
+
+	
+	use "ggandor/lightspeed.nvim"
+	use "ThePrimeagen/harpoon"
 
 
 	use "folke/tokyonight.nvim"

@@ -62,7 +62,14 @@ keymap("i", "<A-h>", "<Left>", opts)
 keymap("i", "<A-l>", "<Right>", opts)
 
 keymap("i", "<C-BS>", "<C-w>", opts)
+keymap("c", "<C-BS>", "<C-w>", opts)
 keymap("i", "<C-H>", "<C-w>", opts) -- Keymap for CTRL-BACKSPACE on some termial emulators.
+keymap("c", "<C-H>", "<C-w>", opts)
+
+keymap("n", "<leader>y", '"+y', opts)
+keymap("x", "<leader>y", '"+y', opts)
+keymap("n", "<leader>Y", '"+Y', opts)
+keymap("x", "<leader>Y", '"+Y', opts)
 
 vim.cmd [[
 	augroup highlight_yank
