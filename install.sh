@@ -2,8 +2,6 @@
 set -eu
 cd $(dirname $0)
 
-git submodule update --init
-
 info()
 {
 	printf "\r[ \033[00;34m..\033[0m ] $*\n"
@@ -31,9 +29,10 @@ link()
 
 usage()
 {
-	echo "Usage: $0 [-yih] [topics]"
+	echo "Usage: $0 [-yish] [topics]"
 	echo "\t-i: Install configs, link files..." 
 	echo "\t-y: Install needed packages via yay."
+	echo "\t-s: Clone submodules."
 	echo "\t-h: Show this help message."
 	echo "Topics:"
 	ls -d */ | xargs -L1 echo -e \\t
@@ -64,12 +63,11 @@ install()
 				[[ -d $file ]] && dest=${dest%.*}
 				link $file $dest
 			done
-			# TODO support with or without X
 		fi
 	done
 }
 
-OPTS=$(getopt --options "iyh" --long "install,yay,help" --name $0 -- $@)
+OPTS=$(getopt --options "iysh" --long "install,yay,submodule,help" --name $0 -- $@)
 eval set -- $OPTS
 
 shouldInstall=""
@@ -78,6 +76,7 @@ while true; do
 	case $1 in
 	-i | --install) shouldInstall=true; shift ;;
 	-y | --yay) shouldPackages=true; shift ;;
+	-s | --submodule) git submodule update --init; shift ;;
 	-h | --help) usage; exit 0 ;;
 	--) shift; break ;;
 	*) usage; exit 2 ;;
