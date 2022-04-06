@@ -71,6 +71,8 @@ keymap("x", "<leader>y", '"+y', opts)
 keymap("n", "<leader>Y", '"+Y', opts)
 keymap("x", "<leader>Y", '"+Y', opts)
 
+keymap("t", "<C-W>", "<C-\\><C-N><C-W>", opts)
+
 vim.cmd [[
 	augroup highlight_yank
 		autocmd!

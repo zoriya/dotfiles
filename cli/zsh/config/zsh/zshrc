@@ -63,7 +63,7 @@ fi
 plugins=(
 	zsh-vi-mode
 	sudo
-	copydir
+	copypath
 	copyfile
 	jsontools
 	docker-compose

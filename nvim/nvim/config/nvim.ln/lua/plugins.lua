@@ -119,6 +119,7 @@ return packer.startup(function(use)
 	use "lukas-reineke/indent-blankline.nvim"
 	use "petertriho/nvim-scrollbar"
 
+	use "tpope/vim-fugitive"
 	use { "lewis6991/gitsigns.nvim", requires = { 'nvim-lua/plenary.nvim' } }
 
 
