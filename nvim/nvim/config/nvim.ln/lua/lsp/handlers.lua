@@ -59,6 +59,12 @@ local lsp_keymaps = function(bufnr)
 	}, {
 		buffer = bufnr,
 	})
+	wk.register({
+		["<leader>f"] = { "<cmd>lua vim.lsp.buf.range_format()<CR>", "Range format" },
+	}, {
+		buffer = bufnr,
+		mode = "v",
+	})
 end
 
 M.on_attach = function(client, bufnr)
