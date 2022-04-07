@@ -66,6 +66,7 @@ return packer.startup(function(use)
 	}
 	use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
 	use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
+	use {'kevinhwang91/nvim-bqf', ft = 'qf'}
 	use "folke/which-key.nvim"
 	use "akinsho/toggleterm.nvim"
 	use { "RRethy/vim-hexokinase", run = "make hexokinase", config = function()
