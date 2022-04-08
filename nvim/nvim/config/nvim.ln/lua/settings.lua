@@ -4,7 +4,8 @@ local options = {
 	shiftwidth = 4,
 	tabstop = 4,
 	cinoptions = {
-		"(1s"
+		"(1s",
+		"m1",
 	},
 
 	hlsearch = true,
