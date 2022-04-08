@@ -8,6 +8,7 @@ push()
 }
 
 alias "s"="git status"
+alias "gs"="git status"
 alias "gp"="git pull"
 alias "gP"="git push"
 alias "gl"="git log"

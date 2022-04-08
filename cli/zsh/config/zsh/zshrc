@@ -1,10 +1,10 @@
+[[ -f ~/.localrc ]] && source ~/.localrc
 source ~/.config/profile
 
 export -U PATH=$PATH
 
 alias edit=$EDITOR
 
-[[ -f ~/.localrc ]] && source ~/.localrc
 [[ -f $XDG_CONFIG_HOME/zsh/localrc ]] && source $XDG_CONFIG_HOME/zsh/localrc
 [[ -f $XDG_CONFIG_HOME/profile ]] && source $XDG_CONFIG_HOME/profile
 
@@ -48,10 +48,20 @@ function zvm_after_init()
 bindkey '^H' backward-kill-word
 bindkey '5~' kill-word
 
-ZSH=/usr/share/oh-my-zsh/
-ZSH_CUSTOM=/usr/share/zsh
+if type brew &>/dev/null; then
+	ZSH=~/.oh-my-zsh
+	source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+	
+	FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+else
+	ZSH=/usr/share/oh-my-zsh/
+	ZSH_CUSTOM=/usr/share/zsh
+	source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+fi
+
+
 zstyle ':omz:update' mode disabled
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
