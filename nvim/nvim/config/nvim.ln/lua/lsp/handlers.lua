@@ -54,6 +54,7 @@ local lsp_keymaps = function(bufnr)
 		["<leader>l"] = {
 			r = { '<cmd>lua vim.lsp.buf.rename()<CR>', "Rename" },
 			a = { '<cmd>lua vim.lsp.buf.code_action()<CR>', "Code action" },
+			l = { '<cmd>lua vim.lsp.codelens.run()<CR>', "Run code lens" },
 			f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', "Format" },
 		}
 	}, {
@@ -61,9 +62,14 @@ local lsp_keymaps = function(bufnr)
 	})
 end
 
+local lsp_codelens = function()
+	-- vim.cmd [[ autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh() ]]
+end
+
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
+	lsp_codelens()
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

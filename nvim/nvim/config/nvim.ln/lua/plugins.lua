@@ -79,6 +79,7 @@ return packer.startup(function(use)
 		'williamboman/nvim-lsp-installer',
 	}
 	use "Hoffs/omnisharp-extended-lsp.nvim"
+	use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
 	use "b0o/schemastore.nvim"
 	use {
 		"hrsh7th/cmp-nvim-lsp",
