@@ -47,17 +47,17 @@ cmp.setup({
 			require('luasnip').lsp_expand(args.body)
 		end,
 	},
-	enabled = function()
-		-- disable completion in comments
-		local context = require 'cmp.config.context'
-		-- keep command mode completion enabled when cursor is in a comment
-		if vim.api.nvim_get_mode().mode == 'c' then
-			return true
-		else
-			return not context.in_treesitter_capture("comment")
-				and not context.in_syntax_group("Comment")
-		end
-	end,
+	-- enabled = function()
+	-- 	-- disable completion in comments
+	-- 	local context = require 'cmp.config.context'
+	-- 	-- keep command mode completion enabled when cursor is in a comment
+	-- 	if vim.api.nvim_get_mode().mode == 'c' then
+	-- 		return true
+	-- 	else
+	-- 		return not context.in_treesitter_capture("comment")
+	-- 			and not context.in_syntax_group("Comment")
+	-- 	end
+	-- end,
 	mapping = {
 		["<Up>"] = cmp.mapping.select_prev_item(),
 		["<Down>"] = cmp.mapping.select_next_item(),
@@ -95,7 +95,7 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = 'luasnip' },
-		{ name = "buffer" },
+		-- { name = "buffer" },
 		{ name = "path" },
 	},
 	formatting = {

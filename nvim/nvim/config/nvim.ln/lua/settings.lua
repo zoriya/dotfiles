@@ -72,6 +72,12 @@ keymap("x", "<leader>y", '"+y', opts)
 keymap("n", "<leader>Y", '"+Y', opts)
 keymap("x", "<leader>Y", '"+Y', opts)
 
+keymap("n", "<leader>p", '"+p', opts)
+keymap("x", "<leader>p", '"+p', opts)
+keymap("n", "<leader>P", '"+P', opts)
+keymap("x", "<leader>P", '"+P', opts)
+
+
 keymap("t", "<C-W>", "<C-\\><C-N><C-W>", opts)
 
 vim.cmd [[

@@ -11,4 +11,5 @@ require "dap-config"
 require "tests"
 require "documentation"
 require "build"
+require "dispatch"
 

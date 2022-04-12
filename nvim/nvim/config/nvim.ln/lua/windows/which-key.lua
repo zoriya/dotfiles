@@ -33,6 +33,8 @@ wk.register({
 wk.register({
 	y = { "Yank to system clipboard" },
 	Y = { "Yank line to system clipboard" },
+	p = { "Past from system clipboard" },
+	P = { "Past line from system clipboard" },
 }, {
 	prefix = "<leader>"
 })

@@ -14,11 +14,13 @@ vim.cmd [[
 ]]
 
 metals_config = metals.bare_config()
-
--- Example of settings
 metals_config.settings = {
 	showImplicitArguments = true,
+	showInferredType = true,
+	showImplicitConversionsAndClasses = true,
 }
+-- metals_config.init_options.statusBarProvider = "on"
+
 metals_config.on_attach = function(client, bufnr)
 	metals.setup_dap()
 	require "lsp.handlers".on_attach(client, bufnr)

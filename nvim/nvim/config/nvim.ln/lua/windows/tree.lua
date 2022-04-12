@@ -33,6 +33,8 @@ nvim_tree.setup {
 				{ key = "<CR>", action = "edit_in_place" },
 				{ key = "h", action = "close_node" },
 				{ key = "<Left>", action = "close_node" },
+				{ key = "t", action = "tabnew" },
+				{ key = "<C-t>", action = "" },
 			},
 		},
 	},
