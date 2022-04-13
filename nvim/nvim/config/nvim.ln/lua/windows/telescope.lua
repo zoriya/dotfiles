@@ -4,6 +4,12 @@ if not status_ok then
 end
 
 local actions = require "telescope.actions"
+local transform_mod = require('telescope.actions.mt').transform_mod
+local local_actions = transform_mod({
+	commit = function()
+		vim.cmd(":Git commit")
+	end,
+})
 
 telescope.setup({
 	defaults = {
@@ -37,6 +43,13 @@ telescope.setup({
 		find_files = {
 			hidden = true,
 			find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "-E", ".git" },
+		},
+		git_status = {
+			mappings = {
+				i = {
+					["<c-c>"] = local_actions.commit,
+				},
+			},
 		},
 	},
 })
