@@ -10,7 +10,7 @@ end
 vim.cmd [[
 	augroup virtcolumn
 		autocmd!
-		autocmd FileType * if index(["netrw", "NvimTree", "Trouble", "toggleterm", "packer"], &ft) == -1 | lua require("windows.colorcolumn").setup()
+		autocmd FileType * if index(["netrw", "NvimTree", "Trouble", "qf", "toggleterm", "packer"], &ft) == -1 | lua require("windows.colorcolumn").setup()
 	augroup end
 ]]
 
