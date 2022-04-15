@@ -5,6 +5,11 @@ vim.g["ultest_fail_sign"] = ""
 vim.g["ultest_running_sign"] = ""
 vim.g["ultest_not_run_sign"] = ""
 
+vim.g["ultest_output_max_width"] = 180
+vim.g["ultest_output_min_width"] = 180
+
+vim.g["ultest_use_pty"] = 1
+
 vim.cmd [[
 	augroup test_output
 		autocmd!

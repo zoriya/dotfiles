@@ -5,6 +5,9 @@ end
 
 harpoon.setup({
 	mark_branch = true,
+	menu = {
+		width = 100,
+	},
 })
 
 local wk = require "which-key"

@@ -55,6 +55,8 @@ local lsp_keymaps = function(bufnr)
 			d = { '<cmd>lua vim.lsp.buf.definition()<CR>', "Go to definition" },
 			I = { '<cmd>lua vim.lsp.buf.implementation()<CR>', "Go to implementation" },
 			r = { '<cmd>lua vim.lsp.buf.references()<CR>', "Go to reference(s)" },
+			s = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', "Type definition" },
+			S = "which_key_ignore",
 		},
 		K = { '<cmd>lua vim.lsp.buf.hover()<CR>', "See LSP tooltip" },
 		["<C-k>"] = { '<cmd>lua vim.lsp.buf.signature_help()<CR>', "See signature help" },

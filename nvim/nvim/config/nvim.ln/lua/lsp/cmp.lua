@@ -111,8 +111,10 @@ cmp.setup({
 			return vim_item
 		end,
 	},
-	documentation = {
-		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+	navigation = {
+		documentation = {
+			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+		},
 	},
 	experimental = {
 		ghost_text = true,
