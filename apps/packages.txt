@@ -22,7 +22,7 @@ i3lock-color-git
 # Bar utils
 acpi
 playerctl
-pamix-git
+#pamix-git
 pulseaudio-ctl
 redshift
 network-manager-applet
@@ -39,7 +39,6 @@ ttf-liberation
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
-nerd-fonts-noto
 
 # Apps
 feh

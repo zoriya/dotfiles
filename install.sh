@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 set -eu
 cd $(dirname $0)
+source cli/profile/config/profile
 
 info()
 {
@@ -46,6 +47,7 @@ packages()
 
 install()
 {
+	[[ -f install.sh ]] && source install.sh
 	for topic in $(find . -mindepth 1 -maxdepth 1 -type d -not -name '.*'); do
 		if [[ ${topic##*.} == "ln" ]]; then
 			local dest=~/.$(basename ${topic%.*})
