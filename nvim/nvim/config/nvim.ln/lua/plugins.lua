@@ -49,8 +49,10 @@ return packer.startup(function(use)
 	use "tpope/vim-repeat"
 	use "tpope/vim-sleuth"
 	use "nishigori/increment-activator"
+
 	use { "airblade/vim-rooter", config = function() vim.g.rooter_manual_only = 1 end }
 	use { "Pocco81/AutoSave.nvim", config = function() require "autosave".setup() end }
+	use { "AckslD/nvim-gfold.lua" }
 
 
 	use "ggandor/lightspeed.nvim"
@@ -65,8 +67,7 @@ return packer.startup(function(use)
 		'stevearc/dressing.nvim',
 	}
 	use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
-	use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
-	use {'kevinhwang91/nvim-bqf', ft = 'qf'}
+	use {'kevinhwang91/nvim-bqf'}
 	use "folke/which-key.nvim"
 	use "akinsho/toggleterm.nvim"
 	use { "RRethy/vim-hexokinase", run = "make hexokinase", config = function()

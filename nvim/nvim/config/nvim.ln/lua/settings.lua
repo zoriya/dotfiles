@@ -80,6 +80,8 @@ keymap("x", "<leader>P", '"+P', opts)
 
 keymap("t", "<C-W>", "<C-\\><C-N><C-W>", opts)
 
+vim.cmd("autocmd FileType qf setl nolist")
+vim.cmd("syntax on")
 vim.cmd [[
 	augroup highlight_yank
 		autocmd!

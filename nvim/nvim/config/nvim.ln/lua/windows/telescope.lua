@@ -26,6 +26,8 @@ telescope.setup({
 		mappings = {
 			i = {
 				["<esc>"] = actions.close,
+				["<C-h>"] = function () vim.api.nvim_input("<C-w>") end,
+				["<C-BS>"]  = function () vim.api.nvim_input("<C-w>") end,
 				["<A-k>"] = actions.move_selection_previous,
 				["<A-j>"] = actions.move_selection_next,
 				["<c-t>"] = require "trouble.providers.telescope".open_with_trouble
