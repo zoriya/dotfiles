@@ -113,7 +113,7 @@ return packer.startup(function(use)
 	use "numToStr/Comment.nvim"
 	use "JoosepAlviste/nvim-ts-context-commentstring"
 	use { "danymat/neogen", requires = "nvim-treesitter/nvim-treesitter",}
-
+	use { "SmiteshP/nvim-gps", requires = "nvim-treesitter/nvim-treesitter" }
 
 	use "mfussenegger/nvim-dap"
 	use { "theHamsta/nvim-dap-virtual-text", requires = { "nvim-treesitter/nvim-treesitter" } }
