@@ -66,14 +66,18 @@ return packer.startup(function(use)
 		{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
 		'stevearc/dressing.nvim',
 	}
+
 	use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
 	use {'kevinhwang91/nvim-bqf'}
+
 	use "folke/which-key.nvim"
 	use "akinsho/toggleterm.nvim"
+	use "kyazdani42/nvim-tree.lua"
+
+	use "nvim-lualine/lualine.nvim"
 	use { "RRethy/vim-hexokinase", run = "make hexokinase", config = function()
 		vim.g["Hexokinase_optInPatterns"] = "full_hex,triple_hex,rgb,rgba,hsl,hsla"
 	end }
-	use "kyazdani42/nvim-tree.lua"
 
 
 	use {

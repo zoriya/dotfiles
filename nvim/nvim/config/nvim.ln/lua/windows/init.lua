@@ -6,4 +6,5 @@ require "windows.scrollbar"
 require "windows.colorcolumn"
 require "windows.tree"
 require "windows.harpoon"
+require "windows.lualine"
 

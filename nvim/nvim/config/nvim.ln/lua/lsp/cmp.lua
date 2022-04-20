@@ -47,17 +47,6 @@ cmp.setup({
 			require('luasnip').lsp_expand(args.body)
 		end,
 	},
-	-- enabled = function()
-	-- 	-- disable completion in comments
-	-- 	local context = require 'cmp.config.context'
-	-- 	-- keep command mode completion enabled when cursor is in a comment
-	-- 	if vim.api.nvim_get_mode().mode == 'c' then
-	-- 		return true
-	-- 	else
-	-- 		return not context.in_treesitter_capture("comment")
-	-- 			and not context.in_syntax_group("Comment")
-	-- 	end
-	-- end,
 	mapping = {
 		["<Up>"] = cmp.mapping.select_prev_item(),
 		["<Down>"] = cmp.mapping.select_next_item(),
@@ -80,7 +69,7 @@ cmp.setup({
 			else
 				fallback()
 			end
-			end, { "i", "s" }),
+		end, { "i", "s" }),
 
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
@@ -95,19 +84,12 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = 'luasnip' },
-		-- { name = "buffer" },
 		{ name = "path" },
 	},
 	formatting = {
 		fields = { "abbr", "kind" },
-		format = function(entry, vim_item)
+		format = function(_, vim_item)
 			vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
-			-- vim_item.menu = ({
-			-- 	nvim_lsp = "[LSP]",
-			-- 	luasnip = "[Snippet]",
-			-- 	buffer = "[Buffer]",
-			-- 	path = "[Path]",
-			-- })[entry.source.name]
 			return vim_item
 		end,
 	},
@@ -124,7 +106,10 @@ cmp.setup({
 cmp.setup.cmdline('/', {
 	sources = {
 		{ name = 'buffer' }
-	}
+	},
+	view = {
+		entries = { name = 'wildmenu' }
+	},
 })
 
 cmp.setup.cmdline(':', {
@@ -132,5 +117,8 @@ cmp.setup.cmdline(':', {
 		{ name = 'path' }
 	}, {
 		{ name = 'cmdline' }
-	})
+	}),
+	view = {
+		entries = { name = 'wildmenu' }
+	},
 })
