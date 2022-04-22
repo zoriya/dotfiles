@@ -87,6 +87,7 @@ return packer.startup(function(use)
 	use "Hoffs/omnisharp-extended-lsp.nvim"
 	use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
 	use "b0o/schemastore.nvim"
+
 	use {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
@@ -97,6 +98,7 @@ return packer.startup(function(use)
 		"saadparwaiz1/cmp_luasnip",
 	}
 	use "rafamadriz/friendly-snippets"
+
 	use "ray-x/lsp_signature.nvim"
 	use {
 		"narutoxy/dim.lua",
@@ -117,6 +119,7 @@ return packer.startup(function(use)
 
 	use "mfussenegger/nvim-dap"
 	use { "theHamsta/nvim-dap-virtual-text", requires = { "nvim-treesitter/nvim-treesitter" } }
+	use "nvim-telescope/telescope-dap.nvim"
 
 
 	use { "rcarriga/vim-ultest", requires = {"vim-test/vim-test"}, run = ":UpdateRemotePlugins" }

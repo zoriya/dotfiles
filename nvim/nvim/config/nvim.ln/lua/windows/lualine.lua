@@ -53,7 +53,7 @@ lualine.setup({
 			},
 			{ gps.get_location, cond = gps_on and gps.is_available },
 		},
-		lualine_x = { 'fileformat', },
+		lualine_x = { require "dap".status, 'fileformat', },
 		lualine_y = { 'branch', 'progress' },
 		lualine_z = {
 			{

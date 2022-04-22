@@ -2,7 +2,7 @@ cbuild()
 {
 	SOURCEDIR=$(pwd)
 	BUILDDIR=${1:="build"}
-	mkdir -p $BUILDDIR && cd $BUILDDIR && cmake $SOURCEDIR && make -j $2
+	mkdir -p $BUILDDIR && cd $BUILDDIR && cmake $SOURCEDIR && bear -- make -j $2
 	RET=$?
 	cd $SOURCEDIR
 	(exit $RET)

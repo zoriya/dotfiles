@@ -3,8 +3,8 @@ if not ok then
 	return
 end
 
-dap.defaults.fallback.focus_terminal = true
-dap.defaults.fallback.terminal_win_cmd = ":lua require('dap.ui.widgets').new_centered_float_win(vim.api.nvim_create_buf(false, true))"
+dap.defaults.fallback.exception_breakpoints = { "throw" }
+dap.defaults.csharp.exception_breakpoints = { "throw" }
 
 dap.adapters = {
 	coreclr = {
@@ -18,13 +18,12 @@ dap.configurations = {
 	cs = {
 		{
 			type = "coreclr",
-			name = "launch - netcoredbg",
+			name = "netcoredbg",
 			request = "launch",
 			program = function()
 				return "/home/anonymus-raccoon/projects/Kyoo/src/Kyoo.Host.Console/bin/Debug/net6.0/Kyoo.Host.Console.dll"
 				-- return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
 			end,
-			console = "externalTerminal",
 		},
 	},
 	scala = {
@@ -57,34 +56,6 @@ require("nvim-dap-virtual-text").setup({
 	show_stop_reason = true,
 })
 
-local api = vim.api
-local keymap_restore = {}
-dap.listeners.after['event_initialized']['me'] = function()
-	for _, buf in pairs(api.nvim_list_bufs()) do
-		local keymaps = api.nvim_buf_get_keymap(buf, 'n')
-		for _, keymap in pairs(keymaps) do
-			if keymap.lhs == "K" then
-				table.insert(keymap_restore, keymap)
-				api.nvim_buf_del_keymap(buf, 'n', 'K')
-			end
-		end
-	end
-	api.nvim_set_keymap('n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
-end
-
-dap.listeners.after['event_terminated']['me'] = function()
-	for _, keymap in pairs(keymap_restore) do
-		api.nvim_buf_set_keymap(
-			keymap.buffer,
-			keymap.mode,
-			keymap.lhs,
-			keymap.rhs,
-			{ silent = keymap.silent == 1 }
-		)
-	end
-	keymap_restore = {}
-end
-
 local wk = require("which-key")
 wk.register({
 	d = {
@@ -92,11 +63,23 @@ wk.register({
 		t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
 		b = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", "Conditional Breakpoint" },
 		r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "REPL" },
-		c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-		n = { "<cmd>lua require'dap'.step_over()<cr>", "Next" },
-		s = { "<cmd>lua require'dap'.step_into()<cr>", "Step" },
-		o = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
+		s = { "<cmd>lua require'dap'.terminate()<cr>", "Stop session" },
+		v = { "<cmd>lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes).open()<cr>", "Variables" },
+		w = { "<cmd>Telescope dap frames<cr>", "Where (stack frames)" },
 	},
 }, {
 	prefix = "<leader>"
 })
+wk.register({
+	["<A-c>"] = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+	["<A-n>"] = { "<cmd>lua require'dap'.step_over()<cr>", "Next" },
+	["<A-s>"] = { "<cmd>lua require'dap'.step_into({askForTargets=true})<cr>", "Step" },
+	["<A-o>"] = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
+	["<A-l>"] = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to line (cursor)" },
+	["<A-k>"] = { "<Cmd>lua require('dap.ui.widgets').hover()<CR>", "DAP Hover" },
+})
+
+local pok, telescope = pcall(require, "telescope")
+if pok then
+	telescope.load_extension('dap')
+end
