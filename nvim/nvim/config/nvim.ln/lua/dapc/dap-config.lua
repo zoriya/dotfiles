@@ -3,8 +3,7 @@ if not ok then
 	return
 end
 
-dap.defaults.fallback.exception_breakpoints = { "throw" }
-dap.defaults.csharp.exception_breakpoints = { "throw" }
+dap.defaults.csharp.exception_breakpoints = { "user-unhandled" }
 
 dap.adapters = {
 	coreclr = {
@@ -66,6 +65,7 @@ wk.register({
 		s = { "<cmd>lua require'dap'.terminate()<cr>", "Stop session" },
 		v = { "<cmd>lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes).open()<cr>", "Variables" },
 		w = { "<cmd>Telescope dap frames<cr>", "Where (stack frames)" },
+		e = { "<cmd>lua require'dap'.set_exception_breakpoints()<cr>", "Exception breakpoints" },
 	},
 }, {
 	prefix = "<leader>"

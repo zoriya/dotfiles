@@ -119,7 +119,8 @@ return packer.startup(function(use)
 
 	use "mfussenegger/nvim-dap"
 	use { "theHamsta/nvim-dap-virtual-text", requires = { "nvim-treesitter/nvim-treesitter" } }
-	use "nvim-telescope/telescope-dap.nvim"
+	use "AnonymusRaccoon/telescope-dap.nvim"
+	-- use "nvim-telescope/telescope-dap.nvim"
 
 
 	use { "rcarriga/vim-ultest", requires = {"vim-test/vim-test"}, run = ":UpdateRemotePlugins" }
