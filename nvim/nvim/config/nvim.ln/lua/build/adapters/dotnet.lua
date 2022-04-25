@@ -1,3 +1,5 @@
+local Job = require'plenary.job'
+
 local M = {}
 
 M.pattern = "*.sln"
@@ -16,8 +18,14 @@ M.list = function ()
 	return ret
 end
 
-M.build = function ()
-	return "dotnet build"
+M.build = function (proj, opts)
+	return Job:new(vim.tbl_deep_extend("force", opts, {
+		command = "dotnet",
+		args = {"build", proj},
+		on_stdout = function(error, data)
+			print(error, data)
+		end,
+	}))
 end
 
 M.errorformat = [[%f(%l\,%c): %t%*[^ ] %m]]

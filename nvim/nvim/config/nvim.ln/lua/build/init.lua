@@ -1,10 +1,11 @@
+local Job = require'plenary.job'
 local has_icon, nwicon = pcall(require, 'nvim-web-devicons')
 
 local M = {
 	adapters = {},
 	projects = {},
 	config = {
-		height = 10,
+		height = 15,
 	},
 }
 
@@ -35,7 +36,7 @@ M.select_proj = function (on_select)
 				vim.fn.fnamemodify(proj.file, ':e'),
 				{ default = true }
 			) or " "
-			return icon .. " " .. proj.name
+			return icon .. " " .. proj.name, { {{0, 5}, "Comment"} }
 		end
 	}, function (proj)
 		if not proj then return end
@@ -63,13 +64,9 @@ M.build = function (post)
 		M.select_proj(M.build)
 		return
 	end
-	M._post_callback = post
-	M._old_efm = vim.g.errorformat
-	local old = vim.g.asyncrun_open
-	vim.g.asyncrun_open = M.config.height
-	vim.go.errorformat = proj.adapter.errorformat
-	vim.cmd(":AsyncRun -post=lua\\ require('build').post_build() " .. proj.adapter.build(proj))
-	vim.g.asyncrun_open = old
+	proj.adapter.build(proj, {
+		on_exit = post,
+	}):start()
 end
 
 M.run = function ()
