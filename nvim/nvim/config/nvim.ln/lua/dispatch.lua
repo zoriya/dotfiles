@@ -4,7 +4,7 @@ vim.g["dispatch_no_maps"] = 1
 
 local wk = require("which-key")
 wk.register({
-	b = {
+	m = {
 		name = "Build",
 		b = { "<cmd>lua require('build').build()<cr>", "Build project" },
 		r = { "<cmd>lua require('build').run()<cr>", "Run project" },

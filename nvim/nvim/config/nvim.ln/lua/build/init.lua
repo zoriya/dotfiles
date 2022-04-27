@@ -19,6 +19,11 @@ M.list_projs = function ()
 			for _, proj in pairs(adapter.list(match)) do
 				proj.adapter = adapter
 				proj.source = match
+				proj.icon = proj.icon or has_icon and nwicon.get_icon(
+					vim.fn.fnamemodify(proj.file, ':t'),
+					vim.fn.fnamemodify(proj.file, ':e'),
+					{ default = true }
+				) or " "
 				table.insert(projs, proj)
 			end
 		end
@@ -31,12 +36,7 @@ M.select_proj = function (on_select)
 	vim.ui.select(projs, {
 		prompt = "Select a project",
 		format_item = function (proj)
-			local icon = proj.icon or has_icon and nwicon.get_icon(
-				vim.fn.fnamemodify(proj.file, ':t'),
-				vim.fn.fnamemodify(proj.file, ':e'),
-				{ default = true }
-			) or " "
-			return icon .. " " .. proj.name, { {{0, 5}, "Comment"} }
+			return proj.icon .. " " .. proj.name
 		end
 	}, function (proj)
 		if not proj then return end
@@ -61,9 +61,16 @@ end
 M.build = function (post)
 	local proj = M.get_project()
 	if not proj then
-		M.select_proj(M.build)
+		M.select_proj(function() M.build(post) end)
 		return
 	end
+
+	vim.fn.setqflist({}, "r", {
+		title = proj.icon .. " " .. proj.name,
+	})
+	vim.api.nvim_command('copen')
+    vim.api.nvim_command('wincmd p')
+
 	proj.adapter.build(proj, {
 		on_exit = post,
 	}):start()
@@ -75,15 +82,19 @@ M.run = function ()
 		M.select_proj(M.run)
 		return
 	end
-	M.build(function (status)
-		print(status)
-		if status == 0 then
-			vim.cmd(":cclose")
-			vim.cmd(":AsyncRun -mode=terminal -focus=0 -rows=" .. M.config.height .. " " .. proj.adapter.run(proj))
-		else
-			vim.notify("Build failed")
-		end
-	end)
+	if proj.adapter.require_build then
+		M.build(function (status)
+			if status == 0 then
+				M.run()
+			else
+				vim.notify("Build failed")
+			end
+		end)
+		return
+	end
+	vim.api.nvim_command(":cclose")
+	proj.adapter.run(proj):Start()
+	-- vim.cmd(":AsyncRun -mode=terminal -focus=0 -rows=" .. M.config.height .. " " .. proj.adapter.run(proj))
 end
 
 M.cancel = function ()
