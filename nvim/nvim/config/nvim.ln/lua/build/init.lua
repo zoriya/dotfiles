@@ -51,13 +51,6 @@ M.get_project = function ()
 	return M.projects[vim.fn.getcwd()]
 end
 
-M.post_build = function ()
-	vim.g.errorformat = M._old_efm
-	if M._post_callback then
-		M._post_callback(vim.g.asyncrun_code)
-	end
-end
-
 M.build = function (post)
 	local proj = M.get_project()
 	if not proj then
@@ -69,11 +62,11 @@ M.build = function (post)
 		title = proj.icon .. " " .. proj.name,
 	})
 	vim.api.nvim_command('copen')
-    vim.api.nvim_command('wincmd p')
+	vim.api.nvim_command('wincmd p')
 
-	proj.adapter.build(proj, {
-		on_exit = post,
-	}):start()
+	proj.adapter.build(proj)
+		:and_then(post)
+		:start()
 end
 
 M.run = function ()
@@ -93,7 +86,8 @@ M.run = function ()
 		return
 	end
 	vim.api.nvim_command(":cclose")
-	proj.adapter.run(proj):Start()
+	local buf = vim,api.nvim_create_buf(false, true)
+	proj.adapter.run(proj):start()
 	-- vim.cmd(":AsyncRun -mode=terminal -focus=0 -rows=" .. M.config.height .. " " .. proj.adapter.run(proj))
 end
 

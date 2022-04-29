@@ -18,7 +18,7 @@ M.list = function()
 	return ret
 end
 
-M.build = function(proj, opts)
+M.build = function(proj)
 	local function add_to_qf(err, data)
 		vim.fn.setqflist({}, "a", {
 			efm = [[%f(%l\,%c): %t%*[^ ] %m]],
@@ -26,12 +26,12 @@ M.build = function(proj, opts)
 		})
 	end
 
-	return Job:new(vim.tbl_deep_extend("force", opts, {
+	return Job:new({
 		command = "dotnet",
 		args = { "build", proj.csproj },
 		on_stdout = vim.schedule_wrap(add_to_qf),
 		on_stderr = vim.schedule_wrap(add_to_qf),
-	}))
+	})
 end
 
 
