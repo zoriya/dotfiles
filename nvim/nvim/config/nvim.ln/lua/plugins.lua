@@ -134,8 +134,6 @@ return packer.startup(function(use)
 	use { "lewis6991/gitsigns.nvim", requires = { 'nvim-lua/plenary.nvim' } }
 
 
-	use "skywind3000/asyncrun.vim"
-
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end

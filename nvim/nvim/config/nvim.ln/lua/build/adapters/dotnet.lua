@@ -36,16 +36,7 @@ end
 
 
 M.run = function(proj)
-	local function add_to_out(err, line)
-		
-	end
-
-	return Job:new({
-		command = "dotnet",
-		args = { "run", "--project", proj.csproj },
-		on_stdout = vim.schedule_wrap(add_to_out),
-		on_stderr = vim.schedule_wrap(add_to_out),
-	})
+	return "dotnet run --project " .. proj.csproj
 end
 
 M.require_build = false

@@ -1,4 +1,3 @@
-local Job = require'plenary.job'
 local has_icon, nwicon = pcall(require, 'nvim-web-devicons')
 
 local M = {
@@ -85,10 +84,18 @@ M.run = function ()
 		end)
 		return
 	end
-	vim.api.nvim_command(":cclose")
-	local buf = vim,api.nvim_create_buf(false, true)
-	proj.adapter.run(proj):start()
-	-- vim.cmd(":AsyncRun -mode=terminal -focus=0 -rows=" .. M.config.height .. " " .. proj.adapter.run(proj))
+	
+	vim.cmd("cclose")
+	local oldwin = vim.api.nvim_get_current_win()
+	vim.cmd(M.config.height .. "split")
+	local win = vim.api.nvim_get_current_win()
+	local buf = vim.api.nvim_create_buf(false, true)
+	vim.api.nvim_win_set_buf(win, buf)
+
+	vim.cmd("term " .. proj.adapter.run(proj))
+	vim.cmd("norm G")
+	vim.cmd("setl nonumber norelativenumber")
+	vim.api.nvim_set_current_win(oldwin)
 end
 
 M.cancel = function ()
