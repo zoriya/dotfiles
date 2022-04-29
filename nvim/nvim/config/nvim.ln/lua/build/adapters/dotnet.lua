@@ -1,22 +1,31 @@
 local Job = require 'plenary.job'
+local a = require("plenary.async_lib")
+local async, await = a.async, a.await
 
 local M = {}
 
 M.pattern = "*.sln"
 
-M.list = function()
-	local projs = io.popen("dotnet sln list | tail -n +3")
+M.list = async(function()
+	local ignore = 3
 	local ret = {}
-	for line in projs:lines() do
-		table.insert(ret, {
-			name = line:match("([^/]+).csproj$"),
-			csproj = line,
-			icon = "",
-		})
-	end
-	projs:close()
+
+	Job:new({
+		args = { "sln", "list" },
+		on_stdout = function(_, proj)
+			if ignore > 0 then
+				ignore = ignore - 1
+				return
+			end
+			table.insert(ret, {
+				name = proj:match("([^/]+).csproj$"),
+				csproj = proj,
+				icon = "",
+			})
+		end,
+	}):sync()
 	return ret
-end
+end)
 
 M.build = function(proj)
 	local function add_to_qf(err, data)

@@ -1,4 +1,6 @@
 local has_icon, nwicon = pcall(require, 'nvim-web-devicons')
+local a = require("plenary.async_lib")
+local async, await = a.async, a.await
 
 local M = {
 	adapters = {},
@@ -10,12 +12,12 @@ local M = {
 
 table.insert(M.adapters, require "build.adapters.dotnet")
 
-M.list_projs = function ()
+M.list_projs = async(function ()
 	local projs = {}
 
 	for _, adapter in pairs(M.adapters) do
 		for _, match in pairs(vim.fn.glob(adapter.pattern, false, true)) do
-			for _, proj in pairs(adapter.list(match)) do
+			for _, proj in pairs(await(adapter.list(match))) do
 				proj.adapter = adapter
 				proj.source = match
 				proj.icon = proj.icon or has_icon and nwicon.get_icon(
@@ -28,10 +30,10 @@ M.list_projs = function ()
 		end
 	end
 	return projs
-end
+end)
 
-M.select_proj = function (on_select)
-	local projs = M.list_projs()
+M.select_proj = async(function (on_select)
+	local projs = await(M.list_projs())
 	vim.ui.select(projs, {
 		prompt = "Select a project",
 		format_item = function (proj)
@@ -44,7 +46,7 @@ M.select_proj = function (on_select)
 			on_select()
 		end
 	end)
-end
+end)
 
 M.get_project = function ()
 	return M.projects[vim.fn.getcwd()]
