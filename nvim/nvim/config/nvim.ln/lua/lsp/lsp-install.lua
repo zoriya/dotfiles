@@ -38,6 +38,15 @@ local server_settings = {
 			},
 		},
 	},
+	robotframework_ls = {
+		settings = {
+			robot = {
+				variables = {
+					RESOURCES = vim.fn.getcwd() .. "/tests/robot/",
+				},
+			},
+		}
+	},
 }
 
 lsp_installer.settings({
