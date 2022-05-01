@@ -81,8 +81,7 @@ return packer.startup(function(use)
 
 
 	use 'neovim/nvim-lspconfig'
-	-- use 'williamboman/nvim-lsp-installer'
-	use '~/projects/nvim-lsp-installer'
+	use 'williamboman/nvim-lsp-installer'
 	use "Hoffs/omnisharp-extended-lsp.nvim"
 	use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
 	use "b0o/schemastore.nvim"
