@@ -5,13 +5,21 @@ end
 
 gfold.setup({
 	picker = {
-		on_select = function (repo)
-			print(repo)
+		on_select = function(repo)
 			if not repo then
 				return
 			end
-			vim.cmd("cd " .. repo.path .. "|%bw|e .")
-			print('toto')
+			vim.cmd("cd " .. repo.path)
+			vim.cmd("%bw!")
+			vim.lsp.stop_client(vim.lsp.get_active_clients())
+			vim.cmd("e .")
 		end
 	}
+})
+
+local wk = require "which-key"
+wk.register({
+	r = { "<cmd>lua require 'gfold'.pick_repo()<CR>", "Switch Repo" },
+}, {
+	prefix = "<leader>"
 })
