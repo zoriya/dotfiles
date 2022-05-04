@@ -54,6 +54,9 @@ return packer.startup(function(use)
 	use { "Pocco81/AutoSave.nvim", config = function() require "autosave".setup() end }
 	use { "AckslD/nvim-gfold.lua", branch = "fix-recursive-settings" }
 
+	use { "lewis6991/spellsitter.nvim", config = function() require('spellsitter').setup() end }
+	use {'psliwka/vim-dirtytalk', run = ':DirtytalkUpdate'}
+
 
 	use "ggandor/lightspeed.nvim"
 	use "ThePrimeagen/harpoon"
@@ -62,13 +65,13 @@ return packer.startup(function(use)
 	use "folke/tokyonight.nvim"
 
 	use {
-		{ 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} } },
+		{ 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } },
 		{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
 		'stevearc/dressing.nvim',
 	}
 
 	use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
-	use {'kevinhwang91/nvim-bqf'}
+	use { 'kevinhwang91/nvim-bqf' }
 
 	use "folke/which-key.nvim"
 	use "akinsho/toggleterm.nvim"
@@ -83,7 +86,7 @@ return packer.startup(function(use)
 	use 'neovim/nvim-lspconfig'
 	use 'williamboman/nvim-lsp-installer'
 	use "Hoffs/omnisharp-extended-lsp.nvim"
-	use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
+	use({ 'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" } })
 	use "b0o/schemastore.nvim"
 
 	use {
@@ -112,7 +115,7 @@ return packer.startup(function(use)
 	use "windwp/nvim-ts-autotag"
 	use "numToStr/Comment.nvim"
 	use "JoosepAlviste/nvim-ts-context-commentstring"
-	use { "danymat/neogen", requires = "nvim-treesitter/nvim-treesitter",}
+	use { "danymat/neogen", requires = "nvim-treesitter/nvim-treesitter", }
 	use { "SmiteshP/nvim-gps", requires = "nvim-treesitter/nvim-treesitter" }
 
 	use "mfussenegger/nvim-dap"
@@ -121,7 +124,7 @@ return packer.startup(function(use)
 	-- use "nvim-telescope/telescope-dap.nvim"
 
 
-	use { "rcarriga/vim-ultest", requires = {"vim-test/vim-test"}, run = ":UpdateRemotePlugins" }
+	use { "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" }
 
 
 	use { "lukas-reineke/virt-column.nvim", config = function() require("virt-column").setup() end }
@@ -136,4 +139,3 @@ return packer.startup(function(use)
 		require("packer").sync()
 	end
 end)
-
