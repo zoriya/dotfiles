@@ -9,6 +9,9 @@ wk.setup({
 	window = {
 		border = "rounded",
 	},
+	spelling = {
+		enabled = false,
+	},
 	operators = {
 		gc = "Comments",
 		ys = "Add Surroundings",
@@ -38,4 +41,3 @@ wk.register({
 }, {
 	prefix = "<leader>"
 })
-

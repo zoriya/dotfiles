@@ -54,7 +54,7 @@ return packer.startup(function(use)
 	use { "Pocco81/AutoSave.nvim", config = function() require "autosave".setup() end }
 	use { "AckslD/nvim-gfold.lua", branch = "fix-recursive-settings" }
 
-	use { "lewis6991/spellsitter.nvim", config = function() require('spellsitter').setup() end }
+	use { "lewis6991/spellsitter.nvim" }
 	use {'psliwka/vim-dirtytalk', run = ':DirtytalkUpdate'}
 
 
