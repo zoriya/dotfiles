@@ -1,6 +1,4 @@
 local has_icon, nwicon = pcall(require, 'nvim-web-devicons')
-local a = require("plenary.async_lib")
-local async, await = a.async, a.await
 
 local M = {
 	adapters = {},
@@ -12,12 +10,14 @@ local M = {
 
 table.insert(M.adapters, require "build.adapters.dotnet")
 
-M.list_projs = async(function ()
+M.list_projs = function()
 	local projs = {}
+
+	-- TODO: Use async methods here. (currently waiting for plenary async jobs)
 
 	for _, adapter in pairs(M.adapters) do
 		for _, match in pairs(vim.fn.glob(adapter.pattern, false, true)) do
-			for _, proj in pairs(await(adapter.list(match))) do
+			for _, proj in pairs(adapter.list(match)) do
 				proj.adapter = adapter
 				proj.source = match
 				proj.icon = proj.icon or has_icon and nwicon.get_icon(
@@ -30,29 +30,29 @@ M.list_projs = async(function ()
 		end
 	end
 	return projs
-end)
+end
 
-M.select_proj = async(function (on_select)
-	local projs = await(M.list_projs())
+M.select_proj = function(on_select)
+	local projs = M.list_projs()
 	vim.ui.select(projs, {
 		prompt = "Select a project",
-		format_item = function (proj)
+		format_item = function(proj)
 			return proj.icon .. " " .. proj.name
 		end
-	}, function (proj)
+	}, function(proj)
 		if not proj then return end
 		M.projects[vim.fn.getcwd()] = proj
 		if on_select then
 			on_select()
 		end
 	end)
-end)
+end
 
-M.get_project = function ()
+M.get_project = function()
 	return M.projects[vim.fn.getcwd()]
 end
 
-M.build = function (post)
+M.build = function(post)
 	local proj = M.get_project()
 	if not proj then
 		M.select_proj(function() M.build(post) end)
@@ -70,14 +70,14 @@ M.build = function (post)
 		:start()
 end
 
-M.run = function ()
+M.run = function()
 	local proj = M.get_project()
 	if not proj then
 		M.select_proj(M.run)
 		return
 	end
 	if proj.adapter.require_build then
-		M.build(function (status)
+		M.build(function(status)
 			if status == 0 then
 				M.run()
 			else
@@ -86,7 +86,7 @@ M.run = function ()
 		end)
 		return
 	end
-	
+
 	vim.cmd("cclose")
 	local oldwin = vim.api.nvim_get_current_win()
 	vim.cmd(M.config.height .. "split")
@@ -98,10 +98,6 @@ M.run = function ()
 	vim.cmd("norm G")
 	vim.cmd("setl nonumber norelativenumber")
 	vim.api.nvim_set_current_win(oldwin)
-end
-
-M.cancel = function ()
-	vim.cmd(":AsyncStop")
 end
 
 return M

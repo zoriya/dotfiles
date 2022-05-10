@@ -1,12 +1,10 @@
 local Job = require 'plenary.job'
-local a = require("plenary.async_lib")
-local async, await = a.async, a.await
 
 local M = {}
 
 M.pattern = "*.sln"
 
-M.list = async(function()
+M.list = function()
 	local ignore = 3
 	local ret = {}
 
@@ -25,7 +23,7 @@ M.list = async(function()
 		end,
 	}):sync()
 	return ret
-end)
+end
 
 M.build = function(proj)
 	local function add_to_qf(err, data)
