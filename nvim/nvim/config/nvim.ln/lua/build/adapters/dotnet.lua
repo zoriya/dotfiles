@@ -2,7 +2,7 @@ local Job = require 'plenary.job'
 
 local M = {}
 
-M.pattern = "*.sln"
+M.patterns = { "*.sln" }
 
 M.list = function()
 	local ignore = 3
