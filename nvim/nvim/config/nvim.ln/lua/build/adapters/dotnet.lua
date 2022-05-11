@@ -9,6 +9,7 @@ M.list = function()
 	local ret = {}
 
 	Job:new({
+		command = "dotnet",
 		args = { "sln", "list" },
 		on_stdout = function(_, proj)
 			if ignore > 0 then

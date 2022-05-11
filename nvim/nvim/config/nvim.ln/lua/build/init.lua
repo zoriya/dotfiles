@@ -66,7 +66,7 @@ M.build = function(post)
 	vim.api.nvim_command('wincmd p')
 
 	proj.adapter.build(proj)
-		:and_then(post)
+		:after(vim.schedule_wrap(post))
 		:start()
 end
 
