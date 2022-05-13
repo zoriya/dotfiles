@@ -6,11 +6,13 @@ end
 vim.opt["timeoutlen"] = 500
 
 wk.setup({
+	plugins = {
+		spelling = {
+			enabled = true,
+		},
+	},
 	window = {
 		border = "rounded",
-	},
-	spelling = {
-		enabled = false,
 	},
 	operators = {
 		gc = "Comments",

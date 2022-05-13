@@ -52,7 +52,7 @@ return packer.startup(function(use)
 
 	use { "airblade/vim-rooter", config = function() vim.g.rooter_manual_only = 1 end }
 	use { "Pocco81/AutoSave.nvim", config = function() require "autosave".setup() end }
-	use { "AckslD/nvim-gfold.lua", branch = "fix-recursive-settings" }
+	use { "AckslD/nvim-gfold.lua" }
 
 	use { "lewis6991/spellsitter.nvim" }
 	use {'psliwka/vim-dirtytalk', run = ':DirtytalkUpdate'}
@@ -70,13 +70,13 @@ return packer.startup(function(use)
 		'stevearc/dressing.nvim',
 	}
 
-	use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
+	-- use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
+	use { "git@github.com:AnonymusRaccoon/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
 	use { 'kevinhwang91/nvim-bqf' }
 
 	use "folke/which-key.nvim"
 	use "akinsho/toggleterm.nvim"
-	-- use "metakirby5/codi.vim"
-	use "~/projects/codi.vim"
+	use "metakirby5/codi.vim"
 	use "kyazdani42/nvim-tree.lua"
 
 	use "nvim-lualine/lualine.nvim"

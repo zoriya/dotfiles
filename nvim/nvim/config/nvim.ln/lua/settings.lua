@@ -69,8 +69,8 @@ keymap("c", "<C-H>", "<C-w>", opts)
 
 keymap("n", "<leader>y", '"+y', opts)
 keymap("x", "<leader>y", '"+y', opts)
-keymap("n", "<leader>Y", '"+Y', opts)
-keymap("x", "<leader>Y", '"+Y', opts)
+keymap("n", "<leader>Y", '"+y$', opts)
+keymap("x", "<leader>Y", '"+y$', opts)
 
 keymap("n", "<leader>p", '"+p', opts)
 keymap("x", "<leader>p", '"+p', opts)

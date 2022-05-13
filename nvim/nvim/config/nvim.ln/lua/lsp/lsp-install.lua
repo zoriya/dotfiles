@@ -41,6 +41,7 @@ local server_settings = {
 	robotframework_ls = {
 		settings = {
 			robot = {
+				codeFormatter = "robotidy",
 				variables = {
 					RESOURCES = vim.fn.getcwd() .. "/tests/robot/",
 				},
@@ -70,4 +71,3 @@ lsp_installer.on_server_ready(function(server)
 	end
 	server:setup(opts)
 end)
-

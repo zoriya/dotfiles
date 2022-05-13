@@ -5,6 +5,7 @@ end
 
 trouble.setup({
 	auto_close = false,
+	min_severity = "Warning",
 })
 
 local wk = require("which-key")
