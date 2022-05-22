@@ -73,7 +73,7 @@ local lsp_keymaps = function(bufnr)
 			r = { '<cmd>lua vim.lsp.buf.rename()<CR>', "Rename" },
 			a = { '<cmd>lua vim.lsp.buf.code_action()<CR>', "Code action" },
 			l = { '<cmd>lua vim.lsp.codelens.run()<CR>', "Run code lens" },
-			f = { '<cmd>lua vim.lsp.buf.format({filter=_LSP_FORMAT_FILTER})<CR>', "Format" },
+			f = { '<cmd>lua vim.lsp.buf.format({filter=_LSP_FORMAT_FILTER, async=true})<CR>', "Format" },
 			g = { '<cmd>Telescope lsp_document_symbols<CR>', "Go to symbol" },
 		}
 	}, {
