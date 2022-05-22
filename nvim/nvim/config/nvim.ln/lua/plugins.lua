@@ -52,10 +52,11 @@ return packer.startup(function(use)
 
 	use { "airblade/vim-rooter", config = function() vim.g.rooter_manual_only = 1 end }
 	use { "Pocco81/AutoSave.nvim", config = function() require "autosave".setup() end }
-	use { "AckslD/nvim-gfold.lua" }
+	use "AnonymusRaccoon/nvim-gfold.lua"
+	-- use { "AckslD/nvim-gfold.lua" }
 
 	use { "lewis6991/spellsitter.nvim" }
-	use {'psliwka/vim-dirtytalk', run = ':DirtytalkUpdate'}
+	use { 'psliwka/vim-dirtytalk', run = ':DirtytalkUpdate' }
 
 
 	use "ggandor/lightspeed.nvim"
@@ -90,6 +91,7 @@ return packer.startup(function(use)
 	use "Hoffs/omnisharp-extended-lsp.nvim"
 	use({ 'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" } })
 	use "b0o/schemastore.nvim"
+	use "jose-elias-alvarez/null-ls.nvim"
 
 	use {
 		"hrsh7th/cmp-nvim-lsp",
@@ -136,6 +138,12 @@ return packer.startup(function(use)
 	use "tpope/vim-fugitive"
 	use { "lewis6991/gitsigns.nvim", requires = { 'nvim-lua/plenary.nvim' } }
 
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+		ft = { "markdown" },
+	})
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

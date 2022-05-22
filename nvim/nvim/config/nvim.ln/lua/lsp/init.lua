@@ -3,4 +3,5 @@ require("lsp.handlers").setup()
 require "lsp.cmp"
 require "lsp.signature"
 require "lsp.metals"
+require "lsp.null-ls"
 

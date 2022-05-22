@@ -5,7 +5,7 @@ M.setup = function()
 		{ name = "DiagnosticSignError", text = "" },
 		{ name = "DiagnosticSignWarn", text = "" },
 		{ name = "DiagnosticSignHint", text = "" },
-		{ name = "DiagnosticSignInfo", text =  "" },
+		{ name = "DiagnosticSignInfo", text = "" },
 	}
 	for _, sign in ipairs(signs) do
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
@@ -25,7 +25,7 @@ M.setup = function()
 end
 
 local function lsp_highlight_document(client)
-	if client.resolved_capabilities.document_highlight then
+	if client.server_capabilities.documentHighlightProvider then
 		vim.cmd [[
 		augroup lsp_document_highlight
 		autocmd! * <buffer>
@@ -48,6 +48,15 @@ wk.register({
 	},
 })
 
+function _LSP_FORMAT_FILTER(clients)
+	for _, v in ipairs(clients) do
+		if v.name == "null-ls" and v.server_capabilities.documentFormattingProvider then
+			return { v }
+		end
+	end
+	return clients
+end
+
 local lsp_keymaps = function(bufnr)
 	wk.register({
 		g = {
@@ -64,7 +73,7 @@ local lsp_keymaps = function(bufnr)
 			r = { '<cmd>lua vim.lsp.buf.rename()<CR>', "Rename" },
 			a = { '<cmd>lua vim.lsp.buf.code_action()<CR>', "Code action" },
 			l = { '<cmd>lua vim.lsp.codelens.run()<CR>', "Run code lens" },
-			f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', "Format" },
+			f = { '<cmd>lua vim.lsp.buf.format({filter=_LSP_FORMAT_FILTER})<CR>', "Format" },
 			g = { '<cmd>Telescope lsp_document_symbols<CR>', "Go to symbol" },
 		}
 	}, {
