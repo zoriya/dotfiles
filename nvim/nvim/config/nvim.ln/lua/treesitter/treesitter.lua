@@ -12,7 +12,10 @@ configs.setup({
 	},
 	indent = {
 		enable = true,
-		disable = { "yaml" },
+		disable = {
+			"yaml",
+			"json",
+		},
 	},
 	context_commentstring = {
 		enable = true,

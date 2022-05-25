@@ -1,4 +1,5 @@
 local has_icon, nwicon = pcall(require, 'nvim-web-devicons')
+local scan = require 'plenary.scandir'
 
 local M = {
 	adapters = {},
@@ -10,6 +11,7 @@ local M = {
 
 table.insert(M.adapters, require "build.adapters.dotnet")
 table.insert(M.adapters, require "build.adapters.docker-compose")
+table.insert(M.adapters, require "build.adapters.npm")
 
 M.list_projs = function()
 	local projs = {}
@@ -17,21 +19,20 @@ M.list_projs = function()
 	-- TODO: Use async methods here. (currently waiting for plenary async jobs)
 
 	for _, adapter in pairs(M.adapters) do
-		for _, pattern in pairs(adapter.patterns) do
-			for _, match in pairs(vim.fn.glob(pattern, false, true)) do
-				for _, proj in pairs(adapter.list(match)) do
-					proj.adapter = adapter
-					proj.source = match
-					proj.icon = proj.icon or has_icon and nwicon.get_icon(
-						vim.fn.fnamemodify(proj.file, ':t'),
-						vim.fn.fnamemodify(proj.file, ':e'),
-						{ default = true }
-					) or " "
-					table.insert(projs, proj)
-				end
+		for _, match in pairs(scan.scan_dir(".", { search_pattern = adapter.patterns, respect_gitignore = true })) do
+			for _, proj in pairs(adapter.list(match)) do
+				proj.adapter = adapter
+				proj.source = match
+				proj.icon = proj.icon or has_icon and nwicon.get_icon(
+					vim.fn.fnamemodify(proj.file, ':t'),
+					vim.fn.fnamemodify(proj.file, ':e'),
+					{ default = true }
+				) or " "
+				table.insert(projs, proj)
 			end
 		end
 	end
+
 	return projs
 end
 

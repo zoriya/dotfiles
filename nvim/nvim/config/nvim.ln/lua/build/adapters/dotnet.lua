@@ -18,7 +18,7 @@ M.list = function()
 			end
 			table.insert(ret, {
 				name = proj:match("([^/]+).csproj$"),
-				csproj = proj,
+				file = proj,
 				icon = "",
 			})
 		end,
@@ -36,7 +36,7 @@ M.build = function(proj)
 
 	return Job:new({
 		command = "dotnet",
-		args = { "build", proj.csproj },
+		args = { "build", proj.file },
 		on_stdout = vim.schedule_wrap(add_to_qf),
 		on_stderr = vim.schedule_wrap(add_to_qf),
 	})
@@ -44,7 +44,7 @@ end
 
 
 M.run = function(proj)
-	return "dotnet run --project " .. proj.csproj
+	return "dotnet run --project " .. proj.file
 end
 
 M.require_build = false
