@@ -48,13 +48,14 @@ wk.register({
 	},
 })
 
-function _LSP_FORMAT_FILTER(clients)
-	for _, v in ipairs(clients) do
-		if v.name == "null-ls" and v.server_capabilities.documentFormattingProvider then
-			return { v }
+function _LSP_FORMAT_FILTER(client)
+	local clients = vim.lsp.get_active_clients({bufnr = 0})
+	for _, c in pairs(clients) do
+		if c.name == "null-ls" and c.server_capabilities.documentFormattingProvider then
+			return client.name == "null-ls"
 		end
 	end
-	return clients
+	return true
 end
 
 local lsp_keymaps = function(bufnr)

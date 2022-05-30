@@ -52,8 +52,7 @@ return packer.startup(function(use)
 
 	use { "airblade/vim-rooter", config = function() vim.g.rooter_manual_only = 1 end }
 	use { "Pocco81/AutoSave.nvim", config = function() require "autosave".setup() end }
-	use "AnonymusRaccoon/nvim-gfold.lua"
-	-- use { "AckslD/nvim-gfold.lua" }
+	use { "AckslD/nvim-gfold.lua" }
 
 	use { "lewis6991/spellsitter.nvim" }
 	use { 'psliwka/vim-dirtytalk', run = ':DirtytalkUpdate' }
