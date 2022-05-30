@@ -2,6 +2,7 @@ local ok, nl = pcall(require, "null-ls")
 if not ok then
 	return
 end
+local u = require("null-ls.utils")
 
 local sources = {
 	nl.builtins.code_actions.eslint,
@@ -10,6 +11,8 @@ local sources = {
 	nl.builtins.formatting.prettier,
 }
 nl.setup({
+	debug = false,
+	root_dir = u.root_pattern(".null-ls-root", "Makefile", ".git", "node_modules"),
 	sources = vim.tbl_map(function(source)
 		return source.with({
 			diagnostics_postprocess = function(diagnostic)
