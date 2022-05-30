@@ -7,6 +7,7 @@ signature.setup({
 	doc_lines = 100,
 	fix_pos = true,
 	always_trigger = true,
-
+	toggle_key = "<C-k>",
+	floating_window = false,
 })
 
