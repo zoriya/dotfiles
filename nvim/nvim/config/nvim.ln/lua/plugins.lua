@@ -77,7 +77,15 @@ return packer.startup(function(use)
 	use "folke/which-key.nvim"
 	use "akinsho/toggleterm.nvim"
 	use "metakirby5/codi.vim"
-	use "kyazdani42/nvim-tree.lua"
+
+	use {
+		"nvim-neo-tree/neo-tree.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"kyazdani42/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
+	}
 
 	use "nvim-lualine/lualine.nvim"
 	use { "RRethy/vim-hexokinase", run = "make hexokinase", config = function()
