@@ -14,6 +14,23 @@ end
 
 vim.opt["showmode"] = false
 
+local toggleterm = {
+	sections = {
+		lualine_a = {
+			{
+				'mode',
+				fmt = function(str) return string.format("%7s", str) end
+			},
+		},
+		lualine_b =  {
+			function()
+				return 'ToggleTerm #' .. vim.b.toggle_number
+			end
+		}
+	},
+	filetypes = { "toggleterm" },
+}
+
 lualine.setup({
 	options = {
 		theme = "auto",
@@ -64,7 +81,8 @@ lualine.setup({
 	tabline = {},
 	extensions = {
 		"quickfix",
-		"nvim-tree",
+		"neo-tree",
 		"fugitive",
+		toggleterm
 	},
 })
