@@ -22,6 +22,10 @@ nl.setup({
 	end, sources),
 })
 
+
+vim.cmd("autocmd BufRead,BufNewFile */node_modules/* lua vim.diagnostic.disable(0)")
+
+
 local function sort_ca_results(lsp_results)
 	local results = {}
 	local null_results = {}

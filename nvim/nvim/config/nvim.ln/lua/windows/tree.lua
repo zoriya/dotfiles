@@ -34,6 +34,7 @@ neotree.setup {
 	window = {
 		position = "current",
 		mappings = {
+			["<space>"] = "none",
 			["<2-LeftMouse>"] = "open",
 			["<cr>"] = "open",
 			["S"] = "open_split",
