@@ -1,7 +1,14 @@
+! Reload this: xrdb ~/.config/Xresources
+
 ! TokyoNight colors for Xresources
 
-*background: #1a1b26
-*foreground: #c0caf5
+! ! special
+*background:   #1a1b26
+*foreground:   #c0caf5
+*accent:       #bb9af7
+*secondary:    #f7768e
+*border:       #414868
+*cursorColor:  #d8dee9
 
 *color0: #15161E
 *color1: #f7768e

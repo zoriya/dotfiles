@@ -4,4 +4,4 @@ icon=
 
 cmd=$(date +"%R")
 
-echo -n "^c#0f111a^^b#FF4151^ $icon $cmd ^d^"
+echo -n "^C18^^B16^ $icon $cmd ^d^"
