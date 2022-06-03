@@ -30,6 +30,8 @@ vim.g.vimtex_mappings_disable = {
 }
 vim.g.vimtex_syntax_enabled = false -- Treesiter for the win.
 vim.g.vimtex_syntax_conceal_disable = true
+vim.g.vimtex_quickfix_enabled = false
+vim.g.vimtex_view_method = "zathura"
 
 function LATEX_PREVIEW()
 	local wk = require "which-key"
