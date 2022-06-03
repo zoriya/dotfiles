@@ -15,7 +15,7 @@ case $BUTTON in
 esac
 
 if [ "$pid" = "" ]; then
-	echo "^c#ebcb8b^^d^"
+	echo "^C11^^d^"
 else
-	echo "^c#ebcb8b^^d^"
+	echo "^C11^^d^"
 fi

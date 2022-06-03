@@ -5,7 +5,7 @@ case $BUTTON in
 esac
 
 if [ $(dunstctl is-paused) = "true" ]; then
-	echo "^c#88c0d0^ ^d^"
+	echo "^C6^ ^d^"
 else
-	echo "^c#88c0d0^ ^d^"
+	echo "^C6^ ^d^"
 fi
