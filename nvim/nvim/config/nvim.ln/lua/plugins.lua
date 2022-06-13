@@ -63,6 +63,7 @@ return packer.startup(function(use)
 
 
 	use "folke/tokyonight.nvim"
+	use { "catppuccin/nvim", as = "catppuccin" }
 
 	use {
 		{ 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } },

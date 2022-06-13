@@ -14,7 +14,11 @@ gfold.setup({
 			vim.lsp.stop_client(vim.lsp.get_active_clients())
 			vim.cmd("e .")
 		end
-	}
+	},
+	status = {
+		enable = false,
+	},
+	cwd = vim.fn.getenv("HOME") .. "/projects",
 })
 
 local wk = require "which-key"

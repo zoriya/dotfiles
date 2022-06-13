@@ -48,6 +48,15 @@ local server_settings = {
 			},
 		}
 	},
+	ltex = {
+		settings = {
+			ltex = {
+				dictionary = {
+					en = { ":~/.cache/nvim/ltex.dictionary.en-us.txt" },
+				},
+			},
+		},
+	},
 }
 
 lsp_installer.settings({
