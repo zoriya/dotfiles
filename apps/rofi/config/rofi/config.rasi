@@ -10,7 +10,6 @@ window {
 	background-color: @background;
 	text-color: @foreground;
 	border: 1px;
-	border-radius: 20;
 	border-color: @accent;
 }
 
@@ -97,3 +96,5 @@ element selected {
 	border-radius: 0px;
 	border-color: @accent;
 }
+
+/* vim:ft=css

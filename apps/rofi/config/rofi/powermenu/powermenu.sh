@@ -11,7 +11,7 @@ logout=""
 
 opt=($lock $suspend $logout $reboot $shutdown)
 
-case $(print -l "${(@)opt}" | rofi -theme ./powermenu.rasi -dmenu) in
+case $(print -l "${(@)opt}" | dmenu -theme ./powermenu.rasi) in
 $cancel)   ;;
 $shutdown) systemctl poweroff ;;
 $reboot)   systemctl reboot ;;

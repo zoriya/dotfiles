@@ -1,0 +1,6 @@
+#! /usr/bin/zsh
+
+export -- $(xrdb -query -all | tr -d \* | sed 's/:[ \t]*/=/')
+cat | /usr/bin/rofi $@
+
+# vim: set ft=zsh :

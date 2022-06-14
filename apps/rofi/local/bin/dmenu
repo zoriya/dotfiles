@@ -1,0 +1,5 @@
+#! /usr/bin/zsh
+
+cat | rofi -dmenu $@
+
+# vim: set ft=zsh :
