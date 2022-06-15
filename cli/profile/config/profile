@@ -9,6 +9,12 @@ export XDG_DATA_DIRS="$XDG_DATA_HOME:/usr/share:/usr/local/share"
 export DOTFILES=$(realpath $(dirname $(realpath $XDG_CONFIG_HOME/profile))/../../..)
 export PATH=$HOME/.local/bin:$PATH
 
+# IBUS (input processor (for japanese))
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export GLFW_IM_MODULE=ibus
+
 # Load dotfiles from XDG directories instead of the HOME.
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export HISTFILE="$XDG_STATE_HOME"/zsh/history

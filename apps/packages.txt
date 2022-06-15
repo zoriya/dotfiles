@@ -40,6 +40,13 @@ noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 
+# Japanese
+fcitx5
+fcitx5-qt
+fcitx5-gtk
+fcitx5-lua
+fcitx5-mozc
+
 # Apps
 feh
 rofi
