@@ -6,8 +6,8 @@ esac
 
 echo -n "^C6^ ^d^"
 
-if [[ $(fcitx5-remote) = "1" ]]; then
-	echo "en"
-else
+if [[ $(fcitx5-remote) = "2" ]]; then
 	echo "jp"
+else
+	echo "en"
 fi
