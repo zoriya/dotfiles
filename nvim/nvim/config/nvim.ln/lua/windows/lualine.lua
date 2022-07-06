@@ -3,13 +3,11 @@ if not status_ok then
 	return
 end
 
-local gps_on, gps = pcall(require, "nvim-gps")
+local gps_on, gps = pcall(require, "nvim-navic")
 if gps_on then
-	gps.setup({
-		icons = {
-			["container-name"] = '⛶ ',
-		}
-	})
+	gps.setup {
+		highlight = true,
+	}
 end
 
 vim.opt["showmode"] = false
