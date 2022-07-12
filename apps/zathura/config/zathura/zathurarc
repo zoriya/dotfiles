@@ -1,2 +1,5 @@
 set sandbox none
-
+map d scroll half-down
+map u scroll half-up
+set pages-per-row 1
+set scroll-step 5

@@ -114,9 +114,10 @@ return packer.startup(function(use)
 
 	use "ray-x/lsp_signature.nvim"
 	use {
-		"narutoxy/dim.lua",
-		requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
-		config = function() require('dim').setup({}) end
+		"zbirenbaum/neodim",
+		config = function()
+			require("neodim").setup()
+		end
 	}
 	use { "j-hui/fidget.nvim", config = function() require("fidget").setup {} end }
 
