@@ -21,3 +21,5 @@ alias "o"="l"
 alias "k"="l"
 
 alias ls="exa --group"
+alias lg="exa --git-ignore"
+alias llg="exa -l --git-ignore"
