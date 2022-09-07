@@ -9,3 +9,7 @@ catch /^Vim\%((\a\+)\)\=:E185/
 	set background=dark
 endtry
 ]]
+
+vim.cmd [[
+	hi link LspComment Comment
+]]

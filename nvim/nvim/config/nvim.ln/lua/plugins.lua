@@ -100,6 +100,8 @@ return packer.startup(function(use)
 	use({ 'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" } })
 	use "b0o/schemastore.nvim"
 	use "jose-elias-alvarez/null-ls.nvim"
+	use "lvimuser/lsp-inlayhints.nvim"
+	use "theHamsta/nvim-semantic-tokens"
 
 	use {
 		"hrsh7th/cmp-nvim-lsp",
@@ -137,7 +139,16 @@ return packer.startup(function(use)
 	-- use "nvim-telescope/telescope-dap.nvim"
 
 
-	use { "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" }
+	use {
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"antoinemadec/FixCursorHold.nvim"
+		}
+	}
+	use { "nvim-neotest/neotest-python" }
+	use { "nvim-neotest/neotest-vim-test", requires = { "vim-test/vim-test" } }
 
 
 	use { "lukas-reineke/virt-column.nvim", config = function() require("virt-column").setup() end }

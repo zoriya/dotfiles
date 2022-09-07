@@ -29,6 +29,8 @@ lsp_installer.setup({
 	}
 })
 
+local servers = {}
+
 lspconfig.omnisharp.setup({
 	handlers = {
 		["textDocument/definition"] = require('omnisharp_extended').handler,
@@ -41,11 +43,13 @@ lspconfig.omnisharp.setup({
 		["OMNISHARP_msbuild:EnablePackageAutoRestore"] = true,
 	},
 })
+table.insert(servers, "omnisharp")
 
 lspconfig.jsonls.setup({
 	settings = {
 		json = {
 			schemas = require('schemastore').json.schemas(),
+			validate = { enable = true },
 		},
 	},
 })
@@ -66,6 +70,7 @@ lspconfig.sumneko_lua.setup({
 		},
 	},
 })
+table.insert(servers, "sumneko_lua")
 
 lspconfig.robotframework_ls.setup({
 	settings = {
@@ -77,6 +82,7 @@ lspconfig.robotframework_ls.setup({
 		},
 	}
 })
+table.insert(servers, "robotframework_ls")
 
 lspconfig.ltex.setup({
 	settings = {
@@ -87,7 +93,47 @@ lspconfig.ltex.setup({
 		},
 	},
 })
+table.insert(servers, "ltex")
+
+lspconfig.tsserver.setup({
+	settings = {
+		typescript = {
+			inlayHints = {
+				includeInlayParameterNameHints = 'all',
+				includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			}
+		},
+		javascript = {
+			inlayHints = {
+				includeInlayParameterNameHints = 'all',
+				includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			}
+		}
+	}
+})
+table.insert(servers, "tsserver")
+
+local function contains(table, val)
+	for i = 1, #table do
+		if table[i] == val then
+			return true
+		end
+	end
+	return false
+end
 
 for _, server in ipairs(lsp_installer.get_installed_servers()) do
-	lspconfig[server.name].setup({})
+	if not contains(servers, server.name) then
+		lspconfig[server.name].setup({})
+	end
 end

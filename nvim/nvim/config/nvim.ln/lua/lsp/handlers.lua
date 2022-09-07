@@ -22,6 +22,19 @@ M.setup = function()
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 		border = "rounded",
 	})
+
+	local ok, inlay = pcall(require, "lsp-inlayhints")
+	if ok then
+		inlay.setup()
+	end
+
+	local shok, sh = pcall(require, "nvim-semantic-tokens")
+	if shok then
+		sh.setup {
+			preset = "default",
+			highlighters = { require 'nvim-semantic-tokens.table-highlighter' }
+		}
+	end
 end
 
 local function lsp_highlight_document(client)
@@ -49,7 +62,7 @@ wk.register({
 })
 
 function _LSP_FORMAT_FILTER(client)
-	local clients = vim.lsp.get_active_clients({bufnr = 0})
+	local clients = vim.lsp.get_active_clients({ bufnr = 0 })
 	for _, c in pairs(clients) do
 		if c.name == "null-ls" and c.server_capabilities.documentFormattingProvider then
 			return client.name == "null-ls"
@@ -92,11 +105,20 @@ local lsp_codelens = function()
 	-- vim.cmd [[ autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh() ]]
 end
 
+local lsp_semhighlight = function(client)
+	local caps = client.server_capabilities
+	if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
+		vim.cmd [[autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.buf.semantic_tokens_full()]]
+	end
+end
+
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 	lsp_codelens()
+	lsp_semhighlight(client)
 
+	require("lsp-inlayhints").on_attach(bufnr, client)
 	require "nvim-navic".attach(client, bufnr)
 end
 

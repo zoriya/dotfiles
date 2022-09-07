@@ -39,6 +39,8 @@ ttf-liberation
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
+ttf-roboto
+ttf-roboto-mono
 
 # Japanese
 fcitx5
