@@ -13,3 +13,4 @@ tree
 htop
 mlocate
 viu
+exa
