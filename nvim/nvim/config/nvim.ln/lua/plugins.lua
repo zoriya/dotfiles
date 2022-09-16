@@ -51,7 +51,8 @@ return packer.startup(function(use)
 	use "nishigori/increment-activator"
 
 	use { "airblade/vim-rooter", config = function() vim.g.rooter_manual_only = 1 end }
-	use { "Pocco81/AutoSave.nvim", config = function() require "autosave".setup() end }
+	use { "yyk/simply-auto-save.nvim", branch = "check-valid-buf",
+		config = function() require "auto-save".setup({ write_all_buffers = true }) end }
 	use { "AckslD/nvim-gfold.lua" }
 
 	use { "lewis6991/spellsitter.nvim" }

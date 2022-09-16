@@ -118,7 +118,7 @@ M.on_attach = function(client, bufnr)
 	lsp_codelens()
 	lsp_semhighlight(client)
 
-	require("lsp-inlayhints").on_attach(bufnr, client)
+	require("lsp-inlayhints").on_attach(client, bufnr)
 	require "nvim-navic".attach(client, bufnr)
 end
 
