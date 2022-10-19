@@ -45,3 +45,22 @@ vim.g.indent_blankline_show_current_context = true
 indent_blankline.setup({
 	show_current_context = true,
 })
+
+require("colorizer").setup {
+	filetypes = {
+		'*',
+		html = { names = true },
+		css = { names = true },
+	},
+	user_default_options = {
+		mode = "virtualtext",
+		RGB = true,
+		RRGGBB = true,
+		names = false,
+		RRGGBBAA = true,
+		AARRGGBB = true,
+		rgb_fn = true,
+		hsl_fn = true,
+		tailwind = true,
+	},
+}

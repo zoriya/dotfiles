@@ -23,11 +23,6 @@ M.setup = function()
 		border = "rounded",
 	})
 
-	local ok, inlay = pcall(require, "lsp-inlayhints")
-	if ok then
-		inlay.setup()
-	end
-
 	local shok, sh = pcall(require, "nvim-semantic-tokens")
 	if shok then
 		sh.setup {
@@ -57,7 +52,7 @@ wk.register({
 	["<leader>l"] = {
 		name = "LSP",
 		i = { "<cmd>LspInfo<cr>", "Info" },
-		I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+		I = { "<cmd>Mason<cr>", "Installer Info" },
 	},
 })
 
@@ -105,10 +100,18 @@ local lsp_codelens = function()
 	-- vim.cmd [[ autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh() ]]
 end
 
-local lsp_semhighlight = function(client)
+local lsp_semhighlight = function(client, bufnr)
 	local caps = client.server_capabilities
 	if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
-		vim.cmd [[autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.buf.semantic_tokens_full()]]
+		local augroup = vim.api.nvim_create_augroup("SemanticTokens", {})
+		vim.api.nvim_create_autocmd("TextChanged", {
+			group = augroup,
+			buffer = bufnr,
+			callback = function()
+				vim.lsp.buf.semantic_tokens_full()
+			end,
+		})
+		vim.lsp.buf.semantic_tokens_full()
 	end
 end
 
@@ -116,9 +119,8 @@ M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 	lsp_codelens()
-	lsp_semhighlight(client)
+	lsp_semhighlight(client, bufnr)
 
-	require("lsp-inlayhints").on_attach(client, bufnr)
 	require "nvim-navic".attach(client, bufnr)
 end
 
@@ -129,7 +131,7 @@ if not status_ok then
 	return M
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = cmp_nvim_lsp.default_capabilities()
 
 
 return M

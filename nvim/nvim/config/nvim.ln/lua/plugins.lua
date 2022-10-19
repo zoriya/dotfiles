@@ -90,18 +90,16 @@ return packer.startup(function(use)
 	}
 
 	use "nvim-lualine/lualine.nvim"
-	use { "RRethy/vim-hexokinase", run = "make hexokinase", config = function()
-		vim.g["Hexokinase_optInPatterns"] = "full_hex,triple_hex,rgb,rgba,hsl,hsla"
-	end }
-
+	use "NvChad/nvim-colorizer.lua"
 
 	use 'neovim/nvim-lspconfig'
-	use 'williamboman/nvim-lsp-installer'
+	use "williamboman/mason.nvim"
+	use "williamboman/mason-lspconfig.nvim"
+	use "jayp0521/mason-null-ls.nvim"
 	use "Hoffs/omnisharp-extended-lsp.nvim"
 	use({ 'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" } })
 	use "b0o/schemastore.nvim"
 	use "jose-elias-alvarez/null-ls.nvim"
-	use "lvimuser/lsp-inlayhints.nvim"
 	use "theHamsta/nvim-semantic-tokens"
 
 	use {

@@ -5,6 +5,7 @@ pulseaudio-bluetooth
 bluez
 bluez-utils
 bluetooth-autoconnect
+brightnessctl
 
 # DE like tools
 dunst

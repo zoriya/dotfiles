@@ -1,8 +1,30 @@
 local ok, lspconfig = pcall(require, "lspconfig")
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not status_ok or not ok then
+local status_ok, mason = pcall(require, "mason")
+local lspok, mason_lsp = pcall(require, "mason-lspconfig")
+local fmtok, mason_fmt = pcall(require, "mason-null-ls")
+if not fmtok or not lspok or not status_ok or not ok then
 	return
 end
+
+mason.setup({
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗"
+		}
+	}
+})
+
+mason_lsp.setup({
+	automatic_installation = true,
+})
+
+mason_fmt.setup({
+	automatic_installation = true,
+	ensure_installed = { "eslint_d", "prettierd" },
+})
+
 
 local util = require "lspconfig.util"
 util.on_setup = util.add_hook_after(util.on_setup, function(config)
@@ -18,16 +40,6 @@ util.on_setup = util.add_hook_after(util.on_setup, function(config)
 	end
 	config.capabilities = opts.capabilities
 end)
-
-lsp_installer.setup({
-	ui = {
-		icons = {
-			server_installed = "✓",
-			server_pending = "➜",
-			server_uninstalled = "✗"
-		}
-	}
-})
 
 local servers = {}
 
@@ -132,8 +144,8 @@ local function contains(table, val)
 	return false
 end
 
-for _, server in ipairs(lsp_installer.get_installed_servers()) do
-	if not contains(servers, server.name) then
-		lspconfig[server.name].setup({})
+for _, server in ipairs(mason_lsp.get_installed_servers()) do
+	if not contains(servers, server) then
+		lspconfig[server].setup({})
 	end
 end

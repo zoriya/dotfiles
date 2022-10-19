@@ -5,10 +5,10 @@ end
 local u = require("null-ls.utils")
 
 local sources = {
-	nl.builtins.code_actions.eslint,
-	nl.builtins.diagnostics.eslint,
-	nl.builtins.formatting.eslint,
-	nl.builtins.formatting.prettier,
+	nl.builtins.code_actions.eslint_d,
+	nl.builtins.diagnostics.eslint_d,
+	nl.builtins.formatting.eslint_d,
+	nl.builtins.formatting.prettierd,
 }
 nl.setup({
 	debug = false,

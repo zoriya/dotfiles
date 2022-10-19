@@ -28,5 +28,11 @@ XF86AudioStop
 {XF86AudioPrev,XF86AudioNext}
 	playerctl {previous,next}
 
+{XF86MonBrightnessDown,XF86MonBrightnessUp}
+	brightnessctl set 10%{-,+}
+
+super + shift + l
+	fcitx5-remote -t
+
 Print
 	maim -s | xclip -selection clipboard -t image/png
