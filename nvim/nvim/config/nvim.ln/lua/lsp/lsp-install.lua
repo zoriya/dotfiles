@@ -65,6 +65,7 @@ lspconfig.jsonls.setup({
 		},
 	},
 })
+table.insert(servers, "jsonls")
 
 
 lspconfig.sumneko_lua.setup({

@@ -9,7 +9,7 @@ end
 vim.cmd [[
 	augroup lsp
 		au!
-		au FileType java,scala,sbt lua require("metals").initialize_or_attach(metals_config)
+		au FileType scala,sbt lua require("metals").initialize_or_attach(metals_config)
 	augroup end
 ]]
 

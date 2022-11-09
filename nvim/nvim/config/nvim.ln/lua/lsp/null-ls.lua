@@ -9,6 +9,7 @@ local sources = {
 	nl.builtins.diagnostics.eslint_d,
 	nl.builtins.formatting.eslint_d,
 	nl.builtins.formatting.prettierd,
+	nl.builtins.formatting.black,
 }
 nl.setup({
 	debug = false,
