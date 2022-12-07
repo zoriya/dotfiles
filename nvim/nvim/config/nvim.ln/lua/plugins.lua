@@ -15,14 +15,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	vim.cmd [[packadd packer.nvim]]
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-	augroup packer_user_config
-		autocmd!
-		autocmd BufWritePost plugins.lua source <afile> | PackerSync
-	augroup end
-]]
-
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
@@ -45,15 +37,13 @@ return packer.startup(function(use)
 
 	use "tpope/vim-surround"
 	use { "tpope/vim-unimpaired", config = function() vim.g.nremap = { ["[u"] = "", ["]u"] = "" } end }
-	use "tpope/vim-speeddating"
 	use "tpope/vim-repeat"
 	use "tpope/vim-sleuth"
 	use "nishigori/increment-activator"
 
 	use { "airblade/vim-rooter", config = function() vim.g.rooter_manual_only = 1 end }
-	use { "yyk/simply-auto-save.nvim", branch = "check-valid-buf",
-		config = function() require "auto-save".setup({ write_all_buffers = true }) end }
-	use { "AckslD/nvim-gfold.lua" }
+	use "AnonymusRaccoon/auto-save.nvim"
+	use "AckslD/nvim-gfold.lua"
 
 	use { "lewis6991/spellsitter.nvim" }
 	use { 'psliwka/vim-dirtytalk', run = ':DirtytalkUpdate' }
@@ -90,6 +80,7 @@ return packer.startup(function(use)
 	}
 
 	use "nvim-lualine/lualine.nvim"
+	use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig", }
 	use "NvChad/nvim-colorizer.lua"
 
 	use 'neovim/nvim-lspconfig'
@@ -127,15 +118,13 @@ return packer.startup(function(use)
 	use "nvim-treesitter/nvim-treesitter-textobjects"
 	use "windwp/nvim-autopairs"
 	use "windwp/nvim-ts-autotag"
-	use "numToStr/Comment.nvim"
+	use "tpope/vim-commentary"
 	use "JoosepAlviste/nvim-ts-context-commentstring"
 	use { "danymat/neogen", requires = "nvim-treesitter/nvim-treesitter", }
-	use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig", }
 
 	use "mfussenegger/nvim-dap"
 	use { "theHamsta/nvim-dap-virtual-text", requires = { "nvim-treesitter/nvim-treesitter" } }
-	use "AnonymusRaccoon/telescope-dap.nvim"
-	-- use "nvim-telescope/telescope-dap.nvim"
+	use "nvim-telescope/telescope-dap.nvim"
 
 
 	use {

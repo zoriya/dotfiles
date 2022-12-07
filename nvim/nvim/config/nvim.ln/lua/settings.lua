@@ -45,6 +45,7 @@ local options = {
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
+vim.cmd("set formatoptions-=ro")
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap

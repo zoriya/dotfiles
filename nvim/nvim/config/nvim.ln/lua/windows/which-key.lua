@@ -43,3 +43,7 @@ wk.register({
 }, {
 	prefix = "<leader>"
 })
+
+wk.register({
+	["<leader>w"] = { "<cmd>ASToggle<cr>", "Toggle autosave" },
+})

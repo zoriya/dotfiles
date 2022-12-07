@@ -10,6 +10,19 @@ if gps_on then
 	}
 end
 
+local auto_save_state = false
+local as_on, as = pcall(require, "auto-save")
+if as_on then
+	as.setup({
+		write_all_buffers = true,
+		print_enabled = false,
+		callbacks = {
+			enabling = function() auto_save_state = true end,
+			disabling = function() auto_save_state = false end,
+		}
+	})
+end
+
 vim.opt["showmode"] = false
 
 local toggleterm = {
@@ -71,6 +84,13 @@ lualine.setup({
 			}
 		},
 		lualine_c = {
+			{
+				function()
+					return ""
+				end,
+				color = "ErrorMsg",
+				cond = function() return not auto_save_state end,
+			},
 			{ 'filetype', colored = true, icon_only = true, separator = "", padding = { left = 1, right = 0 } },
 			{
 				'filename',
